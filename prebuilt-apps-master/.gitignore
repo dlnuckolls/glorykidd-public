@@ -1,0 +1,14 @@
+Thumbs.db
+.DS_Store
+*.userprefs
+*.user
+*.suo
+*.quicktest
+bin
+obj
+test-results
+Resource.Designer.cs
+[Cc]omponents
+FieldService/FieldService.WinRT/AppPackages
+FieldService/FieldService.WinRT/*.pfx
+FieldService/FieldService.WinRT/Package.StoreAssociation.xml
