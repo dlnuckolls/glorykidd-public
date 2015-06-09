@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kindred.Knect.ITAT.Utility.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Utility_ItatExternalTerm_ItatExternalTerm" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://knectdev/FacilityMaster/Services/ItatExternalTerm.asmx</Value>
+    </Setting>
+    <Setting Name="Knect_ITAT_Utility_KDMS_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://mdwpr220/MtomKdmsWebservice/service.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

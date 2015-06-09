@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F89774A-FD5D-4EEE-AA80-DAFD8B2BBAAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kindred.Knect.ITAT.Business</RootNamespace>
+    <AssemblyName>Knect.ITAT.Business</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/Knect.ITAT.Business/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kindred.Common.NET35, Version=1.0.2.0, Culture=neutral, PublicKeyToken=645481ae033ae891, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Kindred.Common.NET35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SolutionVersionInfo.cs">
+      <Link>SolutionVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="BasicTerms.cs" />
+    <Compile Include="ChildNumberingSchemeType.cs" />
+    <Compile Include="Comments.cs" />
+    <Compile Include="ComplexLists.cs" />
+    <Compile Include="DocumentPrinters.cs" />
+    <Compile Include="ITATDocuments.cs" />
+    <Compile Include="ManagedItemSummary.cs" />
+    <Compile Include="Retro.cs" />
+    <Compile Include="Store\StoreNames.cs" />
+    <Compile Include="Store\SystemStore.cs" />
+    <Compile Include="Store\DataStoreConfig.cs" />
+    <Compile Include="Store\DataStoreDefinition.cs" />
+    <Compile Include="Store\DataStoreField.cs" />
+    <Compile Include="Store\ManagedItemStore.cs" />
+    <Compile Include="Store\TemplateStore.cs" />
+    <Compile Include="Store\TermStore.cs" />
+    <Compile Include="Store\TextTermStore.cs" />
+    <Compile Include="TermGroups.cs" />
+    <Compile Include="DefType.cs" />
+    <Compile Include="DetailedDescriptions.cs" />
+    <Compile Include="Events.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FacilityStatusType.cs" />
+    <Compile Include="ITATSystem.cs" />
+    <Compile Include="ManagedItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityHelper.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="TemplateStatusType.cs" />
+    <Compile Include="UserDocumentPrinters.cs" />
+    <Compile Include="Workflows.cs" />
+    <Compile Include="XML\Action.cs" />
+    <Compile Include="XML\ApplicationFunction.cs" />
+    <Compile Include="XML\Attachment.cs" />
+    <Compile Include="XML\Comment.cs" />
+    <Compile Include="XML\ComplexList.cs" />
+    <Compile Include="XML\ComplexListField.cs" />
+    <Compile Include="XML\ComplexListItem.cs" />
+    <Compile Include="XML\ComplexListItemValue.cs" />
+    <Compile Include="XML\PlaceHolderComments.cs" />
+    <Compile Include="XML\PlaceHolderAttachments.cs" />
+    <Compile Include="XML\PlaceHolderTerm.cs" />
+    <Compile Include="XML\StateTermGroup.cs" />
+    <Compile Include="XML\TermGroup.cs" />
+    <Compile Include="XML\DateOffset.cs" />
+    <Compile Include="XML\DateTerm.cs" />
+    <Compile Include="XML\DetailedDescription.cs" />
+    <Compile Include="XML\DocumentType.cs" />
+    <Compile Include="XML\DurationUnit.cs" />
+    <Compile Include="XML\EmailHelper.cs" />
+    <Compile Include="XML\Event.cs" />
+    <Compile Include="XML\EventType.cs" />
+    <Compile Include="XML\Extension.cs" />
+    <Compile Include="XML\ExternalInterfaceAvailableField.cs" />
+    <Compile Include="XML\ExternalInterfaceConfig.cs" />
+    <Compile Include="XML\ExternalInterfaceListItem.cs" />
+    <Compile Include="XML\ExternalInterfaceSearchableField.cs" />
+    <Compile Include="XML\ExternalInterfaceSearchCriteria.cs" />
+    <Compile Include="XML\ExternalTerm.cs" />
+    <Compile Include="XML\FacilityCollection.cs" />
+    <Compile Include="XML\FacilitySort.cs" />
+    <Compile Include="XML\FacilityTerm.cs" />
+    <Compile Include="XML\ITATClause.cs" />
+    <Compile Include="XML\ITATDocument.cs" />
+    <Compile Include="XML\ITATDocumentFooter.cs" />
+    <Compile Include="XML\ITATDocumentHeader.cs" />
+    <Compile Include="XML\LinkTerm.cs" />
+    <Compile Include="XML\ManagedItemSearch.cs" />
+    <Compile Include="XML\ManagedItemValidationType.cs" />
+    <Compile Include="XML\Message.cs" />
+    <Compile Include="XML\MSOKeyValueItem.cs" />
+    <Compile Include="XML\MSOTerm.cs" />
+    <Compile Include="XML\PdfHelper.cs" />
+    <Compile Include="XML\PdfLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XML\PickListItem.cs" />
+    <Compile Include="XML\PickListTerm.cs" />
+    <Compile Include="XML\ProcessScheduledEvent.cs" />
+    <Compile Include="XML\RenewalTerm.cs" />
+    <Compile Include="XML\Report.cs" />
+    <Compile Include="XML\ReportManagedItem.cs" />
+    <Compile Include="XML\ReportTerm.cs" />
+    <Compile Include="XML\Role.cs" />
+    <Compile Include="XML\ScheduledEvent.cs" />
+    <Compile Include="XML\State.cs" />
+    <Compile Include="XML\Status.cs" />
+    <Compile Include="XML\Term.cs" />
+    <Compile Include="XML\TermDependency.cs" />
+    <Compile Include="XML\TermDependencyAction.cs" />
+    <Compile Include="XML\TermDependencyCondition.cs" />
+    <Compile Include="XML\TermRuntimeSettings.cs" />
+    <Compile Include="XML\TextTerm.cs" />
+    <Compile Include="XML\Workflow.cs" />
+    <Compile Include="XML\XMLNames.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{74471BBD-DE16-4340-A3FA-CE8206FC4632}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{5500FC65-245A-42F3-8CA0-A8EA1E6B68C0}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

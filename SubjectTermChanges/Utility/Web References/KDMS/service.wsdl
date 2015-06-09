@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.kindredhealthcare.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.kindredhealthcare.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kindred's Documentem Services</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.kindredhealthcare.com/">
+      <s:element name="ProcessTasks">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProcessTasksResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateUsersResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateGroups">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateGroupsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateMembership">
+        <s:complexType />
+      </s:element>
+      <s:element name="LDAPUpdateMembershipResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckObjectID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NTID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OBJECTID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckObjectIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckObjectIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckObjectIDSuperUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OBJECTID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckObjectIDSuperUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckObjectIDSuperUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookUpValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DOCTYPE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PROPNAME" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLookUpValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLookUpValuesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NTID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FOLDERPATH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SEARCHSTRING" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Advanced_x0020_Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NTID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sc" type="tns:SearchConfiguration" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchConfiguration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DocType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FindAllVersions" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FolderPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersionLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttributeLines" type="tns:ArrayOfArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayAttributes" type="tns:ArrayOfArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchString" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultLimit" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAnyType" nillable="true" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Advanced_x0020_SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Advanced_x0020_SearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentContentByPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentContentByPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportDocumentContentByPathResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentsContentByPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docsPath" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExportDocumentsContentByPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportDocumentsContentByPathResult" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentTypes" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentContentByChronicleID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chronicleID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentContentByChronicleIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportDocumentContentByChronicleIDResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentsContentByChronicleID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chronicleIDs" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDocumentsContentByChronicleIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportDocumentsContentByChronicleIDResult" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentTypes" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FileBrowse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NTID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FOLDERPATH" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FileBrowseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileBrowseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileList" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportDocumentsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ImportDocumentContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docContent" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ic" type="tns:ImportConfiguration" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ImportConfiguration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DocuType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocuFolderPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyList" type="tns:ArrayOfArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LifeCyclePolicyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfPromotes" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ImportDocumentContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImportDocumentContentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportDocumentsContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="docsContent" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentTypes" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="ics" type="tns:ArrayOfImportConfiguration" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfImportConfiguration">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImportConfiguration" nillable="true" type="tns:ImportConfiguration" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ImportDocumentsContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImportDocumentsContentResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OJBECTID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DestroyALL" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteDocumentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OJBECTID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PROPERTIES" type="tns:ArrayOfArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDocumentPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDocumentPropertiesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ProcessTasksSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessTasks" />
+  </wsdl:message>
+  <wsdl:message name="ProcessTasksSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateUsers" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateGroups" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateMembershipSoapIn">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateMembership" />
+  </wsdl:message>
+  <wsdl:message name="LDAPUpdateMembershipSoapOut">
+    <wsdl:part name="parameters" element="tns:LDAPUpdateMembershipResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckObjectIDSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckObjectID" />
+  </wsdl:message>
+  <wsdl:message name="CheckObjectIDSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckObjectIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckObjectIDSuperUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckObjectIDSuperUser" />
+  </wsdl:message>
+  <wsdl:message name="CheckObjectIDSuperUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckObjectIDSuperUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLookUpValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLookUpValues" />
+  </wsdl:message>
+  <wsdl:message name="GetLookUpValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLookUpValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapIn">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="Advanced_x0020_SearchSoapIn">
+    <wsdl:part name="parameters" element="tns:Advanced_x0020_Search" />
+  </wsdl:message>
+  <wsdl:message name="Advanced_x0020_SearchSoapOut">
+    <wsdl:part name="parameters" element="tns:Advanced_x0020_SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentContentByPathSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportDocumentContentByPath" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentContentByPathSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportDocumentContentByPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentsContentByPathSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportDocumentsContentByPath" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentsContentByPathSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportDocumentsContentByPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentContentByChronicleIDSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportDocumentContentByChronicleID" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentContentByChronicleIDSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportDocumentContentByChronicleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentsContentByChronicleIDSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportDocumentsContentByChronicleID" />
+  </wsdl:message>
+  <wsdl:message name="ExportDocumentsContentByChronicleIDSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportDocumentsContentByChronicleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="FileBrowseSoapIn">
+    <wsdl:part name="parameters" element="tns:FileBrowse" />
+  </wsdl:message>
+  <wsdl:message name="FileBrowseSoapOut">
+    <wsdl:part name="parameters" element="tns:FileBrowseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportDocuments" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentContentSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportDocumentContent" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentContentSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportDocumentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentsContentSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportDocumentsContent" />
+  </wsdl:message>
+  <wsdl:message name="ImportDocumentsContentSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportDocumentsContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentProperties" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocumentPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDocumentPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="ProcessTasks">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used for processing tasks (Email Tasks, Promote Tasks)</wsdl:documentation>
+      <wsdl:input message="tns:ProcessTasksSoapIn" />
+      <wsdl:output message="tns:ProcessTasksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateUsers">
+      <wsdl:input message="tns:LDAPUpdateUsersSoapIn" />
+      <wsdl:output message="tns:LDAPUpdateUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateGroups">
+      <wsdl:input message="tns:LDAPUpdateGroupsSoapIn" />
+      <wsdl:output message="tns:LDAPUpdateGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateMembership">
+      <wsdl:input message="tns:LDAPUpdateMembershipSoapIn" />
+      <wsdl:output message="tns:LDAPUpdateMembershipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">CheckObjectID as a normal user</wsdl:documentation>
+      <wsdl:input message="tns:CheckObjectIDSoapIn" />
+      <wsdl:output message="tns:CheckObjectIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">CheckObjectID as a super user</wsdl:documentation>
+      <wsdl:input name="CheckObjectIDSuperUser" message="tns:CheckObjectIDSuperUserSoapIn" />
+      <wsdl:output name="CheckObjectIDSuperUser" message="tns:CheckObjectIDSuperUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookUpValues">
+      <wsdl:input message="tns:GetLookUpValuesSoapIn" />
+      <wsdl:output message="tns:GetLookUpValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Basic Search</wsdl:documentation>
+      <wsdl:input message="tns:SearchSoapIn" />
+      <wsdl:output message="tns:SearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Advanced Search</wsdl:documentation>
+      <wsdl:input name="Advanced_x0020_Search" message="tns:Advanced_x0020_SearchSoapIn" />
+      <wsdl:output name="Advanced_x0020_Search" message="tns:Advanced_x0020_SearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByPath">
+      <wsdl:input message="tns:ExportDocumentContentByPathSoapIn" />
+      <wsdl:output message="tns:ExportDocumentContentByPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByPath">
+      <wsdl:input message="tns:ExportDocumentsContentByPathSoapIn" />
+      <wsdl:output message="tns:ExportDocumentsContentByPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByChronicleID">
+      <wsdl:input message="tns:ExportDocumentContentByChronicleIDSoapIn" />
+      <wsdl:output message="tns:ExportDocumentContentByChronicleIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByChronicleID">
+      <wsdl:input message="tns:ExportDocumentsContentByChronicleIDSoapIn" />
+      <wsdl:output message="tns:ExportDocumentsContentByChronicleIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FileBrowse">
+      <wsdl:input message="tns:FileBrowseSoapIn" />
+      <wsdl:output message="tns:FileBrowseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocuments">
+      <wsdl:input message="tns:ImportDocumentsSoapIn" />
+      <wsdl:output message="tns:ImportDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentContent">
+      <wsdl:input message="tns:ImportDocumentContentSoapIn" />
+      <wsdl:output message="tns:ImportDocumentContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentsContent">
+      <wsdl:input message="tns:ImportDocumentsContentSoapIn" />
+      <wsdl:output message="tns:ImportDocumentsContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:input message="tns:DeleteDocumentSoapIn" />
+      <wsdl:output message="tns:DeleteDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperties">
+      <wsdl:input message="tns:UpdateDocumentPropertiesSoapIn" />
+      <wsdl:output message="tns:UpdateDocumentPropertiesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProcessTasks">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ProcessTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateUsers">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateGroups">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateMembership">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateMembership" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/CheckObjectID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/CheckObjectIDSuperUser" style="document" />
+      <wsdl:input name="CheckObjectIDSuperUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckObjectIDSuperUser">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookUpValues">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/GetLookUpValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/Advanced Search" style="document" />
+      <wsdl:input name="Advanced_x0020_Search">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Advanced_x0020_Search">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByPath">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentContentByPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByPath">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentsContentByPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByChronicleID">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentContentByChronicleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByChronicleID">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentsContentByChronicleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FileBrowse">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/FileBrowse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocuments">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ImportDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentContent">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ImportDocumentContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentsContent">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/ImportDocumentsContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperties">
+      <soap:operation soapAction="http://www.kindredhealthcare.com/UpdateDocumentProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProcessTasks">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ProcessTasks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateUsers">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateGroups">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LDAPUpdateMembership">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/LDAPUpdateMembership" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/CheckObjectID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckObjectID">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/CheckObjectIDSuperUser" style="document" />
+      <wsdl:input name="CheckObjectIDSuperUser">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckObjectIDSuperUser">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookUpValues">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/GetLookUpValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/Search" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/Advanced Search" style="document" />
+      <wsdl:input name="Advanced_x0020_Search">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Advanced_x0020_Search">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByPath">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentContentByPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByPath">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentsContentByPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentContentByChronicleID">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentContentByChronicleID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDocumentsContentByChronicleID">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ExportDocumentsContentByChronicleID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FileBrowse">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/FileBrowse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocuments">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ImportDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentContent">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ImportDocumentContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDocumentsContent">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/ImportDocumentsContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocumentProperties">
+      <soap12:operation soapAction="http://www.kindredhealthcare.com/UpdateDocumentProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kindred's Documentem Services</wsdl:documentation>
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://mdwpr220/MtomKdmsWebservice/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://mdwpr220/MtomKdmsWebservice/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

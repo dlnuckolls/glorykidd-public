@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by dave (kindred) -->
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed., Installed Multi + SMP for 10 users (Kindred Healthcare Operating Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="TemplateDef">
+		<xs:annotation>
+			<xs:documentation>Configuration of the Current Template</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Terms"/>
+				<xs:element name="Document">
+					<xs:annotation>
+						<xs:documentation>The information needed to generate the Document</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Header">
+								<xs:annotation>
+									<xs:documentation>The Header of the Document</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="ExcludeFromFirstPage" type="xs:boolean" use="optional"/>
+									<xs:attribute name="LeftText" type="xs:string" use="optional"/>
+									<xs:attribute name="CenterText" type="xs:string" use="optional"/>
+									<xs:attribute name="RightText" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Body">
+								<xs:annotation>
+									<xs:documentation>The Body of the Document</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="Clause"/>
+									</xs:sequence>
+									<xs:attribute name="Name" type="xs:string"/>
+									<xs:attribute name="ChildNumberingScheme" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Footer">
+								<xs:annotation>
+									<xs:documentation>The Footer of the Document</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="ExcludeFromFirstPage" type="xs:boolean" use="optional"/>
+									<xs:attribute name="LeftText" type="xs:string" use="optional"/>
+									<xs:attribute name="CenterText" type="xs:string" use="optional"/>
+									<xs:attribute name="RightText" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ComplexLists">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ComplexList">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Fields">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Field">
+														<xs:complexType>
+															<xs:attribute name="Name" type="xs:string" use="required"/>
+															<xs:attribute name="BigText" type="xs:boolean" use="required"/>
+															<xs:attribute name="Summary" type="xs:boolean" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Rendering"/>
+										<xs:element name="Items">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Item">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ItemValue">
+																	<xs:complexType>
+																		<xs:attribute name="FieldName" type="xs:string" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="Editable" type="xs:boolean" use="required"/>
+															<xs:attribute name="Deletable" type="xs:boolean" use="required"/>
+															<xs:attribute name="Default" type="xs:boolean"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="StandardHeader"/>
+										<xs:element name="AlternateHeader"/>
+									</xs:sequence>
+									<xs:attribute name="Editable"/>
+									<xs:attribute name="Name" type="xs:string" use="required"/>
+									<xs:attribute name="ID"/>
+									<xs:attribute name="ColumnCount" type="xs:int" use="required"/>
+									<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+									<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+									<xs:attribute name="ValidateOnSave"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Extensions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Extension">
+								<xs:complexType>
+									<xs:attribute name="FileName" type="xs:string" use="required"/>
+									<xs:attribute name="ObjectID" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Comments">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Comment">
+								<xs:complexType>
+									<xs:attribute name="UserName" type="xs:string"/>
+									<xs:attribute name="Created" type="xs:string"/>
+									<xs:attribute name="UserID" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Workflows">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="WorkFlow">
+								<xs:annotation>
+									<xs:documentation>The WorkFlow for the Current Template</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="States">
+											<xs:annotation>
+												<xs:documentation>The List of States to define the Workflow Process</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="State" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Editors">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Editor" minOccurs="0" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:attribute name="Role" type="xs:string" use="required"/>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Actions">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Action" maxOccurs="unbounded">
+																				<xs:annotation>
+																					<xs:documentation>A button or action that can be executed for the Item in the Current State.</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Performers">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="Performer" maxOccurs="unbounded">
+																										<xs:annotation>
+																											<xs:documentation>The role/person who will see the current Action/Button.</xs:documentation>
+																										</xs:annotation>
+																										<xs:complexType>
+																											<xs:attribute name="Role" type="xs:string" use="required"/>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element name="Messages">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="Message" minOccurs="0" maxOccurs="unbounded">
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element name="Body"/>
+																												<xs:element name="Recipients">
+																													<xs:complexType>
+																														<xs:sequence>
+																															<xs:element name="Recipient" maxOccurs="unbounded">
+																																<xs:complexType>
+																																	<xs:attribute name="Role" type="xs:string" use="required"/>
+																																</xs:complexType>
+																															</xs:element>
+																														</xs:sequence>
+																													</xs:complexType>
+																												</xs:element>
+																											</xs:sequence>
+																											<xs:attribute name="Subject" type="xs:string" use="required"/>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																					<xs:attribute name="ButtonText" type="xs:string" use="required"/>
+																					<xs:attribute name="TargetState" type="xs:string" use="required"/>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="Name" type="xs:string" use="required"/>
+															<xs:attribute name="Status" type="xs:string" use="required"/>
+															<xs:attribute name="IsDraft" type="xs:boolean" use="optional"/>
+															<xs:attribute name="IsBase" type="xs:boolean" use="required"/>
+															<xs:attribute name="IsExit" type="xs:boolean" use="required"/>
+															<xs:attribute name="RequiresValidation"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Events">
+											<xs:annotation>
+												<xs:documentation>The Events (Scheduled or Otherwise) that are tied to the current template</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Event" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>A Event Mail/Action that needs to happen.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ScheduledEvents">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ScheduledEvent">
+																				<xs:complexType>
+																					<xs:attribute name="DateOffset"/>
+																					<xs:attribute name="Executed"/>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Messages">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Message" minOccurs="0">
+																				<xs:annotation>
+																					<xs:documentation>Defines the mail to be sent (if needed) for this event</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Body"/>
+																						<xs:element name="Recipients">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="Recipient" maxOccurs="unbounded">
+																										<xs:annotation>
+																											<xs:documentation>Defines the Role/Person to recieve the Email</xs:documentation>
+																										</xs:annotation>
+																										<xs:complexType>
+																											<xs:attribute name="Role" type="xs:string" use="required"/>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element name="Statuses">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="Status">
+																										<xs:complexType>
+																											<xs:attribute name="Status"/>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																								<xs:attribute name="AllStatuses"/>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																					<xs:attribute name="Subject" type="xs:string" use="required"/>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="ID" type="xs:string" use="required"/>
+															<xs:attribute name="Name" type="xs:string"/>
+															<xs:attribute name="Description" type="xs:string" use="required"/>
+															<xs:attribute name="EventType" type="xs:string"/>
+															<xs:attribute name="BaseDateTermID" type="xs:string"/>
+															<xs:attribute name="BaseDateOffset" type="xs:string"/>
+															<xs:attribute name="BaseDateTermPart"/>
+															<xs:attribute name="OffsetTermID"/>
+															<xs:attribute name="OffsetDefaultValue"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="DateExitedBaseState"/>
+									</xs:sequence>
+									<xs:attribute name="Name"/>
+									<xs:attribute name="ID"/>
+									<xs:attribute name="UseFunction" type="xs:boolean"/>
+									<xs:attribute name="DaysAfterWorkFlowEntry" type="xs:int"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="ActiveWorkflowID"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TermDependencies">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TermDependency">
+								<xs:complexType>
+									<xs:attribute name="DependentTermID"/>
+									<xs:attribute name="ID"/>
+									<xs:attribute name="Quantity"/>
+									<xs:attribute name="Target"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Attachments" type="xs:boolean" use="optional"/>
+			<xs:attribute name="AllowComments" type="xs:boolean" use="optional"/>
+			<xs:attribute name="GenerateDocument" type="xs:boolean" use="required"/>
+			<xs:attribute name="Description" type="xs:string" use="optional"/>
+			<xs:attribute name="Version" type="xs:string" use="optional"/>
+			<xs:attribute name="XMLVersion" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SystemDef">
+		<xs:annotation>
+			<xs:documentation>Configuration of the Current System</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Terms"/>
+				<xs:element name="Roles">
+					<xs:annotation>
+						<xs:documentation>List of Valid Roles for this System</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Role" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>A Valid Role's Definition</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="ApplicationSecurityResourceName" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DocumentTypes">
+					<xs:annotation>
+						<xs:documentation>List of Valid Document Types for this System</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DocumentType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>A Valid Document Type</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Name" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Statuses">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Status">
+								<xs:complexType>
+									<xs:attribute name="Name" type="xs:string" use="required"/>
+									<xs:attribute name="AllRoles"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="IntroPage"/>
+				<xs:element name="ApplicationFunctions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ApplicationFunction">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Role">
+											<xs:complexType>
+												<xs:attribute name="Name" type="xs:string"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Name" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ExternalInterfaces">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ExternalInterface">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AvailableFields">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AvailableField">
+														<xs:complexType>
+															<xs:attribute name="DisplayOrder"/>
+															<xs:attribute name="DisplayWidth"/>
+															<xs:attribute name="IsKey"/>
+															<xs:attribute name="Name"/>
+															<xs:attribute name="DisplayName"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SearchableFields">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SearchableField">
+														<xs:complexType>
+															<xs:attribute name="Name"/>
+															<xs:attribute name="Type"/>
+															<xs:attribute name="Visible"/>
+															<xs:attribute name="Filter"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Name"/>
+									<xs:attribute name="URL"/>
+									<xs:attribute name="SelectionMode"/>
+									<xs:attribute name="DisplayFormat"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DocumentStoreConfig">
+					<xs:complexType>
+						<xs:attribute name="Type"/>
+						<xs:attribute name="RootPath"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="ApplicationSecurityName" type="xs:string" use="required"/>
+			<xs:attribute name="TrackAudit" type="xs:boolean" use="required"/>
+			<xs:attribute name="HasContent" type="xs:boolean" use="required"/>
+			<xs:attribute name="ManagedItemName" type="xs:string" use="required"/>
+			<xs:attribute name="XMLVersion" type="xs:string"/>
+			<xs:attribute name="DefaultDateFormat" type="xs:string"/>
+			<xs:attribute name="ManagedItemNumberSystemId" type="xs:string"/>
+			<xs:attribute name="ManagedItemNumberSystemType" type="xs:string"/>
+			<xs:attribute name="HasOwningFacility" type="xs:boolean"/>
+			<xs:attribute name="OwnerEmail"/>
+			<xs:attribute name="OverrideEmail"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Clause">
+		<xs:annotation>
+			<xs:documentation>Grouping of Text for the Current Document</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Clause"/>
+			</xs:sequence>
+			<xs:attribute name="IndentFirstParagraph" type="xs:boolean" use="required"/>
+			<xs:attribute name="ChildNumberingScheme" type="xs:string" use="required"/>
+			<xs:attribute name="IndentSubsequentParagraphs" type="xs:boolean" use="optional"/>
+			<xs:attribute name="HangingIndent" type="xs:boolean" use="optional"/>
+			<xs:attribute name="KeepTogether" type="xs:boolean" use="optional"/>
+			<xs:attribute name="Name" type="xs:string"/>
+			<xs:attribute name="DependsOnTermName" type="xs:string"/>
+			<xs:attribute name="DependsOnOperator" type="xs:string"/>
+			<xs:attribute name="DependsOnValue" type="xs:string"/>
+			<xs:attribute name="BreakParagraphs"/>
+			<xs:attribute name="PageBreakBefore"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Terms">
+		<xs:annotation>
+			<xs:documentation>The List of Terms supported</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:annotation>
+					<xs:documentation>The List of Terms Supported by this Template</xs:documentation>
+				</xs:annotation>
+				<xs:element name="Text" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual Text term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="Format" type="xs:string" use="required"/>
+						<xs:attribute name="Min" type="xs:integer" use="optional"/>
+						<xs:attribute name="Max" type="xs:integer" use="optional"/>
+						<xs:attribute name="ShowCents" type="xs:boolean" use="optional"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Date" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual Date term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="Format" type="xs:string" use="required"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Facility" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual Facility term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FacilityTypes" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The Faciilty Types to be included in the List Box</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="FacilityType" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="TypeID" type="xs:integer" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="OwningFacilityIDs" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="FacilityID" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:int" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SelectedFacilityIDs" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="FacilityID" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:int" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="UseDBField" type="xs:boolean" use="optional"/>
+						<xs:attribute name="MultiSelect" type="xs:boolean" use="optional"/>
+						<xs:attribute name="UseUserSecurity" type="xs:boolean" use="optional"/>
+						<xs:attribute name="includeChildren" type="xs:boolean" use="optional"/>
+						<xs:attribute name="FacilityStatus" type="xs:integer" use="required"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="IsPrimary" type="xs:boolean" use="required"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MSO" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual MSO term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="MSOName" type="xs:string" use="optional" default="Name"/>
+						<xs:attribute name="Address1Name" type="xs:string" use="optional" default="Address1"/>
+						<xs:attribute name="Address2Name" type="xs:string" use="optional" default="Address2"/>
+						<xs:attribute name="CityName" type="xs:string" use="optional" default="City"/>
+						<xs:attribute name="StateName" type="xs:string" use="optional" default="State"/>
+						<xs:attribute name="ZipName" type="xs:string" use="optional" default="Zip"/>
+						<xs:attribute name="PhoneName" type="xs:string" use="optional" default="Phone"/>
+						<xs:attribute name="MSONameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="Address1NameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="Address2NameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="CityNameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="StateNameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="ZipNameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="PhoneNameDisplayed" type="xs:boolean" use="optional" default="true"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Renewal" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual AutoRenew term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EffectiveDate">
+								<xs:annotation>
+									<xs:documentation>EffectiveDate for the Orginal Item</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="DaysBeforeToday" type="xs:integer" use="optional"/>
+									<xs:attribute name="DaysAfterToday" type="xs:integer" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ExpirationDate">
+								<xs:annotation>
+									<xs:documentation>ExpirationDate for the Orginal Item</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="DBField" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="OrginalDurationUnit">
+								<xs:annotation>
+									<xs:documentation>The size of the length unit such as Month or Year for the Orginal Period of the item.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DurationUnit" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="Value" type="xs:string" use="required"/>
+												<xs:attribute name="Display" type="xs:boolean" use="required"/>
+												<xs:attribute name="Selected" type="xs:boolean"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="PopUpIfNot" type="xs:string" use="optional"/>
+									<xs:attribute name="PopUpText" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="OrginalDurationUnitCount">
+								<xs:annotation>
+									<xs:documentation>The number of Units for the Orginal Period of the item.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Default" type="xs:int"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RenewalDurationUnit">
+								<xs:annotation>
+									<xs:documentation>The size of the length unit such as Month or Year for the Renewal Period of the item.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DurationUnit" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="Value" type="xs:string" use="required"/>
+												<xs:attribute name="Display" type="xs:string" use="required"/>
+												<xs:attribute name="Default" type="xs:boolean"/>
+												<xs:attribute name="Selected" type="xs:boolean"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="PopUpIfNot" type="xs:string" use="optional"/>
+									<xs:attribute name="PopUpText" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RenewalDurationUnitCount">
+								<xs:annotation>
+									<xs:documentation>The number of Units for the Renewal Period of the item.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Default" type="xs:int"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="RenewalType" type="xs:string" use="required"/>
+						<xs:attribute name="PopUpText" type="xs:string" use="optional"/>
+						<xs:attribute name="AllowBackDating" type="xs:boolean" use="required"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+						<xs:attribute name="RenewalCount" type="xs:int"/>
+						<xs:attribute name="RenewalDurationEditable" type="xs:boolean"/>
+						<xs:attribute name="MessageOffsetDays" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PickList" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual PickList term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ListItem" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>The List Items to be included in the List</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Selected" type="xs:boolean" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="RequiredValue" type="xs:string" use="optional"/>
+						<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="MuliSelect" type="xs:boolean" use="optional"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Link" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The actual Link term type</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Required" type="xs:boolean" use="required"/>
+						<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+						<xs:attribute name="Editable" type="xs:boolean" use="optional"/>
+						<xs:attribute name="URL" type="xs:string" use="required"/>
+						<xs:attribute name="Caption" type="xs:string" use="required"/>
+						<xs:attribute name="SystemTerm" type="xs:boolean" use="required"/>
+						<xs:attribute name="KeyWordSearchable" type="xs:boolean"/>
+						<xs:attribute name="DBFieldName" type="xs:string"/>
+						<xs:attribute name="IsManagedItemReference" type="xs:boolean"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

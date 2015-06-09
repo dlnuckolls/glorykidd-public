@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:i0="http://kindredhealthcare.com" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://kindredhealthcare.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://kindredhealthcare.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://kindredhealthcare.com" location="http://knectdev/FacilityMaster/Services/ItatExternalTerm.asmx?wsdl=wsdl1" />
+  <wsdl:types>
+    <s:schema targetNamespace="http://kindredhealthcare.com/webservices/">
+      <s:include schemaLocation="http://knectdev/FacilityMaster/Services/ItatExternalTerm.asmx?schema=schema1" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:service name="ItatExternalTerm">
+    <wsdl:port name="IItatExternalTerm" binding="i0:IItatExternalTerm">
+      <soap:address location="http://knectdev/FacilityMaster/Services/ItatExternalTerm.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IItatExternalTerm1" binding="i0:IItatExternalTerm1">
+      <soap12:address location="http://knectdev/FacilityMaster/Services/ItatExternalTerm.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
