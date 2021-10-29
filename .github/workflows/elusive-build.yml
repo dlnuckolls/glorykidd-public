@@ -4,7 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches: [ master ]
+<<<<<<< HEAD
+    paths: [ web/elusivesoftware/ElusiveSoftware.net/**, web/elusivesoftware/GloryKidd.WebCore/** ]
+=======
     paths: [ ElusiveSoftware.net/**, GloryKidd.WebCore/** ]
+>>>>>>> stage
     
 concurrency: 
   group: gk-${{ github.ref }}
@@ -13,7 +17,10 @@ jobs:
   build:
     name: Start Elusive Software Build
     runs-on: [ windows-latest ] 
+<<<<<<< HEAD
+=======
     if: ${{ github.ref == 'refs/heads/master' }}
+>>>>>>> stage
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -31,13 +38,24 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
       - name: Install dependencies
         run: |
+<<<<<<< HEAD
+          nuget restore web/elusivesoftware/ElusiveSoftware.sln
+      - name: Build Solution
+        run: |
+          msbuild web/elusivesoftware/ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+=======
           nuget restore ElusiveSoftware.sln
       - name: Build Solution
         run: |
           msbuild ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+>>>>>>> stage
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: GKWeb Build - ${{ steps.buildid.outputs.time }}
+<<<<<<< HEAD
+          path: web/elusivesoftware/ElusiveSoftware.net/bin/app.publish/*
+=======
           path: ElusiveSoftware.net/bin/app.publish/*
+>>>>>>> stage
           retention-days: 30
