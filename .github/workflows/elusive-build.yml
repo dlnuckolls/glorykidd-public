@@ -13,6 +13,7 @@ jobs:
   build:
     name: Start Elusive Software Build
     runs-on: [ windows-latest ] 
+    environment: Production
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
