@@ -1,0 +1,364 @@
+﻿.topBorder {
+  border-bottom: solid 2px #0078c4;
+  margin-bottom: 40px;
+}
+
+#wrapper .header {
+  background-color: antiquewhite;
+  padding: 10px 0 10px 20px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+#wrapper .headerright {
+  padding: 30px 20px 10px 0;
+  /*margin-bottom: 10px;*/
+}
+
+  #wrapper .headerright .RadMenu {
+    margin: 10px 0;
+    float: right !important;
+    /*color: black;*/
+  }
+
+#wrapper .logo {
+  margin: 5px 0;
+  width: 100%;
+  display: inline-block;
+}
+
+  #wrapper .logo img {
+    max-width: 100%;
+    max-height: 70px;
+  }
+
+#wrapper .jumbotron {
+  padding: 1em 1.25em 1em 1.25em;
+  /*padding-top: 1em;*/
+  background-color: aliceblue;
+  /*margin: 0 10px;*/
+  border-radius: 10px;
+  /*min-height: 500px;*/
+}
+
+  #wrapper .jumbotron h3 {
+  }
+
+  #wrapper .jumbotron p {
+    text-align: justify;
+    line-height: 1.4em;
+  }
+
+  #wrapper .jumbotron .RadButton {
+    float: right;
+    /*margin-top: 1em;*/
+    font-size: .6em;
+  }
+
+#wrapper .footer {
+  margin-top: 30px;
+  background-color: lightsteelblue;
+  text-align: center;
+  width: 100%;
+  padding: 10px 15px;
+  line-height: 30px;
+}
+
+#wrapper .RadMediaPlayer {
+  margin: 10px auto 10px auto;
+}
+
+.homearticle {
+  width: 95%;
+  margin: 5px;
+  border: solid 1px lightgray;
+  border-radius: 10px;
+  padding: 5px 15px 5px 15px;
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+  .homearticle h2 {
+    font-weight: bold;
+    font-style: italic;
+    margin: 1em 0;
+  }
+
+  .homearticle img {
+    width: 225px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 10px;
+  }
+
+  .homearticle div {
+    margin: 50px auto 10px auto;
+    width: 100%;
+    text-align: center;
+  }
+
+.homearticle2 {
+  width: 95%;
+  margin: 5px;
+  padding: 5px 15px 25px 15px;
+  text-align: justify;
+  line-height: 2.25em;
+}
+
+  .homearticle2 div {
+    margin: 10px auto 10px auto;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+  }
+
+.pageHeader {
+  width: 100%;
+  text-align: center;
+}
+
+  .pageHeader h2 {
+    font-size: 2.25em;
+  }
+
+  .pageHeader h3 {
+    font-size: 1.8em;
+  }
+
+.service-pages-callout-white2 {
+  position: relative;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #0a0a0a;
+}
+
+  .service-pages-callout-white2 h4 {
+    text-align: center;
+  }
+
+  .service-pages-callout-white2 p {
+    text-align: justify;
+  }
+
+.service-pages-callout-icon {
+  margin-bottom: .25em;
+  opacity: .7;
+  text-align: center;
+}
+
+.service-pages-callout-white {
+  position: relative;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #0a0a0a;
+  border: 1px solid #0078c4;
+  min-height: 350px;
+}
+
+  .service-pages-callout-white h4 {
+    text-align: center;
+  }
+
+  .service-pages-callout-white p {
+    text-align: justify;
+  }
+
+.service-pages-callout-icon {
+  margin-bottom: .25em;
+  opacity: .7;
+  text-align: center;
+}
+
+  .service-pages-callout-icon i {
+    font-size: 7em;
+  }
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.MyLabel {
+  display: block;
+  width: 150px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel2 {
+  display: block;
+  width: 170px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel3 {
+  display: block;
+  width: 200px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel4 {
+  display: block;
+  width: 210px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.RadButton.rbRounded.css3Simple {
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.RadButton.rbRounded.css3SimpleAction {
+  height: 37px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: .75em;
+  padding: 5px;
+}
+
+.RadButton.rbRounded.css3Simple2 {
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+  .RadButton.rbRounded.css3Simple2 .rbText {
+    margin-top: 0 !important;
+  }
+
+html body form .RadInput .MyEmptyTextBox,
+html body form .RadInput .MyEnabledTextBox,
+html body form .RadInput .MyFocusedTextBox {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyHoveredTextBox {
+  background: #bceff8 !important;
+}
+
+html body form .RadInput .MyFocusedTextBox {
+  background: white !important;
+}
+
+.RadInput textarea.riTextBox {
+  height: auto !important;
+}
+
+.RadComboBox .MyEnabledTextBox {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige !important;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyEmptyTextBox2,
+html body form .RadInput .MyEnabledTextBox2,
+html body form .RadInput .MyHoveredTextBox2,
+html body form .RadInput .MyFocusedTextBox2 {
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyDisabledTextBox {
+  height: 38px;
+  border-width: 0;
+  border-color: #fff;
+  font: 1em arial,sans-serif;
+}
+
+html body .RadInput .MyEmptyTextBox {
+  color: #999;
+}
+
+html body form .RadInput .MyEnabledTextBox {
+}
+
+html body form .RadInput .MyHoveredTextBox {
+  border-color: #6c6;
+  background: #c9fdc9;
+}
+
+html body form .RadInput .MyFocusedTextBox {
+  border-color: #3a3;
+  background: #c9fdc9;
+}
+
+#messageDisplayArea {
+  width: 100%;
+  text-align: center;
+}
+
+.errorMessageDisplay {
+  padding-left: 10px;
+  padding-right: 10px !important;
+  line-height: 1em;
+  background-color: darkred;
+  font-weight: bold;
+  color: white !important;
+}
+
+.successMessageDisplay {
+  padding-left: 10px;
+  padding-right: 10px !important;
+  line-height: 1em;
+  min-width: 186px;
+  background-color: greenyellow;
+  font-weight: bold;
+  color: black;
+}
+
+.RadGrid_Silk .rgEditRow > td > [type="text"] {
+  width: 100% !important;
+}
+
+.MyContactLabel {
+  display: block;
+  width: 90px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+}
+
+.rcRefreshImage {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.MyCaptchaTextBox {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
+  border-radius: 5px;
+  margin-right: 10px;
+}

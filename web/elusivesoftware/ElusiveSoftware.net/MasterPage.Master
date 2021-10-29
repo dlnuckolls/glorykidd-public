@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="ElusiveSoftware.net.MasterPage" %>
+
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<%@ Register Src="~/controls/mainnavigation.ascx" TagPrefix="uc1" TagName="mainnavigation" %>
+<%@ Register Src="~/controls/mainfooter.ascx" TagPrefix="uc1" TagName="mainfooter" %>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <link href="/styles/base.css" rel="stylesheet" />
+  <link href="/styles/default.css" rel="stylesheet" />
+  <asp:ContentPlaceHolder ID="head" runat="server" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18831849-20"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-18831849-20');
+  </script>
+</head>
+<body>
+  <form id="form1" runat="server">
+    <telerik:RadScriptManager runat="server"></telerik:RadScriptManager>
+    <div id="wrapper">
+      <telerik:RadPageLayout runat="server" ID="MasterLayout" GridType="Fluid">
+        <Rows>
+          <%--Header--%>
+          <telerik:LayoutRow CssClass="topBorder">
+            <Columns>
+              <%--Logo--%>
+              <telerik:LayoutColumn CssClass="header" Span="7" SpanMd="8" SpanSm="12" SpanXs="12">
+                <telerik:RadPageLayout runat="server" ID="LogoLayout">
+                  <Rows>
+                    <telerik:LayoutRow>
+                      <Columns>
+                        <telerik:LayoutColumn Span="2">
+                          <a href="/" class="logo">
+                            <img src="/images/EmailLogo.png" alt="GloryKidd" />
+                          </a>
+                        </telerik:LayoutColumn>
+                        <telerik:LayoutColumn Span="10">
+                          <a class="logo">
+                            <img src="/images/elusive_logo.png" alt="Elusive Software" />
+                          </a>
+                        </telerik:LayoutColumn>
+                      </Columns>
+                    </telerik:LayoutRow>
+                  </Rows>
+                </telerik:RadPageLayout>
+
+              </telerik:LayoutColumn>
+
+              <%--Main Nav--%>
+              <telerik:LayoutColumn CssClass="headerright" Span="5" SpanMd="4" SpanSm="12" SpanXs="12">
+                <uc1:mainnavigation runat="server" ID="mainnavigation" />
+              </telerik:LayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+
+          <%--Main--%>
+          <telerik:LayoutRow>
+            <Columns>
+              <%--Content--%>
+              <telerik:CompositeLayoutColumn Span="12" SpanMd="12" SpanSm="12" SpanXs="12">
+                <Content>
+                  <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                  </asp:ContentPlaceHolder>
+                  <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                  </asp:ContentPlaceHolder>
+                </Content>
+              </telerik:CompositeLayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+
+          <%--Footer--%>
+          <telerik:LayoutRow>
+            <Columns>
+              <telerik:LayoutColumn CssClass="footer">
+                <uc1:mainfooter runat="server" ID="mainfooter" />
+              </telerik:LayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+        </Rows>
+      </telerik:RadPageLayout>
+    </div>
+  </form>
+</body>
+</html>
