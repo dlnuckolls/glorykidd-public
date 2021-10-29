@@ -1,0 +1,43 @@
+name: Elusive Software (GK.COM)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths: [ ElusiveSoftware.net/**, GloryKidd.WebCore/** ]
+    
+concurrency: 
+  group: gk-${{ github.ref }}
+
+jobs:
+  build:
+    name: Start Elusive Software Build
+    runs-on: [ windows-latest ] 
+    if: ${{ github.ref == 'refs/heads/master' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Generate Build Number
+        id: buildid
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 0
+          format: 'YYYY.MM.DD-HH.mm'
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.0.3
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+      - name: Install dependencies
+        run: |
+          nuget restore ElusiveSoftware.sln
+      - name: Build Solution
+        run: |
+          msbuild ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: GKWeb Build - ${{ steps.buildid.outputs.time }}
+          path: ElusiveSoftware.net/bin/app.publish/*
+          retention-days: 30
