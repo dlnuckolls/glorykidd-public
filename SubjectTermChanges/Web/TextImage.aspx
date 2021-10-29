@@ -1,1 +1,0 @@
-<%@ Page Language="C#" CodeBehind="TextImage.aspx.cs" Inherits="Kindred.Knect.ITAT.Web.TextImage" %>
