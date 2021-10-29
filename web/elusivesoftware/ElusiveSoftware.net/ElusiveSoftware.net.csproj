@@ -265,7 +265,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GloryKidd.WebCore\GloryKidd.WebCore.csproj">
+    <ProjectReference Include="..\..\..\windows\elusivesoftware\GloryKidd.WebCore\GloryKidd.WebCore.csproj">
       <Project>{db61b3e7-4105-4f57-ac8c-bd8b0b87bd06}</Project>
       <Name>GloryKidd.WebCore</Name>
     </ProjectReference>
@@ -293,7 +293,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
