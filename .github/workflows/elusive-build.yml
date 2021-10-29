@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ master ]
-    paths: [ web/elusivesoftware/ElusiveSoftware.net/**, web/elusivesoftware/GloryKidd.WebCore/** ]
+    paths: [ web/elusivesoftware/ElusiveSoftware.net/**, windows/elusivesoftware/GloryKidd.WebCore/** ]
     
 concurrency: 
   group: gk-${{ github.ref }}
