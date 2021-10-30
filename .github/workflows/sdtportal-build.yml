@@ -70,6 +70,6 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: SDTPortal Build - ${{ steps.buildid.outputs.time }}
+          name: AISWeb Build - ${{ steps.buildid.outputs.time }}
           path: web/SDTPortal/AISWeb/bin/app.publish/*
           retention-days: 30
