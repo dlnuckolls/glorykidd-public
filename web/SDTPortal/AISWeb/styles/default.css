@@ -1,0 +1,315 @@
+﻿#wrapper .header {
+  background-color: white;
+  padding: 10px 0;
+  margin-bottom: 40px;
+  /*border: black 1px solid;*/
+}
+
+  #wrapper .header .RadMenu {
+    margin: 0;
+    float: right;
+  }
+
+#wrapper .logo {
+  margin: 10px 0 -30px;
+  width: 100%;
+  display: inline-block;
+}
+
+  #wrapper .logo img {
+    width: 100%;
+  }
+
+#wrapper .tagline {
+  margin-top: -25px;
+  width: 100%;
+  font-family: Verdana, Geneva, sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+
+#wrapper .headertitle {
+  padding-top: .5em;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#wrapper .apptitle {
+  text-align: center;
+}
+
+#wrapper .apptext p {
+  padding-left: 80px;
+  padding-right: 80px;
+  text-align: justify;
+}
+
+#wrapper .forgotText {
+  text-align: justify;
+  font-size: 1em;
+  text-decoration: none;
+  height: 40px;
+  padding: 20px 0;
+}
+
+#wrapper .appErrorMessage {
+  text-align: justify;
+  color: darkred;
+  font-weight: bold;
+}
+
+#wrapper .footer {
+  width: 100%;
+  padding: 30px 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.loading {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+div span.RadInput.transparencyTextBox {
+  display: inline-block;
+}
+
+.imagesList input,
+.imagesList img {
+  vertical-align: middle;
+}
+
+.uploadlabels {
+  text-align: right;
+  line-height: 35px;
+}
+
+.MyLabel {
+  display: block;
+  width: 150px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel2 {
+  display: block;
+  width: 170px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel3 {
+  display: block;
+  width: 200px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.MyLabel4 {
+  display: block;
+  width: 210px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.content {
+  line-height: 1.2em;
+  padding: 5px;
+}
+
+.RadButton.rbRounded.css3Simple {
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.RadButton.rbRounded.css3SimpleAction {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: .75em;
+  padding: 5px;
+}
+
+.RadButton.rbRounded.css3Simple2 {
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+  .RadButton.rbRounded.css3Simple2 .rbText {
+    margin-top: 0 !important;
+  }
+
+html body form .RadDropDownList {
+  border-width: 2px;
+  border-color: #a9c9a9;
+  border-radius: 5px;
+}
+
+.PadContents {
+  padding-bottom: 5px;
+}
+
+html body form .RadInput .MyEmptyTextBox,
+html body form .RadInput .MyEnabledTextBox,
+html body form .RadInput .MyFocusedTextBox {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyHoveredTextBox {
+  background: #bceff8 !important;
+}
+
+html body form .RadInput .MyFocusedTextBox {
+  background: white !important;
+}
+
+.RadInput textarea.riTextBox {
+  height: auto !important;
+}
+
+.RadComboBox .MyEnabledTextBox {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige !important;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyEmptyTextBox2,
+html body form .RadInput .MyEnabledTextBox2,
+html body form .RadInput .MyHoveredTextBox2,
+html body form .RadInput .MyFocusedTextBox2 {
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
+}
+
+html body form .RadInput .MyDisabledTextBox {
+  height: 38px;
+  border-width: 0;
+  border-color: #fff;
+  font: 1em arial,sans-serif;
+}
+
+html body .RadInput .MyEmptyTextBox {
+  color: #999;
+}
+
+html body form .RadInput .MyEnabledTextBox {
+}
+
+html body form .RadInput .MyHoveredTextBox {
+  border-color: #6c6;
+  background: #c9fdc9;
+}
+
+html body form .RadInput .MyFocusedTextBox {
+  border-color: #3a3;
+  background: #c9fdc9;
+}
+
+.padFileInput {
+  padding-left: 205px;
+}
+
+div.RadUpload .ruBrowse {
+  background-position: 0 -100px;
+  width: 200px;
+}
+
+div.RadUpload_Default .ruFileWrap .ruButtonHover {
+  background-position: 100% -100px !important;
+}
+
+.mainMenu {
+  text-transform: uppercase;
+  padding-bottom: 15px;
+}
+
+.DropZone1 {
+  margin-left: 5px;
+  width: 85%;
+  height: 60px;
+  background-color: #c0e1bb;
+  border-color: #CCCCCC;
+  color: #767676;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#messageDisplayArea {
+  width: 100%;
+  text-align: center;
+}
+
+.errorMessageDisplay {
+  padding-left: 10px;
+  padding-right: 10px !important;
+  line-height: 1em;
+  background-color: darkred;
+  font-weight: bold;
+  color: white !important;
+}
+
+.adminUserDisplay {
+  border-radius: 7px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  height: 35px !important;
+  padding-top: 12px !important;
+  min-width: 180px;
+  background-color: greenyellow;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
+.successMessageDisplay {
+  padding-left: 10px;
+  padding-right: 10px !important;
+  line-height: 1em;
+  min-width: 186px;
+  background-color: greenyellow;
+  font-weight: bold;
+  color: black;
+}
+
+.RadComboBox_Bootstrap .rcbReadOnly {
+  border-radius: 5px !important;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige !important;
+}
+.RadComboBox_Bootstrap .rcbHovered {
+  background: #bceff8 !important;
+}
+.RadComboBox_Bootstrap .rcbArrowCell {
+  border-radius: 5px !important;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige !important;
+}
