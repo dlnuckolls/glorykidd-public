@@ -12,7 +12,7 @@ concurrency:
 jobs:
   sdt-build:
     name: Start Secure Document Portal Build
-    runs-on: [ windows-latest ] 
+    runs-on: [ self-hosted ] 
     environment: Release
     steps:
       - name: Checkout Code
@@ -44,7 +44,7 @@ jobs:
 
   aisweb-build:
     name: Start AISWeb Build
-    runs-on: [ windows-latest ] 
+    runs-on: [ self-hosted ] 
     environment: Release
     steps:
       - name: Checkout Code
