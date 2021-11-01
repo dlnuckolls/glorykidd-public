@@ -12,7 +12,7 @@ concurrency:
 jobs:
   build:
     name: Start Elusive Software Build
-    runs-on: [ windows-latest ] 
+    runs-on: [ self-hosted ] 
     environment: Release
     steps:
       - name: Checkout Code
