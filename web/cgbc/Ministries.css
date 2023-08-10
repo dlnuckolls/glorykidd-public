@@ -286,6 +286,11 @@
     min-height: 100px;
   }
 
+  .u-section-1 .u-container-layout-1 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .u-section-1 .u-layout-cell-2 {
     min-height: 100px;
   }
@@ -296,6 +301,11 @@
 
   .u-section-1 .u-repeater-1 {
     grid-template-columns: 100%;
+  }
+
+  .u-section-1 .u-container-layout-3 {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .u-section-1 .u-text-4 {
@@ -309,6 +319,11 @@
     margin-left: 0;
   }
 
+  .u-section-1 .u-container-layout-4 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .u-section-1 .u-text-6 {
     margin-top: 20px;
     margin-right: 25px;
@@ -318,6 +333,11 @@
   .u-section-1 .u-text-7 {
     margin-right: 25px;
     margin-left: 0;
+  }
+
+  .u-section-1 .u-container-layout-5 {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .u-section-1 .u-text-8 {
@@ -331,6 +351,11 @@
     margin-left: 0;
   }
 
+  .u-section-1 .u-container-layout-6 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .u-section-1 .u-text-10 {
     margin-top: 20px;
     margin-right: 25px;
@@ -340,6 +365,11 @@
   .u-section-1 .u-text-11 {
     margin-right: 25px;
     margin-left: 0;
+  }
+
+  .u-section-1 .u-container-layout-7 {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .u-section-1 .u-text-12 {
@@ -353,6 +383,11 @@
     margin-left: 0;
   }
 
+  .u-section-1 .u-container-layout-8 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .u-section-1 .u-text-14 {
     margin-top: 20px;
     margin-right: 25px;
@@ -362,6 +397,11 @@
   .u-section-1 .u-text-15 {
     margin-right: 25px;
     margin-left: 0;
+  }
+
+  .u-section-1 .u-container-layout-9 {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .u-section-1 .u-text-16 {
@@ -494,7 +534,6 @@
 }
 
 .u-section-2 .u-image-1 {
-  background-image: url("images/Men-on-Mission-e1691510255123.jpeg");
   background-position: 50% 50%;
 }
 
@@ -503,7 +542,6 @@
 }
 
 .u-section-2 .u-image-2 {
-  background-image: url("images/2-e1691510335894.jpeg");
   background-position: 50% 50%;
 }
 
@@ -512,7 +550,6 @@
 }
 
 .u-section-2 .u-image-3 {
-  background-image: url("images/Mens-breakfast-e1691510403116.jpeg");
   background-position: 50% 50%;
 }
 
@@ -521,7 +558,6 @@
 }
 
 .u-section-2 .u-image-4 {
-  background-image: url("images/Cleanup-e1691510487600.jpeg");
   background-position: 50% 50%;
 }
 
@@ -530,7 +566,6 @@
 }
 
 .u-section-2 .u-image-5 {
-  background-image: url("images/mail-e1691510543386.jpeg");
   background-position: 50% 50%;
 }
 
@@ -735,7 +770,6 @@
 }
 
 .u-section-3 .u-image-1 {
-  background-image: url("images/IMG_3159-2-e1691513790709.jpg");
   background-position: 50% 50%;
 }
 
@@ -744,7 +778,6 @@
 }
 
 .u-section-3 .u-image-2 {
-  background-image: url("images/IMG_3150-e1691513880632.jpg");
   background-position: 50% 50%;
 }
 
@@ -753,7 +786,6 @@
 }
 
 .u-section-3 .u-image-3 {
-  background-image: url("images/IMG_3145-2-e1691513940497.jpg");
   background-position: 50% 50%;
 }
 
@@ -762,7 +794,6 @@
 }
 
 .u-section-3 .u-image-4 {
-  background-image: url("images/IMG_4435-scaled.jpeg");
   background-position: 50% 50%;
 }
 
@@ -771,7 +802,6 @@
 }
 
 .u-section-3 .u-image-5 {
-  background-image: url("images/IMG_4493-scaled.jpeg");
   background-position: 50% 50%;
 }
 
@@ -1020,8 +1050,13 @@
     padding-right: 25px;
   }
 
+  .u-section-3 .u-text-3 {
+    margin-right: 0;
+  }
+
   .u-section-3 .u-text-4 {
     margin-top: 50px;
+    margin-left: 0;
     margin-bottom: 60px;
   }
 } .u-section-4 {
@@ -1119,6 +1154,10 @@
     margin-top: -704px;
   }
 
+  .u-section-4 .u-container-layout-1 {
+    padding: 0;
+  }
+
   .u-section-4 .u-image-3 {
     margin-right: auto;
     margin-left: 0;
@@ -1137,6 +1176,7 @@
   .u-section-4 .u-image-1 {
     width: 540px;
     height: 425px;
+    margin-right: 0;
   }
 
   .u-section-4 .u-image-2 {
@@ -1305,6 +1345,7 @@
   .u-section-5 .u-text-2 {
     margin-top: 20px;
     margin-right: 191px;
+    margin-left: 0;
   }
 
   .u-section-5 .u-video-1 {

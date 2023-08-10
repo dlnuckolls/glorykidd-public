@@ -191,7 +191,6 @@
 .u-section-4 .u-image-1 {
   width: 120px;
   height: 120px;
-  background-image: url("images/IMG_1841-e1663604261786.jpeg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -216,7 +215,6 @@
 .u-section-4 .u-image-2 {
   width: 120px;
   height: 120px;
-  background-image: url("images/IMG_9377-compressed-scaled.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -242,7 +240,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/7584F42A-E620-48D4-822F-52E851208C3B-scaled1.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -268,7 +265,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/E7544CD1-4B52-4C79-A2BD-BDC1E12F129C-scaled.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -294,7 +290,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/IMG_3558-scaled.jpeg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -320,7 +315,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/admin-ajax.php.jpeg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -346,7 +340,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/IMG_690FE319E76A-1-e1691504734991.jpeg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -372,7 +365,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/FullSizeRender-preview-scaled.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -398,7 +390,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/A7320D1B-A8C6-41EE-985C-B9A39C73BDD3-e1691504874730.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -424,7 +415,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/2A56C1BA-9006-42E3-A97A-67963B4AC027-scaled.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -450,7 +440,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/IMG_3113-scaled.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -476,7 +465,6 @@
   width: 120px;
   height: 120px;
   object-position: 50% 0%;
-  background-image: url("images/jordan-bennett-headshot-crop-e1691505071685.jpg");
   background-position: 50% 50%;
   margin: 16px auto 0;
 }
@@ -521,13 +509,26 @@
     min-height: 100px;
   }
 
+  .u-section-4 .u-container-layout-1 {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .u-section-4 .u-container-layout-2 {
+    padding-top: 0;
     padding-left: 30px;
     padding-right: 30px;
   }
 
   .u-section-4 .u-layout-cell-2 {
     min-height: 100px;
+  }
+
+  .u-section-4 .u-container-layout-3 {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .u-section-4 .u-list-1 {
