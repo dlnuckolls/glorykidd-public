@@ -36,4 +36,7 @@ jobs:
           New-Item -ItemType "directory" -Path "C:/deployment-stage/cgbc/${{ steps.buildid.outputs.formattedTime }}/" -Force
           Copy-Item C:/inetpub/cedargrovebaptist.church/* -Destination C:/deployment-stage/cgbc/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
           Compress-Archive -Path "C:/deployment-stage/cgbc/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/cgbc-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
-          
+          Remove-Item -Path C:/deployment-stage/cgbc/${{ steps.buildid.outputs.formattedTime }} -Recurse
+      - name: Deploy New Code
+        run: |
+          Copy-Item web/cgbc/* -Destination C:/inetpub/cedargrovebaptist.church/ -Recurse -Force          
