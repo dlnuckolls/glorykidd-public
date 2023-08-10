@@ -40,4 +40,4 @@ jobs:
           Remove-Item -Path C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/cgca/* -Destination C:/inetpub/cedargrovechristianacademy.org/ -Recurse
+          Copy-Item web/cgca/* -Destination C:/inetpub/cedargrovechristianacademy.org/ -Recurse -Force
