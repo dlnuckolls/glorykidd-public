@@ -146,6 +146,34 @@
   margin: 15px auto 0;
 }
 
+.u-section-2 .u-container-layout-5 {
+  padding: 30px 80px;
+}
+
+.u-section-2 .u-image-5 {
+  width: 83px;
+  height: 83px;
+  background-image: url("images/yard_sale.png");
+  background-position: 50% 50%;
+  margin: 0 auto;
+}
+
+.u-section-2 .u-text-13 {
+  font-size: 1.25rem;
+  margin: 20px 0 0;
+}
+
+.u-section-2 .u-text-14 {
+  font-weight: 700;
+  margin: 35px auto 0;
+}
+
+.u-section-2 .u-text-15 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 15px auto 0;
+}
+
 .u-section-2 .u-carousel-control-1 {
   width: 43px;
   height: 43px;
@@ -185,6 +213,11 @@
     padding-left: 65px;
     padding-right: 65px;
   }
+
+  .u-section-2 .u-container-layout-5 {
+    padding-left: 65px;
+    padding-right: 65px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -215,6 +248,11 @@
   }
 
   .u-section-2 .u-container-layout-4 {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .u-section-2 .u-container-layout-5 {
     padding-left: 60px;
     padding-right: 60px;
   }
@@ -265,6 +303,15 @@
   }
 
   .u-section-2 .u-text-10 {
+    font-size: 1.125rem;
+  }
+
+  .u-section-2 .u-container-layout-5 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-2 .u-text-13 {
     font-size: 1.125rem;
   }
 }.u-section-3 .u-sheet-1 {
