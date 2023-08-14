@@ -24,34 +24,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: Get Changed Files
+      - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v32
+        uses: tj-actions/changed-files@v37
+        with:
+          since_last_remote_commit: true 
+      - name: List all changed files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
       - name: Generate Build Number
         id: buildid
         uses: josStorer/get-current-time@v2.0.2
         with:
           utcOffset: "00:00"
           format: YYYY.MM.DD-HH.mm
-      - name: List Modified Files
-        run: |
-          Set-Content -Path C:/deployment-stage/trich-changes.txt -Value "Commit Item Messages:"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "---------------------------------"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value $(git log --format=%B -n 1 HEAD)
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value ""
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "---------------------------------"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value ""
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "Build Number - ${{ steps.buildid.outputs.formattedTime }}"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value ""
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "---------------------------------"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "Changed Files"
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "---------------------------------"
-          foreach ($file in "${{ steps.changed-files.outputs.all_modified_files }}") {
-            Add-Content -Path C:/deployment-stage/trich-changes.txt -Value "$file"
-          }
-          Add-Content -Path C:/deployment-stage/trich-changes.txt -Value ""
       - name: Create Backup
         run: |
           New-Item -ItemType "directory" -Path "C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }}/" -Force
