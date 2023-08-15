@@ -20,6 +20,8 @@ namespace CleanupBuilds {
         CheckBuildFiles(new DirectoryInfo(baseFolder), "cgca*");
         LogMessages("|- Removing files for CGBC");
         CheckBuildFiles(new DirectoryInfo(baseFolder), "cgbc*");
+        LogMessages("|- Removing files for TurleyRichards");
+        CheckBuildFiles(new DirectoryInfo(baseFolder), "trich*");
         //Cleanup logs
         LogMessages("Processing IIS Logs");
         baseFolder = @"C:\inetpub\logs\LogFiles";
