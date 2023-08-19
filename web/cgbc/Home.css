@@ -639,7 +639,7 @@
 }
 
 .u-section-4 .u-text-1 {
-  line-height: 1.7;
+  line-height: 1.2;
   font-size: 1.25rem;
   font-style: italic;
   margin: 0;
@@ -676,7 +676,7 @@
 }
 
 .u-section-4 .u-text-2 {
-  line-height: 1.7;
+  line-height: 1.2;
   font-size: 1.25rem;
   font-style: italic;
   margin: 0;
@@ -762,7 +762,14 @@
   }
 
   .u-section-4 .u-container-layout-4 {
+    padding-left: 14px;
+    padding-right: 14px;
     padding-bottom: 0;
+  }
+
+  .u-section-4 .u-text-1 {
+    width: auto;
+    margin-left: 16px;
   }
 
   .u-section-4 .u-image-3 {
@@ -884,6 +891,10 @@
     margin-right: initial;
     margin-left: initial;
     width: auto;
+  }
+
+  .u-section-4 .u-text-1 {
+    margin-left: 0;
   }
 
   .u-section-4 .u-image-3 {
