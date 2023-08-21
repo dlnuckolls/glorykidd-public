@@ -55,7 +55,7 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          removeArtifacts: true
+          removeArtifacts: "true"
           tag: trich-${{ steps.buildid.outputs.formattedTime }}
           name: "Turley Richards Website"
           bodyFile: C:/deployment-stage/trich-${{ steps.buildid.outputs.formattedTime }}.txt
