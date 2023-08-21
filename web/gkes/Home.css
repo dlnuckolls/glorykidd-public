@@ -373,7 +373,7 @@
 }
 
 .u-section-3 .u-layout-cell-2 {
-  min-height: 514px;
+  min-height: 426px;
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 0px;
   --animation-custom_in-opacity: 0;
@@ -398,7 +398,7 @@
 }
 
 .u-section-3 .u-layout-cell-3 {
-  min-height: 257px;
+  min-height: 400px;
   background-image: none;
   --animation-custom_in-translate_x: -400px;
   --animation-custom_in-translate_y: 0px;
@@ -429,7 +429,7 @@
 }
 
 .u-section-3 .u-layout-cell-4 {
-  min-height: 257px;
+  min-height: 400px;
   background-image: none;
   --animation-custom_in-translate_x: 300px;
   --animation-custom_in-translate_y: 0px;
