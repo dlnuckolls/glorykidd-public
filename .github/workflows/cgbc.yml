@@ -54,3 +54,8 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/cgbc/* -Destination C:/inetpub/cedargrovebaptist.church/ -Recurse -Force          
+      - name: Upload Runlog
+        uses: actions/upload-artifact@v3
+        with:
+          name: Release Changelog
+          path: C:/deployment-stage/cgbc-${{ steps.buildid.outputs.formattedTime }}.txt
