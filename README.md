@@ -1,6 +1,6 @@
 glorykidd-public
 ================
 
-https://github.com/dlnuckolls/glorykidd-public/actions/workflows/cgbc.yml/badge.svg
+(https://github.com/dlnuckolls/glorykidd-public/actions/workflows/cgbc.yml/badge.svg)
 
 Public repository for open source projects.
