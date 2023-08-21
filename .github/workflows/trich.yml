@@ -52,8 +52,10 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/trich/* -Destination C:/inetpub/turleyrichards.com/newweb/ -Recurse -Force          
-      - name: Upload Runlog
-        uses: actions/upload-artifact@v3
+      - name: Create Release
+        uses: ncipollo/release-action@v1
         with:
-          name: Release Changelog
-          path: C:/deployment-stage/trich-${{ steps.buildid.outputs.formattedTime }}.txt
+          removeArtifacts: true
+          tag: trich-${{ steps.buildid.outputs.formattedTime }}
+          name: "Turley Richards Website"
+          bodyFile: C:/deployment-stage/trich-${{ steps.buildid.outputs.formattedTime }}.txt

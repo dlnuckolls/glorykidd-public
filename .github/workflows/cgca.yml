@@ -54,8 +54,10 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/cgca/* -Destination C:/inetpub/cedargrovechristianacademy.org/ -Recurse -Force
-      - name: Upload Runlog
-        uses: actions/upload-artifact@v3
+      - name: Create Release
+        uses: ncipollo/release-action@v1
         with:
-          name: Release Changelog
-          path: C:/deployment-stage/cgca-${{ steps.buildid.outputs.formattedTime }}.txt
+          removeArtifacts: true
+          tag: cgca-${{ steps.buildid.outputs.formattedTime }}
+          name: "Cedar Grove Christian Academy"
+          bodyFile: C:/deployment-stage/cgca-${{ steps.buildid.outputs.formattedTime }}.txt

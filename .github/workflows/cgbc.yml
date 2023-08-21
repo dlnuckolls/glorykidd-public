@@ -54,8 +54,10 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/cgbc/* -Destination C:/inetpub/cedargrovebaptist.church/ -Recurse -Force          
-      - name: Upload Runlog
-        uses: actions/upload-artifact@v3
+      - name: Create Release
+        uses: ncipollo/release-action@v1
         with:
-          name: Release Changelog
-          path: C:/deployment-stage/cgbc-${{ steps.buildid.outputs.formattedTime }}.txt
+          removeArtifacts: true
+          tag: cgbc-${{ steps.buildid.outputs.formattedTime }}
+          name: "Cedar Grove Baptist Church"
+          bodyFile: C:/deployment-stage/cgbc-${{ steps.buildid.outputs.formattedTime }}.txt
