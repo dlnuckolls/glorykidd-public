@@ -54,3 +54,8 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/cgca/* -Destination C:/inetpub/cedargrovechristianacademy.org/ -Recurse -Force
+      - name: Upload Runlog
+        uses: actions/upload-artifact@v3
+        with:
+          name: Release Changelog
+          path: C:/deployment-stage/cgca-${{ steps.buildid.outputs.formattedTime }}.txt
