@@ -52,6 +52,11 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/gkes/* -Destination C:/inetpub/elusivesoftware.com/ -Recurse -Force          
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: gkes-${{ steps.buildid.outputs.formattedTime }}
+          name: "Elusive Software"
+          bodyFile: C:/deployment-stage/gkes-${{ steps.buildid.outputs.formattedTime }}.txt
       - name: Upload Runlog
         uses: actions/upload-artifact@v3
         with:
