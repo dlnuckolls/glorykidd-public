@@ -41310,7 +41310,7 @@ a.u-link.u-text-hover-grey-90:hover {
 
 /*end-variables sitestylecss*/
 .u-header .u-sheet-1 {
-  min-height: 74px;
+  min-height: 92px;
 }
 
 .u-header .u-text-1 {
@@ -41320,7 +41320,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-menu-1 {
-  margin: -28px 0 5px auto;
+  margin: -28px 0 40px auto;
 }
 
 .u-header .u-nav-1 {
@@ -41339,7 +41339,6 @@ a.u-link.u-text-hover-grey-90:hover {
   .u-header .u-menu-1 {
     margin-top: -36px;
     margin-right: 0;
-    margin-bottom: 23px;
   }
 }
 @media (max-width: 991px) {
@@ -41349,7 +41348,6 @@ a.u-link.u-text-hover-grey-90:hover {
 
   .u-header .u-menu-1 {
     margin-top: -34px;
-    margin-bottom: 21px;
   }
 }
 @media (max-width: 767px) {
@@ -41362,17 +41360,12 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 }
 @media (max-width: 575px) {
-  .u-header .u-sheet-1 {
-    min-height: 80px;
-  }
-
   .u-header .u-text-1 {
     margin-top: 22px;
     margin-right: 91px;
   }
 
   .u-header .u-menu-1 {
-    margin-bottom: 24px;
     width: auto;
   }
 }
@@ -41402,6 +41395,10 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-footer .u-text-2 {
   margin: 0;
 }
+
+.u-footer .u-text-3 {
+  margin: 20px 0 0;
+}
 @media (max-width: 1199px) {
   .u-footer .u-sheet-1 {
     min-height: 135px;
@@ -41412,7 +41409,7 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-footer .u-layout-cell-1 {
-    min-height: 102px;
+    min-height: 82px;
   }
 
   .u-footer .u-container-layout-1 {
@@ -41429,16 +41426,16 @@ a.u-link.u-text-hover-grey-90:hover {
     min-height: 30px;
   }
 
+  .u-footer .u-layout-cell-1 {
+    min-height: 100px;
+  }
+
   .u-footer .u-container-layout-1 {
     padding-left: 19px;
     padding-right: 19px;
   }
 }
 @media (max-width: 767px) {
-  .u-footer .u-layout-cell-1 {
-    min-height: 230px;
-  }
-
   .u-footer .u-container-layout-1 {
     padding-left: 14px;
     padding-right: 14px;
@@ -41456,10 +41453,6 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 }
 @media (max-width: 575px) {
-  .u-footer .u-layout-cell-1 {
-    min-height: 100px;
-  }
-
   .u-footer .u-container-layout-1 {
     padding-left: 9px;
     padding-right: 9px;
