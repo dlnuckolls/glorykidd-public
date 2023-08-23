@@ -17,10 +17,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     runs-on: [ self-hosted ]
     name: Deploy Elusive Software
+    outputs: 
+      build: ${{ steps.buildid.outputs.formattedTime }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,10 +53,42 @@ jobs:
       - name: Deploy New Code
         run: |
           Copy-Item web/gkes/* -Destination C:/inetpub/elusivesoftware.com/ -Recurse -Force          
+
+  create-release:
+    runs-on: [ self-hosted ]
+    name: Release Elusive Software
+    needs: deploy
+    steps:
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           removeArtifacts: true
-          tag: gkes-${{ steps.buildid.outputs.formattedTime }}
+          tag: gkes-${{ needs.deploy.outputs.build }}
           name: "Elusive Software"
-          bodyFile: C:/deployment-stage/gkes-${{ steps.buildid.outputs.formattedTime }}.txt
+          bodyFile: C:/deployment-stage/gkes-${{ needs.deploy.outputs.build }}.txt
+
+  release-page:
+    runs-on: [ self-hosted ]
+    name: Update Elusive Software Release
+    needs: deploy
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Log Changes
+        run: |
+          $file = "docs/content.html"
+          $content = Get-Content $file -Raw
+          $prepend = "Some more new text goes here!<br />"
+          $content =  $prepend + $content
+          Set-Content $file $content
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '/docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
