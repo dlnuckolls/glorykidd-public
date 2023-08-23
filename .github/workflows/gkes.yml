@@ -72,8 +72,6 @@ jobs:
     name: Update Elusive Software Release
     needs: deploy
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
       - name: Log Changes
         run: |
           $file = "docs/content.html"
@@ -85,6 +83,8 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
