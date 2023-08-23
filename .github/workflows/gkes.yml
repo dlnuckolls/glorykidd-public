@@ -9,6 +9,14 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  workflow_call:
+    outputs:
+      build:
+        description: "The BuildId"
+        value: ${{ jobs.create-release.outputs.output1 }}
+      description:
+        description: "The output file"
+        value: ${{ jobs.create-release.outputs.output2 }}
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -58,6 +66,9 @@ jobs:
     runs-on: [ self-hosted ]
     name: Release Elusive Software
     needs: deploy
+    outputs:
+      output1: gkes-${{ needs.deploy.outputs.build }}
+      output2: 
     steps:
       - name: Create Release
         uses: ncipollo/release-action@v1
@@ -66,3 +77,5 @@ jobs:
           tag: gkes-${{ needs.deploy.outputs.build }}
           name: "Elusive Software"
           bodyFile: C:/deployment-stage/gkes-${{ needs.deploy.outputs.build }}.txt
+      - name: Read Output
+        run: echo "output2=$(cat C:/deployment-stage/gkes-${{ needs.deploy.outputs.build }}.txt)" >> $GITHUB_OUTPUT
