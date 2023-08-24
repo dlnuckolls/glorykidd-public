@@ -1089,7 +1089,8 @@ ol {
 .u-text a,
 .u-post-content a,
 .u-tab-item a,
-.u-nav-item a {
+.u-nav-item a,
+.u-product-control.u-text a {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
@@ -21533,9 +21534,6 @@ a.pswp__share--download:hover {
 }
 .u-product {
   display: flex;
-}
-.u-gallery.u-product-control .u-back-image {
-  object-fit: contain;
 }
 .u-product-price {
   display: table;
