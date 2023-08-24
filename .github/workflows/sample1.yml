@@ -1,4 +1,4 @@
-name: sample1
+name: test-sample1
 on:
   workflow_dispatch:
     inputs:
