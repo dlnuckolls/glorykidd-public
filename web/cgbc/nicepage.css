@@ -1089,7 +1089,8 @@ ol {
 .u-text a,
 .u-post-content a,
 .u-tab-item a,
-.u-nav-item a {
+.u-nav-item a,
+.u-product-control.u-text a {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
@@ -21534,9 +21535,6 @@ a.pswp__share--download:hover {
 .u-product {
   display: flex;
 }
-.u-gallery.u-product-control .u-back-image {
-  object-fit: contain;
-}
 .u-product-price {
   display: table;
 }
@@ -41107,6 +41105,10 @@ a.u-link.u-text-hover-grey-90:hover {
         
         
         
+        
+        
+        
+        
         --theme-sheet-width-xl: 1140px;
         --theme-sheet-width-lg: 940px;
         --theme-sheet-width-md: 720px;
@@ -41208,9 +41210,11 @@ a.u-link.u-text-hover-grey-90:hover {
         p.u-large-text
         {
         font-family: 'Open Sans',sans-serif;
-        font-weight: 400;
         line-height: 1.6;
         font-size: 1rem;
+        list-icon-spacing: 0.3;
+        list-icon-size: 0.8;
+        font-weight: 800;
         }
         p:not(.u-text-variant)
         {
@@ -41306,6 +41310,13 @@ a.u-link.u-text-hover-grey-90:hover {
         /** cms-rules **/
 
         /** color-rules **/
+        .u-overlap.u-overlap-transparent:not(.u-overlap-contrast) .u-header :not(.u-nav-item) > p.u-large-text,
+        .u-gradient > .u-container-layout > p.u-large-text,
+        .u-image:not(.u-shading) > .u-container-layout > p.u-large-text,
+        p.u-large-text
+        {
+        color: #555c66;
+        }
         .u-overlap.u-overlap-transparent:not(.u-overlap-contrast) .u-header :not(.u-nav-item) > .u-btn,
         .u-gradient > .u-container-layout > .u-btn,
         .u-image:not(.u-shading) > .u-container-layout > .u-btn,
@@ -41371,6 +41382,10 @@ a.u-link.u-text-hover-grey-90:hover {
         /** color-rules **/
 
         /** alt-color-rules **/
+        .u-body-color p.u-large-text,.u-palette-1-base p.u-large-text,.u-palette-1-dark-3 p.u-large-text,.u-palette-1-dark-2 p.u-large-text,.u-palette-1-dark-1 p.u-large-text,.u-palette-1 p.u-large-text,.u-palette-1-light-1 p.u-large-text,.u-palette-2-base p.u-large-text,.u-palette-2-dark-3 p.u-large-text,.u-palette-2-dark-2 p.u-large-text,.u-palette-2-dark-1 p.u-large-text,.u-palette-2 p.u-large-text,.u-palette-3-base p.u-large-text,.u-palette-3-dark-3 p.u-large-text,.u-palette-3-dark-2 p.u-large-text,.u-palette-3-dark-1 p.u-large-text,.u-palette-3 p.u-large-text,.u-palette-3-light-1 p.u-large-text,.u-palette-4-base p.u-large-text,.u-palette-4-dark-3 p.u-large-text,.u-palette-4-dark-2 p.u-large-text,.u-palette-4-dark-1 p.u-large-text,.u-palette-4 p.u-large-text,.u-palette-4-light-1 p.u-large-text,.u-palette-5-dark-3 p.u-large-text,.u-palette-5-dark-2 p.u-large-text,.u-palette-5-dark-1 p.u-large-text,.u-grey-40 p.u-large-text,.u-grey-30 p.u-large-text,.u-grey-90 p.u-large-text,.u-grey-80 p.u-large-text,.u-grey-75 p.u-large-text,.u-black p.u-large-text,.u-grey-70 p.u-large-text,.u-grey-60 p.u-large-text,.u-grey-50 p.u-large-text,.u-grey-dark-3 p.u-large-text,.u-grey-dark-2 p.u-large-text,.u-grey-dark-1 p.u-large-text,.u-grey p.u-large-text,.u-shading p.u-large-text,.u-overlap-contrast .u-header p.u-large-text:not(.u-nav-link):not(.u-btn)
+        {
+        color: #e0e5eb;
+        }
         .u-body-color .u-btn,.u-palette-1-base .u-btn,.u-palette-1-dark-3 .u-btn,.u-palette-1-dark-2 .u-btn,.u-palette-1-dark-1 .u-btn,.u-palette-1 .u-btn,.u-palette-1-light-1 .u-btn,.u-palette-2-base .u-btn,.u-palette-2-dark-3 .u-btn,.u-palette-2-dark-2 .u-btn,.u-palette-2-dark-1 .u-btn,.u-palette-2 .u-btn,.u-palette-3-base .u-btn,.u-palette-3-dark-3 .u-btn,.u-palette-3-dark-2 .u-btn,.u-palette-3-dark-1 .u-btn,.u-palette-3 .u-btn,.u-palette-3-light-1 .u-btn,.u-palette-4-base .u-btn,.u-palette-4-dark-3 .u-btn,.u-palette-4-dark-2 .u-btn,.u-palette-4-dark-1 .u-btn,.u-palette-4 .u-btn,.u-palette-4-light-1 .u-btn,.u-palette-5-dark-3 .u-btn,.u-palette-5-dark-2 .u-btn,.u-palette-5-dark-1 .u-btn,.u-grey-40 .u-btn,.u-grey-30 .u-btn,.u-grey-90 .u-btn,.u-grey-80 .u-btn,.u-grey-75 .u-btn,.u-black .u-btn,.u-grey-70 .u-btn,.u-grey-60 .u-btn,.u-grey-50 .u-btn,.u-grey-dark-3 .u-btn,.u-grey-dark-2 .u-btn,.u-grey-dark-1 .u-btn,.u-grey .u-btn,.u-shading .u-btn,.u-overlap-contrast .u-header .u-btn
         {
         background-color: #cdd5e5;
