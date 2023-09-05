@@ -21555,6 +21555,35 @@ a.pswp__share--download:hover {
 .u-price-wrapper .u-hide-price + div {
   margin-left: 0;
 }
+.u-product-second-image {
+  display: none;
+}
+.u-product-second-image-wrapper {
+  position: relative;
+}
+.u-product-second-image-wrapper .u-image {
+  transition: all 0.7s ease;
+}
+.u-product-second-image-wrapper .u-image + .u-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.7s ease;
+}
+.u-product-second-image-wrapper > img + img,
+.u-product-second-image-wrapper > div + div {
+  opacity: 0;
+}
+.u-product-second-image-wrapper:hover > img + img,
+.u-product-second-image-wrapper:hover > div + div {
+  opacity: 1;
+}
+.u-product-second-image-wrapper:hover > img:first-child:not(:only-child),
+.u-product-second-image-wrapper:hover > div:first-child:not(:only-child) {
+  opacity: 0;
+}
 .u-product-quantity {
   display: table;
 }
