@@ -48,12 +48,12 @@ jobs:
       - name: Create Backup
         run: |
           New-Item -ItemType "directory" -Path "C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }}/" -Force
-          Copy-Item C:/inetpub/cedargrovechristianacademy.org/* -Destination C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
+          Copy-Item C:/www-root/cedargrovechristianacademy.org/* -Destination C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
           Compress-Archive -Path "C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/cgca-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
           Remove-Item -Path C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/cgca/* -Destination C:/inetpub/cedargrovechristianacademy.org/ -Recurse -Force
+          Copy-Item web/cgca/* -Destination C:/www-root/cedargrovechristianacademy.org/ -Recurse -Force
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
