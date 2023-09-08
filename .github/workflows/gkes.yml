@@ -55,12 +55,12 @@ jobs:
       - name: Create Backup
         run: |
           New-Item -ItemType "directory" -Path "C:/deployment-stage/gkes/${{ steps.buildid.outputs.formattedTime }}/" -Force
-          Copy-Item C:/inetpub/elusivesoftware.com/* -Destination C:/deployment-stage/gkes/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
+          Copy-Item C:/www-root/elusivesoftware.com/* -Destination C:/deployment-stage/gkes/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
           Compress-Archive -Path "C:/deployment-stage/gkes/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/gkes-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
           Remove-Item -Path C:/deployment-stage/gkes/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/gkes/* -Destination C:/inetpub/elusivesoftware.com/ -Recurse -Force          
+          Copy-Item web/gkes/* -Destination C:/www-root/elusivesoftware.com/ -Recurse -Force          
 
   create-release:
     runs-on: [ self-hosted ]
