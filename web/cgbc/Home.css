@@ -229,119 +229,15 @@
 
 .u-section-2 .u-text-11 {
   font-weight: 700;
-  --animation-custom_in-translate_x: -300px;
+  --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 0px;
   --animation-custom_in-opacity: 0;
   --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 0.3;
+  --animation-custom_in-scale: 1;
   margin: 35px auto 0;
 }
 
 .u-section-2 .u-text-12 {
-  font-size: 1rem;
-  font-weight: 400;
-  --animation-custom_in-translate_x: 50px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 0.3;
-  margin: 15px auto 0;
-}
-
-.u-section-2 .u-carousel-item-5 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.u-section-2 .u-container-layout-5 {
-  padding: 30px 80px;
-}
-
-.u-section-2 .u-image-5 {
-  width: 83px;
-  height: 83px;
-  background-position: 50% 50%;
-  --animation-custom_in-translate_x: -200px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 0deg;
-  --animation-custom_in-scale: 1;
-  margin: 0 auto;
-}
-
-.u-section-2 .u-text-13 {
-  font-size: 1.25rem;
-  --animation-custom_in-translate_x: 50px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 0.3;
-  margin: 20px 0 0;
-}
-
-.u-section-2 .u-text-14 {
-  font-weight: 700;
-  --animation-custom_in-translate_x: 0px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 1;
-  margin: 65px auto 0;
-}
-
-.u-section-2 .u-text-15 {
-  font-size: 1rem;
-  font-weight: 400;
-  --animation-custom_in-translate_x: -300px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 0.3;
-  margin: 10px auto 0;
-}
-
-.u-section-2 .u-carousel-item-6 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.u-section-2 .u-container-layout-6 {
-  padding: 30px 80px;
-}
-
-.u-section-2 .u-image-6 {
-  width: 83px;
-  height: 83px;
-  background-position: 50% 50%;
-  --animation-custom_in-translate_x: -200px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 0deg;
-  --animation-custom_in-scale: 1;
-  margin: 0 auto;
-}
-
-.u-section-2 .u-text-16 {
-  font-size: 1.25rem;
-  --animation-custom_in-translate_x: 50px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 0.3;
-  margin: 20px 0 0;
-}
-
-.u-section-2 .u-text-17 {
-  font-weight: 700;
-  --animation-custom_in-translate_x: 0px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 180deg;
-  --animation-custom_in-scale: 1;
-  margin: 35px auto 0;
-}
-
-.u-section-2 .u-text-18 {
   font-size: 1rem;
   font-weight: 400;
   --animation-custom_in-translate_x: -300px;
@@ -391,16 +287,6 @@
     padding-left: 65px;
     padding-right: 65px;
   }
-
-  .u-section-2 .u-container-layout-5 {
-    padding-left: 65px;
-    padding-right: 65px;
-  }
-
-  .u-section-2 .u-container-layout-6 {
-    padding-left: 65px;
-    padding-right: 65px;
-  }
 }
 
 @media (max-width: 767px) {
@@ -431,16 +317,6 @@
   }
 
   .u-section-2 .u-container-layout-4 {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .u-section-2 .u-container-layout-5 {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .u-section-2 .u-container-layout-6 {
     padding-left: 60px;
     padding-right: 60px;
   }
@@ -491,24 +367,6 @@
   }
 
   .u-section-2 .u-text-10 {
-    font-size: 1.125rem;
-  }
-
-  .u-section-2 .u-container-layout-5 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .u-section-2 .u-text-13 {
-    font-size: 1.125rem;
-  }
-
-  .u-section-2 .u-container-layout-6 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .u-section-2 .u-text-16 {
     font-size: 1.125rem;
   }
 }.u-section-3 .u-sheet-1 {
