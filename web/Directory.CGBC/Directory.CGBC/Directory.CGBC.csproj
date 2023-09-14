@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="images\logo.jpg" />
     <Content Include="MasterPage.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -113,7 +114,6 @@
     <Content Include="images\Jellyfish.jpg" />
     <Content Include="images\Koala.jpg" />
     <Content Include="images\Lighthouse.jpg" />
-    <Content Include="images\logo.png" />
     <Content Include="images\Penguins.jpg" />
     <Content Include="images\Thumbnails\Chrysanthemum.jpg" />
     <Content Include="images\Thumbnails\Desert.jpg" />
@@ -201,7 +201,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
