@@ -1,0 +1,87 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy CGBC Directory
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master"]
+    paths: [ web/Directory.CGBC/** ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      build:
+        description: "The BuildId"
+        value: ${{ jobs.create-release.outputs.output1 }}
+      description:
+        description: "The output file"
+        value: ${{ jobs.create-release.outputs.output2 }}
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "cgbc"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [ self-hosted ]
+    name: Deploy CGBC Directory
+    outputs: 
+      build: ${{ steps.buildid.outputs.formattedTime }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate Build Number
+        id: buildid
+        uses: josStorer/get-current-time@v2.0.2
+        with:
+          utcOffset: "00:00"
+          format: YYYY.MM.DD-HH.mm
+      - name: List all changed files
+        run: |
+          Set-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "Commit Item Messages:"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "---------------------------------"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value $(git log --format=%B -n 1 HEAD)
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value ""
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "---------------------------------"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "Build Number - ${{ steps.buildid.outputs.formattedTime }}"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "---------------------------------"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value ""
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "Changed Files"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value "---------------------------------"
+          Add-Content -Path C:/deployment-stage/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.txt -Value $(git diff --name-status ORIG_HEAD..)
+      - name: Create Backup
+        run: |
+          New-Item -ItemType "directory" -Path "C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }}/" -Force
+          Copy-Item C:/www-root/directory.cedargrovebaptist.church/* -Destination C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
+          Compress-Archive -Path "C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
+          Remove-Item -Path C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }} -Recurse
+      - name: Install dependencies
+        run: |
+          nuget restore web/Directory.CGBC/Directory.CGBC.sln
+      - name: Build Solution
+        run: |
+          msbuild web/Directory.CGBC/Directory.CGBC.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      - name: Deploy New Code
+        run: |
+          Copy-Item web/Directory.CGBC/Directory.CGBC/app.publish/* -Destination C:/www-root/directory.cedargrovebaptist.church/ -Recurse -Force          
+
+  create-release:
+    runs-on: [ self-hosted ]
+    name: Release CGBC Directory
+    needs: deploy
+    outputs:
+      output1: cgbc-directory-${{ needs.deploy.outputs.build }}
+      output2: 
+    steps:
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          removeArtifacts: true
+          tag: cgbc-directory-${{ needs.deploy.outputs.build }}
+          name: "CGBC Directory"
+          bodyFile: C:/deployment-stage/cgbc-directory-${{ needs.deploy.outputs.build }}.txt
+      - name: Read Output
+        run: echo "output2=$(cat C:/deployment-stage/cgbc-directory-${{ needs.deploy.outputs.build }}.txt)" >> $GITHUB_OUTPUT
