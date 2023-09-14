@@ -59,9 +59,9 @@ jobs:
           Compress-Archive -Path "C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/cgbc-directory-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
           Remove-Item -Path C:/deployment-stage/cgbc-directory/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.0.3
+        uses: microsoft/setup-msbuild@v1.1
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.5
+        uses: NuGet/setup-nuget@v1
       - name: Install dependencies
         run: |
           nuget restore web/Directory.CGBC/Directory.CGBC.sln
