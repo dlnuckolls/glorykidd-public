@@ -70,7 +70,7 @@ jobs:
           msbuild web/Directory.CGBC/Directory.CGBC.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       - name: Deploy New Code
         run: |
-          Copy-Item web/Directory.CGBC/Directory.CGBC/app.publish/* -Destination C:/www-root/directory.cedargrovebaptist.church/ -Recurse -Force          
+          Copy-Item web/Directory.CGBC/Directory.CGBC/bin/app.publish/* -Destination C:/www-root/directory.cedargrovebaptist.church/ -Recurse -Force          
 
   create-release:
     runs-on: [ self-hosted ]
