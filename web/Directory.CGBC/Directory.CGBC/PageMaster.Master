@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageMaster.Master.cs" Inherits="Directory.CGBC.PageMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <title></title>
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <link href="styles/base.css" rel="stylesheet" />
+  <link href="styles/default.css" rel="stylesheet" />
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder>
+</head>
+<body>
+  <form id="form1" runat="server">
+    <telerik:RadScriptManager runat="server"></telerik:RadScriptManager>
+    <div id="wrapper">
+      <telerik:RadPageLayout runat="server" ID="MasterLayout" GridType="Fluid">
+        <Rows>
+          <telerik:LayoutRow CssClass="header">
+            <Columns>
+              <%--Header Area--%>
+              <telerik:LayoutColumn Span="10" SpanMd="10" SpanSm="12" SpanXs="12">
+                <asp:ContentPlaceHolder ID="HeaderArea" runat="server" />
+              </telerik:LayoutColumn>
+              <%--Nav Buttons--%>
+              <telerik:LayoutColumn Span="2" SpanMd="2" SpanSm="12" SpanXs="12">
+                <asp:ContentPlaceHolder ID="ActionButtons" runat="server" />
+              </telerik:LayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+          <%--Main--%>
+          <telerik:LayoutRow>
+            <Columns>
+              <%--Content--%>
+              <telerik:CompositeLayoutColumn Span="12" SpanMd="12" SpanSm="12" SpanXs="12">
+                <Content>
+                  <asp:ContentPlaceHolder ID="MainContentArea" runat="server">
+                  </asp:ContentPlaceHolder>
+                </Content>
+              </telerik:CompositeLayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+
+          <%--Footer--%>
+          <telerik:LayoutRow>
+            <Columns>
+              <telerik:LayoutColumn CssClass="footer">
+                <hr />
+                Copyright © 2023 GloryKidd Technologies
+              </telerik:LayoutColumn>
+            </Columns>
+          </telerik:LayoutRow>
+        </Rows>
+      </telerik:RadPageLayout>
+    </div>
+  </form>
+</body>
+</html>
