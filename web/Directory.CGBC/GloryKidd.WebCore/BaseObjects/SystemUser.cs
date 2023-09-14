@@ -56,7 +56,7 @@ namespace GloryKidd.WebCore.BaseObjects {
         Notes = dataRow["Notes"].ToString();
         Role = SqlHelpers.SelectScalar(SqlStatements.SQL_GET_USER_ROLE.FormatWith(RoleId)).ToString();
         IsAuthenticated = true;
-        IsAdmin = Role == "System User";
+        IsAdmin = Role == "System Admin";
       } catch (Exception ex) {
         LogError("SystemUser: Authenticate User method", ex);
         throw new ApplicationException("Record not found");

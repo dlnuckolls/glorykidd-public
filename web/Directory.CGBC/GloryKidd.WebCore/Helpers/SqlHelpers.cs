@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace GloryKidd.WebCore.Helpers {
   public static class SqlHelpers {
-    private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["directory"].ToString();
+    private static readonly string ConnectionString = EncryptionHelper.Decrypt(ConfigurationManager.ConnectionStrings["directory"].ToString());
 
     #region SELECT
     /// <summary>
@@ -38,7 +38,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// <param name="query">The CMD text.</param>
     /// <returns>Object containing value returned from query.</returns>
     public static object SelectScalar(string query) {
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         var command = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, };
         conn.Open();
         return command.ExecuteScalar();
@@ -53,7 +53,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// <param name="query"></param>
     /// <returns></returns>
     public static bool Update(string query) {
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         var command = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, };
         conn.Open();
         return command.ExecuteNonQuery() > 0;
@@ -65,13 +65,13 @@ namespace GloryKidd.WebCore.Helpers {
     /// <param name="queries"></param>
     /// <returns></returns>
     public static bool UpdateAll(IEnumerable<string> queries) {
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         conn.Open();
-        using (var trans = conn.BeginTransaction()) {
-          foreach (var query in queries) {
+        using(var trans = conn.BeginTransaction()) {
+          foreach(var query in queries) {
             try {
               var command = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, Transaction = trans };
-              if (!(command.ExecuteNonQuery() > 0)) { throw new ApplicationException(); }
+              if(!(command.ExecuteNonQuery() > 0)) { throw new ApplicationException(); }
             } catch { trans.Rollback(); return false; }
           }
           // all successfull
@@ -106,7 +106,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// <param name="query"></param>
     /// <returns></returns>
     private static int RunInsertQuery(string query) {
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         var insertCommand = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, };
         conn.Open();
         return insertCommand.ExecuteNonQuery();
@@ -118,7 +118,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// <param name="query"></param>
     /// <returns></returns>
     private static string RunInsertQueryScalar(string query) {
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         var insertCommand = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, };
         conn.Open();
         var id = insertCommand.ExecuteScalar();
@@ -139,10 +139,10 @@ namespace GloryKidd.WebCore.Helpers {
     /// <returns>DataTable</returns>
     private static DataTable GetDataTable(string query) {
       DataTable result = new DataTable();
-      using (var conn = new SqlConnection(ConnectionString)) {
+      using(var conn = new SqlConnection(ConnectionString)) {
         var selectCommand = new SqlCommand { Connection = conn, CommandText = query, CommandType = CommandType.Text, };
         conn.Open();
-        using (var reader = selectCommand.ExecuteReader()) { result.Load(reader); }
+        using(var reader = selectCommand.ExecuteReader()) { result.Load(reader); }
       }
       return result;
     }
