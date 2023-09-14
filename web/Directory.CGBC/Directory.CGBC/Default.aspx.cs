@@ -20,12 +20,13 @@ namespace Directory.CGBC {
         //SessionInfo.CurrentUser = new SystemUser();
         SessionInfo.CurrentUser.AuthenticateUser(userName.Text.Trim(), password.Text.Trim().EncryptString());
         if(!SessionInfo.IsAuthenticated) { lErrorMessage.Text = "Username or password do not match"; SessionInfo.Settings.LogError("Login: Login Failed", "Invalid credentials"); return; }
-        locationRedirect = (SessionInfo.IsAdmin) ? "~/Administration.aspx" : (SessionInfo.CurrentUser.UserPassReset) ? "~/MyAccount.aspx" : "~/MyUploads.aspx";
+        locationRedirect = (SessionInfo.IsAdmin) ? "~/Administration.aspx" : (SessionInfo.CurrentUser.UserPassReset) ? "~/MyAccount.aspx" : "~/MainDirectory.aspx";
         SessionInfo.CurrentPage = (SessionInfo.IsAdmin) ? PageNames.Admin : (SessionInfo.CurrentUser.UserPassReset) ? PageNames.ResetPassword : PageNames.Home;
       } catch(Exception ex) {
         lErrorMessage.Text = "Login failed; please verify your username and password";
         SessionInfo.Settings.LogError("Login: Login Failed", ex);
       }
+      locationRedirect = "~/MainDirectory.aspx";
       if(!locationRedirect.IsNullOrEmpty()) Response.Redirect(locationRedirect);
     }
     protected void ForgotPassword_OnClick(object sender, EventArgs e) {
