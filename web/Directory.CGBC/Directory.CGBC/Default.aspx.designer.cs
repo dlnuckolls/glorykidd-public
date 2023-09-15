@@ -31,6 +31,15 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadPageLayout loginPage;
 
     /// <summary>
+    /// UpdatePanel1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadAjaxPanel UpdatePanel1;
+
+    /// <summary>
     /// lErrorMessage control.
     /// </summary>
     /// <remarks>
@@ -40,39 +49,12 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel lErrorMessage;
 
     /// <summary>
-    /// userName control.
+    /// Login2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox userName;
-
-    /// <summary>
-    /// password control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox password;
-
-    /// <summary>
-    /// SubmitLogin control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadButton SubmitLogin;
-
-    /// <summary>
-    /// ForgotPassword control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.LinkButton ForgotPassword;
+    protected global::System.Web.UI.WebControls.Login Login2;
   }
 }
