@@ -124,6 +124,7 @@
     <Content Include="images\Thumbnails\Penguins.jpg" />
     <Content Include="images\Thumbnails\Tulips.jpg" />
     <Content Include="images\Tulips.jpg" />
+    <Content Include="MainDirectory.aspx" />
     <Content Include="scripts\scripts.js" />
     <Content Include="styles\base.css" />
     <Content Include="styles\default.css" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainDirectory.aspx.cs">
+      <DependentUpon>MainDirectory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainDirectory.aspx.designer.cs">
+      <DependentUpon>MainDirectory.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageMaster.Master.cs">
       <DependentUpon>PageMaster.Master</DependentUpon>
@@ -201,7 +209,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
