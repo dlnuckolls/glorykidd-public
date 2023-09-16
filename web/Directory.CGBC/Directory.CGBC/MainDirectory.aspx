@@ -114,5 +114,41 @@
   <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" BackgroundPosition="Center">
     <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>' style="border: 0;" />
   </telerik:RadAjaxLoadingPanel>
-
+  <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
+    <telerik:RadPageLayout runat="server" ID="PageContentArea">
+      <Rows>
+        <telerik:LayoutRow>
+          <Columns>
+            <telerik:LayoutColumn Span="6">
+              <telerik:RadGrid Skin="WebBlue" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true"
+                HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
+                MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource">
+                <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None"
+                  ClientDataKeyNames="Id" CommandItemDisplay="TopAndBottom">
+                  <Columns>
+                    <telerik:GridEditCommandColumn UniqueName="EditCommandColumn" />
+                    <telerik:GridBoundColumn ShowFilterIcon="True" DataField="LastName" AllowFiltering="False" HeaderText="Last" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
+                    <telerik:GridBoundColumn ShowFilterIcon="True" DataField="FirstName" AllowFiltering="False" HeaderText="First" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
+                    <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" PickerType="DateTimePicker" ItemStyle-Width="250px" ColumnEditorID="DatePicker" />
+                  </Columns>
+                  <CommandItemSettings AddNewRecordText="Add New Member" ShowRefreshButton="true"></CommandItemSettings>
+                </MasterTableView>
+                <ClientSettings EnableRowHoverStyle="true">
+                  <Selecting AllowRowSelect="True" />
+                </ClientSettings>
+                <PagerStyle Mode="NextPrevAndNumeric" />
+              </telerik:RadGrid>
+              <telerik:GridTextBoxColumnEditor runat="server" ID="TitleEditor">
+                <TextBoxStyle Width="100%" />
+              </telerik:GridTextBoxColumnEditor>
+              <telerik:GridDateTimeColumnEditor runat="server" ID="DatePicker">
+                <TextBoxStyle Width="100%" />
+              </telerik:GridDateTimeColumnEditor>
+            </telerik:LayoutColumn>
+            <telerik:LayoutColumn Span="6" />
+          </Columns>
+        </telerik:LayoutRow>
+      </Rows>
+    </telerik:RadPageLayout>
+  </telerik:RadAjaxPanel>
 </asp:Content>

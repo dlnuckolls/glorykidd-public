@@ -28,5 +28,7 @@ namespace Directory.CGBC {
       ConfirmChangePassword.Visible = false;
       SuccessLabel.Text = "Success!";
     }
+
+    protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_MEMBERS); }
   }
 }
