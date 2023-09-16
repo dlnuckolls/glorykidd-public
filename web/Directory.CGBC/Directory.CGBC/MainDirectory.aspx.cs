@@ -14,7 +14,9 @@ namespace Directory.CGBC {
       SessionInfo.CurrentPage = PageNames.Home;
       TitleTag.Text = SessionInfo.DisplayCurrentPage;
       PasswordChange.OpenerElementID = rbPassword.ClientID;
-      //SiteApplicationTitle.Text = SessionInfo.Settings.SystemName;
+      PasswordChange.DestroyOnClose = true;
+      SuccessLabel.Text = string.Empty;
+      SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
       //SiteApplicationInstructions.Text = SessionInfo.Settings.UploadMessage;
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
     }
@@ -22,6 +24,9 @@ namespace Directory.CGBC {
 
     protected void ConfirmChangePassword_Click(object sender, EventArgs e) {
       if(!Page.IsValid) return;
+      SessionInfo.CurrentUser.SetUserPassword(SessionInfo.CurrentUser.Id, NewPassword.Text.Trim());
+      ConfirmChangePassword.Visible = false;
+      SuccessLabel.Text = "Success!";
     }
   }
 }

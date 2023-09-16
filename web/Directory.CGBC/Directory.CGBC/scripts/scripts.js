@@ -12,3 +12,4 @@
         lightBox = sender;
     }
 })();
+

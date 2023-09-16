@@ -94,24 +94,6 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel1;
 
     /// <summary>
-    /// lErrorMessage control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel lErrorMessage;
-
-    /// <summary>
-    /// CurrentPassword control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox CurrentPassword;
-
-    /// <summary>
     /// UserNameRequired control.
     /// </summary>
     /// <remarks>
@@ -121,15 +103,6 @@ namespace Directory.CGBC {
     protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
 
     /// <summary>
-    /// NewPassword control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox NewPassword;
-
-    /// <summary>
     /// RequiredFieldValidator1 control.
     /// </summary>
     /// <remarks>
@@ -137,15 +110,6 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
-    /// <summary>
-    /// ConfirmPassword control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox ConfirmPassword;
 
     /// <summary>
     /// RequiredFieldValidator2 control.
@@ -166,6 +130,33 @@ namespace Directory.CGBC {
     protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
 
     /// <summary>
+    /// CurrentPassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox CurrentPassword;
+
+    /// <summary>
+    /// NewPassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox NewPassword;
+
+    /// <summary>
+    /// ConfirmPassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox ConfirmPassword;
+
+    /// <summary>
     /// ConfirmChangePassword control.
     /// </summary>
     /// <remarks>
@@ -173,6 +164,15 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadButton ConfirmChangePassword;
+
+    /// <summary>
+    /// SuccessLabel control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel SuccessLabel;
 
     /// <summary>
     /// CurrentUser control.
