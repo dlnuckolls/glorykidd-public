@@ -29,5 +29,12 @@ namespace GloryKidd.WebCore.Helpers {
     public const string SQL_GET_PAGE_CONTENTS = "SELECT ISNULL([Description],'') [Description] FROM [dbo].[PageContent] WHERE [PageLocation] = '{0}';";
     public const string SQL_GET_PAGE_CONTENT_FOR_DISPLAY = "SELECT ISNULL(a.[Description],'') [Description] FROM [dbo].[PageContent] a WHERE a.[PageLocation] = '{0}';";
     public const string SQL_SAVE_PAGE_CONTENTS = "UPDATE [dbo].[PageContent] SET [Description] = '{0}' WHERE [PageLocation] = '{1}';";
+
+    //Member Statements
+    public const string SQL_GET_ALL_MEMBERS = @"
+SELECT m.Id, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.ModifiedDate, m.CreateDate 
+  FROM dbo.Member m 
+ INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
+ ORDER BY m.LastName, m.FirstName ASC;";
   }
 }
