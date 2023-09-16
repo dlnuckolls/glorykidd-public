@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Directory.CGBC.Default" %>
 
-<asp:Content ID="Content0" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content0" ContentPlaceHolderID="PageTitle" runat="Server">
   <asp:Literal ID="TitleTag" runat="server"></asp:Literal>
 </asp:Content>
 

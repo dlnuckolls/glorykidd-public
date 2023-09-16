@@ -113,6 +113,7 @@ div span.RadInput.transparencyTextBox {
   margin-bottom: 4px;
   text-align: right;
   font-weight: bold;
+  font: 12px/14px arial,sans-serif;
 }
 
 .MyLabel4 {
@@ -147,6 +148,13 @@ div span.RadInput.transparencyTextBox {
 .RadButton.rbRounded.css3Simple2 {
   height: 40px;
   width: 150px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.RadButton.rbRounded.css3Simple3 {
+  height: 35px;
+  width: 200px;
   border-radius: 5px;
   font-size: 1em;
 }
@@ -199,10 +207,13 @@ html body form .RadInput .MyEmptyTextBox2,
 html body form .RadInput .MyEnabledTextBox2,
 html body form .RadInput .MyHoveredTextBox2,
 html body form .RadInput .MyFocusedTextBox2 {
+  height: 38px;
   border-width: 1px;
   border-color: #a9c9a9;
   background: beige;
-  font: 14px/18px arial,sans-serif;
+  font: 12px/14x arial,sans-serif;
+  line-height: 1em;
+
 }
 
 html body form .RadInput .MyDisabledTextBox {
@@ -227,6 +238,16 @@ html body form .RadInput .MyHoveredTextBox {
 html body form .RadInput .MyFocusedTextBox {
   border-color: #3a3;
   background: #c9fdc9;
+}
+
+html body form input .MyEmptyTextBox3,
+html body form input .MyEnabledTextBox3,
+html body form input .MyFocusedTextBox3 {
+  height: 38px;
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font: 14px/18px arial,sans-serif;
 }
 
 .padFileInput {
