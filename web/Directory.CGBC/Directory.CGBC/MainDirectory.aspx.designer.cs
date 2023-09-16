@@ -10,7 +10,7 @@
 namespace Directory.CGBC {
 
 
-  public partial class Default {
+  public partial class MainDirectory {
 
     /// <summary>
     /// TitleTag control.
@@ -22,39 +22,57 @@ namespace Directory.CGBC {
     protected global::System.Web.UI.WebControls.Literal TitleTag;
 
     /// <summary>
-    /// loginPage control.
+    /// RadPageLayout1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadPageLayout loginPage;
+    protected global::Telerik.Web.UI.RadPageLayout RadPageLayout1;
 
     /// <summary>
-    /// UpdatePanel1 control.
+    /// SiteApplicationTitle control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadAjaxPanel UpdatePanel1;
+    protected global::Telerik.Web.UI.RadLabel SiteApplicationTitle;
 
     /// <summary>
-    /// lErrorMessage control.
+    /// SiteApplicationInstructions control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel lErrorMessage;
+    protected global::Telerik.Web.UI.RadLabel SiteApplicationInstructions;
 
     /// <summary>
-    /// Login2 control.
+    /// CurrentUser control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Login Login2;
+    protected global::Telerik.Web.UI.RadLabel CurrentUser;
+
+    /// <summary>
+    /// rbPassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadButton rbPassword;
+
+    /// <summary>
+    /// rbLogout control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadButton rbLogout;
   }
 }
