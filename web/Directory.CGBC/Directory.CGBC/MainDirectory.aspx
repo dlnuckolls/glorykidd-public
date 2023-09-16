@@ -40,7 +40,7 @@
   </telerik:RadPageLayout>
 </asp:Content>
 <asp:Content runat="server" ID="ActionButtonArea" ContentPlaceHolderID="ActionButtons">
-  <telerik:RadWindow RenderMode="Auto" ID="PasswordChange" runat="server" Width="800px" Height="500px" Modal="true" Style="z-index: 1001;"
+  <telerik:RadWindow RenderMode="Auto" ID="PasswordChange" runat="server" Width="800px" Height="400px" Modal="true" Style="z-index: 1001;"
     Behaviors="Close" VisibleOnPageLoad="False" OpenerElementID="rbPassword" Skin="Outlook" ReloadOnShow="True" IconUrl="~/images/logo.jpg">
     <ContentTemplate>
       <telerik:RadAjaxPanel ID="UpdatePanel1" runat="server">
@@ -60,37 +60,35 @@
                 <Columns>
                   <telerik:LayoutColumn>
                     <div style="width: 500px;">
-                      <telerik:RadLabel ID="lErrorMessage" runat="server" CssClass="errorMessageDisplay" />
+                      <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="CurrentPassword" CssClass="appErrorMessage" Display="Dynamic"
+                        ErrorMessage="Current Password is Required<br />" ToolTip="Current Password is Required" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:RequiredFieldValidator>
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="NewPassword" CssClass="appErrorMessage" Display="Dynamic"
+                        ErrorMessage="New Password is Required<br />" ToolTip="New Password is Required" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:RequiredFieldValidator>
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ConfirmPassword" CssClass="appErrorMessage" Display="Dynamic"
+                        ErrorMessage="Confirm Password is Required<br />" ToolTip="Confirm Password is Required" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:RequiredFieldValidator>
+                      <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="New Password and Confirmation did not match<br />" Display="Dynamic" ControlToCompare="NewPassword"
+                        ControlToValidate="ConfirmPassword" CssClass="appErrorMessage" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:CompareValidator>
                       <div style="width: 100%; padding: 1px;">
                         <telerik:RadTextBox ID="CurrentPassword" TextMode="Password" runat="server" Width="100%" Label="Current Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="CurrentPassword" CssClass="appErrorMessage" Display="Dynamic"
-                          ErrorMessage="Current Password is Required" ToolTip="Current Password is Required" ValidationGroup="Login1" ForeColor="Red"></asp:RequiredFieldValidator><br />
                       </div>
                       <div style="width: 100%; padding: 1px;">
                         <telerik:RadTextBox ID="NewPassword" TextMode="Password" runat="server" Width="100%" Label="New Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="NewPassword" CssClass="appErrorMessage" Display="Dynamic"
-                          ErrorMessage="New Password is Required" ToolTip="New Password is Required" ValidationGroup="Login1" ForeColor="Red"></asp:RequiredFieldValidator><br />
                       </div>
                       <div style="width: 100%; padding: 1px;">
                         <telerik:RadTextBox ID="ConfirmPassword" TextMode="Password" runat="server" Width="100%" Label="Confirm Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ConfirmPassword" CssClass="appErrorMessage" Display="Dynamic"
-                          ErrorMessage="Confirm Password is Required" ToolTip="Confirm Password is Required" ValidationGroup="Login1" ForeColor="Red"></asp:RequiredFieldValidator><br />
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="New Password and Confirmation did not match" Display="Dynamic" ControlToCompare="NewPassword"
-                          ControlToValidate="ConfirmPassword" CssClass="appErrorMessage" ValidationGroup="Login1" ForeColor="Red"></asp:CompareValidator>
                       </div>
                       <div style="width: 100%; padding: 5px; margin-left: 100px;">
-                        <telerik:RadButton ID="ConfirmChangePassword" runat="server" CommandName="Submit" Text="Change Password" ValidationGroup="Login1" Skin="Silk" CssClass="css3Simple3"
-                          OnClick="ConfirmChangePassword_Click">
-                        </telerik:RadButton>
+                        <telerik:RadButton ID="ConfirmChangePassword" runat="server" CommandName="Submit" Text="Change Password" ValidationGroup="Login1" Skin="Silk" CssClass="css3Simple3" OnClick="ConfirmChangePassword_Click" />
+                        <telerik:RadLabel ID="SuccessLabel" Text="" runat="server" CssClass="successMessageDisplay" />
                       </div>
                     </div>
                   </telerik:LayoutColumn>
@@ -98,10 +96,6 @@
               </telerik:LayoutRow>
             </Rows>
           </telerik:RadPageLayout>
-          <%--          <asp:ChangePassword ID="ChangePassword1" runat="server" LabelStyle-CssClass="MyLabel" TextBoxStyle-CssClass="MyEnabledTextBox3"
-            PasswordHintText="Please enter a password at least 7 characters long, containing a number and one special character."
-            NewPasswordRegularExpression='@\"(?=.{7,})(?=(.*\d){1,})(?=(.*\W){1,})' NewPasswordRegularExpressionErrorMessage="Error: Your password must be at least 7 characters long, and contain at least one number and one special character.">
-          </asp:ChangePassword>--%>
         </div>
       </telerik:RadAjaxPanel>
     </ContentTemplate>
