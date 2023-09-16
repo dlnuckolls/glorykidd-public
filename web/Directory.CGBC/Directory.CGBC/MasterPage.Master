@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+  <title><asp:ContentPlaceHolder ID="PageTitle" runat="server" /></title>
   <meta name="viewport" content="initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
   <link href="styles/base.css" rel="stylesheet" />
   <link href="styles/default.css" rel="stylesheet" />
-  <asp:ContentPlaceHolder ID="head" runat="server">
-  </asp:ContentPlaceHolder>
+  <asp:ContentPlaceHolder ID="head" runat="server" />
 </head>
 <body>
   <form id="form1" runat="server">

@@ -16,7 +16,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// Tracking for current page within the application
     /// </summary>
     public PageNames CurrentPage { get; set; }
-    public string DisplayCurrentPage => "<title>{0}</title>".FormatWith(CurrentPage.TextValue()); 
+    public string DisplayCurrentPage => "{0}".FormatWith(CurrentPage.TextValue()); 
     #endregion
 
     #region Current User Details

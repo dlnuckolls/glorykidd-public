@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="Directory.CGBC.ForgotPassword" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" runat="server">
   <asp:Literal ID="TitleTag" runat="server"></asp:Literal>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContentArea" runat="server">
