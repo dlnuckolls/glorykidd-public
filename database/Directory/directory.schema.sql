@@ -68,44 +68,46 @@ SET NOCOUNT ON;
 
 DECLARE @majorVersion INT;
 DECLARE @minorVersion INT;
+DECLARE @Notes VARCHAR(2000);
 
 -- Start the main transaction: Initialize the database with SchemaVersion table and data
-BEGIN TRANSACTION initialCreate;
-  IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[SchemaVersion]')) 
-  BEGIN
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[SchemaVersion]')) 
+BEGIN
+  BEGIN TRANSACTION initialCreate;
     CREATE TABLE [dbo].[SchemaVersion](
       Id           UNIQUEIDENTIFIER  NOT NULL DEFAULT NEWID(),
       MajorVersion INT               NOT NULL,
       MinorVersion INT               NOT NULL,
       InstallDate  DATETIMEOFFSET(7) NOT NULL
-    CONSTRAINT PK_SchemaVersion PRIMARY KEY CLUSTERED 
-      (MajorVersion, MinorVersion ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-    ) ON [PRIMARY]
-  END
+    CONSTRAINT PK_SchemaVersion PRIMARY KEY CLUSTERED (
+        MajorVersion, MinorVersion ASC
+      ) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+ 
+    IF(@@ERROR <> 0)
+    BEGIN
+      ROLLBACK TRANSACTION;
+      RETURN;
+    END
   
-  IF(@@ERROR <> 0)
-  BEGIN
-    ROLLBACK TRANSACTION;
-    RETURN;
-  END
-
-  SET @majorVersion = 1;
-  SET @minorVersion = 0;
-  IF NOT EXISTS(SELECT * FROM SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
-  BEGIN
-    INSERT INTO SchemaVersion values (newid(), @majorVersion, @minorVersion, getutcdate());
-  END
-  
-  IF(@@ERROR <> 0)
-  BEGIN
-    ROLLBACK TRANSACTION;
-    RETURN;
-  END
-COMMIT TRANSACTION initialCreate;
+    SET @majorVersion = 1;
+    SET @minorVersion = 0;
+    IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+    BEGIN
+      INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
+    END
+    
+    IF(@@ERROR <> 0)
+    BEGIN
+      ROLLBACK TRANSACTION;
+      RETURN;
+    END
+  COMMIT TRANSACTION initialCreate;
+END
 
 -- Begin database modifications here
 SELECT @majorVersion = 1, @minorVersion = 1;
-IF NOT EXISTS(SELECT * FROM SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
 BEGIN
   BEGIN TRANSACTION Version1_1
 
@@ -149,7 +151,7 @@ BEGIN
       ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
     ) ON [PRIMARY];
 
-    ALTER TABLE [dbo].[SystemExceptions] ADD  CONSTRAINT [DF_SystemExceptions_Id]  DEFAULT (newid()) FOR [Id];
+    ALTER TABLE [dbo].[SystemExceptions] ADD CONSTRAINT [DF_SystemExceptions_Id]  DEFAULT (newid()) FOR [Id];
 
     CREATE TABLE [dbo].[States] (
       [Id]           INT         NOT NULL IDENTITY(1,1),
@@ -176,12 +178,12 @@ BEGIN
            ('User','User level access'),
            ('System User','System Administrator');
     
-    INSERT INTO SchemaVersion values (newid(), @majorVersion, @minorVersion, getutcdate());
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
   COMMIT TRANSACTION Version1_1
 END
 
 SELECT @majorVersion = 1, @minorVersion = 2;
-IF NOT EXISTS(SELECT * FROM SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
 BEGIN
   BEGIN TRANSACTION Version1_2
 
@@ -207,49 +209,240 @@ BEGIN
     INSERT INTO [dbo].[SystemConfigs] ([MailServer],[ServerPort],[SmtpUser],[SmtpPassword],[FromEmail],[FromUsername])
     VALUES ('',25,'','','','');
 
-    INSERT INTO SchemaVersion values (newid(), @majorVersion, @minorVersion, getutcdate());
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
   COMMIT TRANSACTION Version1_2
 END
+
+SELECT @majorVersion = 1, @minorVersion = 3;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_3
+    
+    CREATE TABLE dbo.Member (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      Prefix         VARCHAR(10)       NULL,
+      FirstName      VARCHAR(150)  NOT NULL,
+      MiddleName     VARCHAR(50)       NULL,
+      LastName       VARCHAR(150)  NOT NULL,
+      Suffix         VARCHAR(10)       NULL,
+      ModifiedDate   SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+      CreateDate     SMALLDATETIME NOT NULL DEFAULT GETDATE()
+    CONSTRAINT PK_Member PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    CREATE TABLE dbo.MemberAddress (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      Address1       VARCHAR(150)  NOT NULL,
+      Address2       VARCHAR(150)      NULL,
+      City           VARCHAR(150)  NOT NULL,
+      StateId        INT           NOT NULL,
+      Zip            VARCHAR(10)   NOT NULL,
+      ModifiedDate   SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+      CreateDate     SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_MemberAddress PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    CREATE TABLE dbo.PhoneType (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      PhoneType      VARCHAR(15)   NOT NULL,
+    CONSTRAINT PK_PhoneType PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    INSERT INTO dbo.PhoneType (PhoneType)
+    VALUES ('Main'),('Cellular'),('Home'),('Unknown')
+
+    CREATE TABLE dbo.MemberPhone (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      MemberId       INT           NOT NULL,
+      Phone          VARCHAR(15)   NOT NULL,
+      TypeId         INT           NOT NULL,
+      ModifiedDate   SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+      CreateDate     SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_MemberPhone PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    ALTER TABLE [dbo].[MemberPhone] WITH CHECK ADD FOREIGN KEY([MemberId]) REFERENCES [dbo].[Member] ([Id]);
+    ALTER TABLE [dbo].[MemberPhone] WITH CHECK ADD FOREIGN KEY([TypeId])   REFERENCES [dbo].[PhoneType] ([Id]);
+    ALTER TABLE [dbo].[MemberPhone] ADD  DEFAULT ((1)) FOR [TypeId];
+
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
+  COMMIT TRANSACTION Version1_3
+END
+
+SELECT @majorVersion = 1, @minorVersion = 4;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_4
+
+    ALTER TABLE dbo.SchemaVersion ADD [Description] VARCHAR(2000) NULL;
+
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
+  COMMIT TRANSACTION Version1_4
+END
+
+SELECT @majorVersion = 1, @minorVersion = 5;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_5
+
+    ALTER TABLE dbo.States ADD CONSTRAINT [PK_State_Id] PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+    
+
+    ALTER TABLE dbo.MemberAddress DROP CONSTRAINT FK__MemberAdd__Membe__534D60F1;
+    ALTER TABLE dbo.MemberAddress DROP COLUMN MemberId;
+    -- Need to drop the default constraint for column ModifiedDate.
+    ALTER TABLE dbo.MemberAddress DROP CONSTRAINT DF__MemberAdd__Modif__5165187F;
+    ALTER TABLE dbo.MemberAddress DROP COLUMN ModifiedDate;
+    -- Need to drop the default constraint for column CreateDate.
+    ALTER TABLE dbo.MemberAddress DROP CONSTRAINT DF__MemberAdd__Creat__52593CB8;
+    ALTER TABLE dbo.MemberAddress DROP COLUMN CreateDate;
+    ALTER TABLE dbo.MemberAddress ADD CONSTRAINT FK_State_Id FOREIGN KEY (StateId) REFERENCES dbo.States (Id);
+    SELECT @Notes = ' Cleanup MemberAddress table;';
+
+    CREATE TABLE dbo.EmailType (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      EmailType      VARCHAR(15)   NOT NULL,
+    CONSTRAINT PK_EmailType PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+    SELECT @Notes = @Notes + ' Add EmailType Table;';
+
+    CREATE TABLE dbo.MemberEmail (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      EmailAddress   VARCHAR(150)  NOT NULL,
+      EmailType      INT           NOT NULL,
+    CONSTRAINT PK_MemberEmail PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    ALTER TABLE dbo.MemberEmail ADD CONSTRAINT FK_MemberEmail_Type FOREIGN KEY (EmailType) REFERENCES dbo.EmailType (Id);
+    SELECT @Notes = @Notes + ' Add MemberEmail Table;';
+
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_5
+END
+    
+SELECT @majorVersion = 1, @minorVersion = 6;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_6
+
+    ALTER TABLE dbo.MemberPhone DROP CONSTRAINT FK__MemberPho__Membe__59FA5E80;
+    ALTER TABLE dbo.MemberPhone DROP COLUMN MemberId;    
+    -- Need to drop the default constraint for column ModifiedDate.
+    ALTER TABLE dbo.MemberPhone DROP CONSTRAINT DF__MemberPho__Modif__5812160E;    
+    ALTER TABLE dbo.MemberPhone DROP COLUMN ModifiedDate;    
+    -- Need to drop the default constraint for column CreateDate.
+    ALTER TABLE dbo.MemberPhone DROP CONSTRAINT DF__MemberPho__Creat__59063A47;    
+    ALTER TABLE dbo.MemberPhone DROP COLUMN CreateDate;
+    SELECT @Notes = ' Cleanup MemberPhone table;';
+
+    CREATE TABLE dbo.Xref_Member_Address (
+      MemberId        INT NOT NULL,
+      MemberAddressId INT NOT NULL,
+      IsPrimary       BIT NOT NULL,
+    CONSTRAINT PK_Member_MemberAddress PRIMARY KEY CLUSTERED (
+        [MemberId], [MemberAddressId] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    ALTER TABLE dbo.Xref_Member_Address ADD DEFAULT (0) FOR [IsPrimary];
+    SELECT @Notes = @Notes +' Add XRef for Member->Address;';
+
+    CREATE TABLE dbo.Xref_Member_Phone (
+      MemberId        INT NOT NULL,
+      MemberPhoneId   INT NOT NULL,
+    CONSTRAINT PK_Member_MemberPhone PRIMARY KEY CLUSTERED (
+        [MemberId], [MemberPhoneId] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+    SELECT @Notes = @Notes +' Add XRef for Member->Phone;';
+
+    CREATE TABLE dbo.Xref_Member_Email (
+      MemberId        INT NOT NULL,
+      MemberEmailId   INT NOT NULL,
+    CONSTRAINT PK_Member_MemberEmail PRIMARY KEY CLUSTERED (
+        [MemberId], [MemberEmailId] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+    SELECT @Notes = @Notes +' Add XRef for Member->Email;';
+
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_6
+END
+
+SELECT @majorVersion = 1, @minorVersion = 7;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_7
+    SELECT @Notes = '';
+
+    CREATE TABLE dbo.MaritalStatus (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      MaritalStatus  VARCHAR(25)   NOT NULL,
+    CONSTRAINT PK_MaritalStatus PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    INSERT INTO dbo.MaritalStatus VALUES ('Unknown'),('Single'),('Separated'),('Married'),('Divorced'),('Widowed');
+    SELECT @Notes = @Notes + ' Add MaritalStatus Table;';
+
+    ALTER TABLE dbo.Member ADD 
+      DateOfBirth     SMALLDATETIME     NULL,
+      MaritalStatusId INT           NOT NULL DEFAULT 1,
+      MarriageDate    SMALLDATETIME     NULL;
+    ALTER TABLE dbo.Member ADD CONSTRAINT FK_MaritalStatus_Type FOREIGN KEY (MaritalStatusId) REFERENCES dbo.MaritalStatus (Id);
+    SELECT @Notes = @Notes + ' Add Dates and MaritalStatus reference to Member Table;';
+    
+    CREATE TABLE dbo.RelationshipType (
+      Id                INT           NOT NULL IDENTITY(1,1),
+      RelationshipType  VARCHAR(25)   NOT NULL,
+    CONSTRAINT PK_RelationshipType PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    INSERT INTO dbo.RelationshipType VALUES ('Spouce'),('Child'),('Sibling');
+    SELECT @Notes = @Notes + ' Add RelationshipType Table;';
+
+    CREATE TABLE dbo.Xref_Member_Member (
+      MemberId           INT NOT NULL,
+      RelatedId          INT NOT NULL,
+      RelationshipTypeId INT     NULL,
+    ) ON [PRIMARY];
+    SELECT @Notes = @Notes +' Add XRef for Member->Member->Relationship;';
+
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_7
+END
+
 
 /* 
   Use this model to create database changes
   Just change NEWVERSION to the next number in the sequence
 
 SELECT @majorVersion = 1, @minorVersion = NEWVERSION;
-IF NOT EXISTS(SELECT * FROM SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
 BEGIN
   BEGIN TRANSACTION Version1_NEWVERSION
+    SELECT @Notes = '';
 
-    -- Create default user
-    INSERT INTO [dbo].[AdminUsers] ([Id], [RoleId], [DisplayName], [UserName], [UserPass], [Notes], 
-           [Deleted], [SuperAdmin], [PasswordReset])
-    VALUES (newid(),'b6522703-8844-4cff-8fc1-916ba90f515b','David Nuckolls','dlnuckolls@gmail.com','5zO9V86nJwv4G04yfZ/V++IhIqOytb8ot3XcpsxjfPw=','System Created',0,1,0);
-
-    -- Add tables for dynamic page content
-    CREATE TABLE [dbo].[PageLocations] (
-      [Id]          UNIQUEIDENTIFIER NOT NULL,
-      [Description] VARCHAR(255)         NULL,
-      CONSTRAINT [PK_PageLocations] PRIMARY KEY CLUSTERED ( 
-        [Id] ASC
-      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-    ) ON [PRIMARY];
-
-    ALTER TABLE [dbo].[PageLocations] ADD  CONSTRAINT [DF_PageLocations_Id]  DEFAULT (NEWID()) FOR [Id];
-
-    CREATE TABLE [dbo].[PageContent](
-      [Id]           UNIQUEIDENTIFIER NOT NULL,
-      [PageLocation] UNIQUEIDENTIFIER NOT NULL,
-      [Description]  VARCHAR(max)         NULL,
-      CONSTRAINT [PK_PageContent] PRIMARY KEY CLUSTERED (
-        [Id] ASC
-      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
-
-    ALTER TABLE [dbo].[PageContent] ADD  CONSTRAINT [DF_PageContent_Id]  DEFAULT (NEWID()) FOR [Id];
-
-    ALTER TABLE [dbo].[PageContent] WITH CHECK ADD FOREIGN KEY([PageLocation]) REFERENCES [dbo].[PageLocations] ([Id]);
-
-    INSERT INTO SchemaVersion values (newid(), @majorVersion, @minorVersion, getutcdate());
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
   COMMIT TRANSACTION Version1_NEWVERSION
 END
 */
