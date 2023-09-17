@@ -122,16 +122,14 @@
             <telerik:LayoutColumn Span="6">
               <telerik:RadGrid Skin="WebBlue" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true"
                 HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
-                MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource">
-                <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None"
-                  ClientDataKeyNames="Id" CommandItemDisplay="TopAndBottom">
+                MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource" OnItemCommand="MemberList_EditCommand">
+                <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id">
                   <Columns>
-                    <telerik:GridEditCommandColumn UniqueName="EditCommandColumn" />
                     <telerik:GridBoundColumn ShowFilterIcon="True" DataField="LastName" AllowFiltering="False" HeaderText="Last" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
                     <telerik:GridBoundColumn ShowFilterIcon="True" DataField="FirstName" AllowFiltering="False" HeaderText="First" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
                     <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" PickerType="DateTimePicker" ItemStyle-Width="250px" ColumnEditorID="DatePicker" />
+                    <telerik:GridButtonColumn ButtonType="LinkButton" Text="Edit" CommandName="EditRow" />
                   </Columns>
-                  <CommandItemSettings AddNewRecordText="Add New Member" ShowRefreshButton="true"></CommandItemSettings>
                 </MasterTableView>
                 <ClientSettings EnableRowHoverStyle="true">
                   <Selecting AllowRowSelect="True" />

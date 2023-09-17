@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 namespace Directory.CGBC {
-  public partial class MainDirectory :BasePage {
+  public partial class MainDirectory : BasePage {
     protected void Page_Load(object sender, EventArgs e) {
       if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
       SessionInfo.CurrentPage = PageNames.Home;
@@ -30,5 +30,9 @@ namespace Directory.CGBC {
     }
 
     protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_MEMBERS); }
+
+    protected void MemberList_EditCommand(object sender, GridCommandEventArgs e) {
+
+    }
   }
 }
