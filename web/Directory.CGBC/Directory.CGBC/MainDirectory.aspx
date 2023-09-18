@@ -138,7 +138,30 @@
               </telerik:RadGrid>
             </telerik:LayoutColumn>
             <telerik:LayoutColumn Span="6">
+              <telerik:RadPageLayout ID="MemberLayout" runat="server">
+                <Rows>
+                  <telerik:LayoutRow>
+                    <Columns>
+                      <telerik:LayoutColumn Span="8" CssClass="headertitle">
+                        <telerik:RadLabel ID="MemberAreaTitle" runat="server" Text="Member Details"></telerik:RadLabel>
+                      </telerik:LayoutColumn>
+                      <telerik:LayoutColumn Span="4">
+                        <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" Text="New Member" CommandName="NewMember" OnClick="NewMember_Click" />&nbsp;&nbsp;<telerik:RadButton ID="CancelEdit" runat="server" Text="Cancel" Skin="Silk" OnClick="CancelEdit_Click" />
+                      </telerik:LayoutColumn>
+                    </Columns>
+                  </telerik:LayoutRow>
+                  <telerik:LayoutRow CssClass="apptext">
+                    <Columns>
+                      <telerik:LayoutColumn Span="10">
+                        <telerik:RadLabel ID="MemberName" runat="server"></telerik:RadLabel>
+                      </telerik:LayoutColumn>
+                      <telerik:LayoutColumn Span="2">
 
+                      </telerik:LayoutColumn>
+                    </Columns>
+                  </telerik:LayoutRow>
+                </Rows>
+              </telerik:RadPageLayout>
             </telerik:LayoutColumn>
           </Columns>
         </telerik:LayoutRow>

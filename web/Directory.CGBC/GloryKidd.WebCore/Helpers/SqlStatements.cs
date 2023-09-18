@@ -36,5 +36,11 @@ SELECT m.Id, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, ms.Marit
   FROM dbo.Member m 
  INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
  ORDER BY m.LastName, m.FirstName ASC;";
+    public const string SQL_GET_SINGLE_MEMBERS = @"
+SELECT m.Id, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.MaritalStatusId, ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.ModifiedDate, m.CreateDate 
+  FROM dbo.Member m 
+ INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
+ WHERE m.Id = {0}
+ ORDER BY m.LastName, m.FirstName ASC;";
   }
 }

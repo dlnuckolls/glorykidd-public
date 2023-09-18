@@ -1,4 +1,5 @@
-﻿using GloryKidd.WebCore.Helpers;
+﻿using Directory.CGBC.Helpers;
+using GloryKidd.WebCore.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Directory.CGBC {
       SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
       //SiteApplicationInstructions.Text = SessionInfo.Settings.UploadMessage;
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
+      CancelEdit.Visible = false;
     }
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
 
@@ -33,8 +35,25 @@ namespace Directory.CGBC {
 
     protected void MemberList_EditCommand(object sender, GridCommandEventArgs e) {
       if(e.CommandName.Equals("EditRow")) {
+        var member = SqlDataLoader.GetMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
+        MemberName.Text = "{0} {1}".FormatWith(member.FirstName, member.LastName);
+        NewMember.Text = "Update Member";
+        NewMember.CommandName = "UpdateMember";
+        CancelEdit.Visible = true;
         e.Item.Selected = true;
       }
+    }
+
+    protected void CancelEdit_Click(object sender, EventArgs e) {
+      MemberList.Rebind();
+      MemberName.Text = string.Empty;
+      NewMember.Text = "New Member";
+      NewMember.CommandName = "NewMember";
+      CancelEdit.Visible = false;
+    }
+
+    protected void NewMember_Click(object sender, EventArgs e) {
+
     }
   }
 }
