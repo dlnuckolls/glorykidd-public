@@ -120,15 +120,15 @@
         <telerik:LayoutRow>
           <Columns>
             <telerik:LayoutColumn Span="6">
-              <telerik:RadGrid Skin="WebBlue" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true"
+              <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowFilteringByColumn="true"
                 HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource" OnItemCommand="MemberList_EditCommand">
                 <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id">
                   <Columns>
-                    <telerik:GridBoundColumn ShowFilterIcon="True" DataField="LastName" AllowFiltering="False" HeaderText="Last" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
-                    <telerik:GridBoundColumn ShowFilterIcon="True" DataField="FirstName" AllowFiltering="False" HeaderText="First" AllowSorting="true" ItemStyle-Width="150px" ColumnEditorID="TitleEditor" />
-                    <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" PickerType="DateTimePicker" ItemStyle-Width="250px" ColumnEditorID="DatePicker" />
-                    <telerik:GridButtonColumn ButtonType="LinkButton" Text="Edit" CommandName="EditRow" />
+                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="LastName" AllowFiltering="True" HeaderText="Last Name" AllowSorting="true" ItemStyle-Width="150px" />
+                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="FirstName" AllowFiltering="True" HeaderText="First Name" AllowSorting="true" ItemStyle-Width="150px" />
+                    <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" ItemStyle-Width="100px" DataFormatString="{0:MM/dd/yyyy}" />
+                    <telerik:GridButtonColumn ButtonType="LinkButton" Text="Edit" CommandName="EditRow" ItemStyle-Width="75px" />
                   </Columns>
                 </MasterTableView>
                 <ClientSettings EnableRowHoverStyle="true">
@@ -136,14 +136,10 @@
                 </ClientSettings>
                 <PagerStyle Mode="NextPrevAndNumeric" />
               </telerik:RadGrid>
-              <telerik:GridTextBoxColumnEditor runat="server" ID="TitleEditor">
-                <TextBoxStyle Width="100%" />
-              </telerik:GridTextBoxColumnEditor>
-              <telerik:GridDateTimeColumnEditor runat="server" ID="DatePicker">
-                <TextBoxStyle Width="100%" />
-              </telerik:GridDateTimeColumnEditor>
             </telerik:LayoutColumn>
-            <telerik:LayoutColumn Span="6" />
+            <telerik:LayoutColumn Span="6">
+
+            </telerik:LayoutColumn>
           </Columns>
         </telerik:LayoutRow>
       </Rows>

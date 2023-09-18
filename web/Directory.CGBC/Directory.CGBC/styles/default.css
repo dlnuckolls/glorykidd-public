@@ -68,6 +68,12 @@
   text-align: center;
 }
 
+.RadGrid {
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: .8em;
+}
+
 .loading {
   background-color: #fff;
   height: 100%;
