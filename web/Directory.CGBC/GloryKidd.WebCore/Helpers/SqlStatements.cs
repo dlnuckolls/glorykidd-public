@@ -38,11 +38,13 @@ SELECT m.Id, m.SalutationId, mg.Salutation, m.Prefix, m.FirstName, m.MiddleName,
  WHERE m.Id = {0}
  ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_GET_MEMBER_ADDRESSES = @"
-SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, s.State, s.Abbreviation, ma.Zip, ma.IsPrimary
+SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, ma.Zip, ma.IsPrimary
   FROM dbo.Member m
  INNER join dbo.Xref_Member_Address xma ON m.Id = xma.MemberId
  INNER JOIN dbo.MemberAddress ma ON xma.MemberAddressId = ma.Id
- INNER JOIN dbo.States s ON s.Id = ma.StateId
  WHERE m.Id = {0};";
+
+    //General Statements
+    public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
   }
 }

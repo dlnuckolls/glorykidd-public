@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Objects\Address.cs" />
     <Compile Include="Objects\Member.cs" />
+    <Compile Include="Objects\State.cs" />
     <Compile Include="PageMaster.Master.cs">
       <DependentUpon>PageMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

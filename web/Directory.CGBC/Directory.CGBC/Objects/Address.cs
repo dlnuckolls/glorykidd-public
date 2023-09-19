@@ -12,9 +12,7 @@ namespace Directory.CGBC.Objects {
     public string Address1;
     public string Address2;
     public string City;
-    public int StateId;
-    public string State;
-    public string Abbreviation;
+    public State State;
     public string ZipCode;
     public bool IsPrimary;
 

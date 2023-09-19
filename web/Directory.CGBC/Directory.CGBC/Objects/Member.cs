@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
+using System.Linq;
 
 namespace Directory.CGBC.Objects {
   public class Member {
@@ -52,6 +53,7 @@ namespace Directory.CGBC.Objects {
         DateOfBirth = row["DateOfBirth"].ToString().GetAsDate();
         Modified = row["ModifiedDate"].ToString().GetAsDate();
         Created = row["CreateDate"].ToString().GetAsDate();
+        LoadAddress();
       } catch(Exception ex) {
         GlobalErrorLogging.LogError("Member", ex);
       }
@@ -60,11 +62,18 @@ namespace Directory.CGBC.Objects {
     private void LoadAddress() {
       try {
         AddressList = new List<Address>();
-        Address AddressItem;
         var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MEMBER_ADDRESSES.FormatWith(Id)).Rows;
         if(!rows.IsNullOrEmpty()) {
           foreach(DataRow row in rows) {
-            AddressItem = new Address();
+            AddressList.Add(new Address() {
+              Id = row["AddressId"].ToString().GetInt32(),
+              Address1 = row["Address1"].ToString(),
+              Address2 = row["Address2"].ToString(),
+              City = row["City"].ToString(),
+              State = SqlDataLoader.States.FirstOrDefault(s => s.Id == row["StateId"].ToString().GetInt32()),
+              ZipCode = row["Zip"].ToString(),
+              IsPrimary = row["IsPriamry"].ToString().GetAsBool()
+            });
           }
         }
       } catch(Exception ex) {
