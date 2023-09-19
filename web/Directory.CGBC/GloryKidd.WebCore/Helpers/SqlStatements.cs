@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace GloryKidd.WebCore.Helpers {
+﻿namespace GloryKidd.WebCore.Helpers {
   public static class SqlStatements {
     // System Settings
     public const string SQL_GET_MAIL_SETTINGS = "SELECT Id, MailServer, ServerPort, SmtpUser, SmtpPassword, FromEmail, FromUsername, RequireAuth, RequireSsl FROM dbo.SystemConfigs;";
@@ -32,9 +27,24 @@ namespace GloryKidd.WebCore.Helpers {
 
     //Member Statements
     public const string SQL_GET_ALL_MEMBERS = @"
-SELECT m.Id, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.ModifiedDate, m.CreateDate 
+SELECT m.Id, m.FirstName, m.LastName, m.ModifiedDate 
+  FROM dbo.Member m 
+ ORDER BY m.LastName, m.FirstName ASC;";
+    public const string SQL_GET_SINGLE_MEMBERS = @"
+SELECT m.Id, m.SalutationId, mg.Salutation, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, m.MaritalStatusId, ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.ModifiedDate, m.CreateDate 
   FROM dbo.Member m 
  INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
+ INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
+ WHERE m.Id = {0}
  ORDER BY m.LastName, m.FirstName ASC;";
+    public const string SQL_GET_MEMBER_ADDRESSES = @"
+SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, ma.Zip, ma.IsPrimary
+  FROM dbo.Member m
+ INNER join dbo.Xref_Member_Address xma ON m.Id = xma.MemberId
+ INNER JOIN dbo.MemberAddress ma ON xma.MemberAddressId = ma.Id
+ WHERE m.Id = {0};";
+
+    //General Statements
+    public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
   }
 }

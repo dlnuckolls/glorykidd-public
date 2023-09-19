@@ -144,6 +144,7 @@
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SqlDataLoader.cs" />
     <Compile Include="MainDirectory.aspx.cs">
       <DependentUpon>MainDirectory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -151,6 +152,9 @@
     <Compile Include="MainDirectory.aspx.designer.cs">
       <DependentUpon>MainDirectory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Address.cs" />
+    <Compile Include="Objects\Member.cs" />
+    <Compile Include="Objects\State.cs" />
     <Compile Include="PageMaster.Master.cs">
       <DependentUpon>PageMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,7 +213,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

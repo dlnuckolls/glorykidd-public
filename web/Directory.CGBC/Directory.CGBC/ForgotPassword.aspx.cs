@@ -1,11 +1,6 @@
 ﻿using GloryKidd.WebCore.BaseObjects;
 using GloryKidd.WebCore.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Directory.CGBC {
   public partial class ForgotPassword :BasePage {

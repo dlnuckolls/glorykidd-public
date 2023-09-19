@@ -431,6 +431,34 @@ BEGIN
   COMMIT TRANSACTION Version1_7
 END
 
+SELECT @majorVersion = 1, @minorVersion = 8;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_8
+    SELECT @Notes = '';
+
+    CREATE TABLE dbo.Salutation (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      Salutation     VARCHAR(25)   NOT NULL,
+    CONSTRAINT PK_Salutation PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    INSERT INTO dbo.Salutation VALUES ('Mr'),('Mrs'),('Ms'),('Dr');
+    SELECT @Notes = @Notes + ' Add Salutation Table;';
+
+    ALTER TABLE dbo.Member ADD 
+      SalutationId INT NOT NULL DEFAULT 1,
+      Gender       INT NOT NULL DEFAULT 0;
+
+    ALTER TABLE dbo.Member ADD CONSTRAINT FK_Salutation_Type FOREIGN KEY (SalutationId) REFERENCES dbo.Salutation (Id);
+    SELECT @Notes = @Notes + ' Add Salutation and Gender reference to Member Table;';
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_8
+END
+
 
 /* 
   Use this model to create database changes

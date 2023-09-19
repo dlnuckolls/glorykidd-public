@@ -1,14 +1,12 @@
-﻿using GloryKidd.WebCore.Helpers;
+﻿using Directory.CGBC.Helpers;
+using Directory.CGBC.Objects;
+using GloryKidd.WebCore.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Telerik.Web.UI;
+
 namespace Directory.CGBC {
-  public partial class MainDirectory :BasePage {
+  public partial class MainDirectory : BasePage {
     protected void Page_Load(object sender, EventArgs e) {
       if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
       SessionInfo.CurrentPage = PageNames.Home;
@@ -30,5 +28,51 @@ namespace Directory.CGBC {
     }
 
     protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_MEMBERS); }
+
+    protected void MemberList_EditCommand(object sender, GridCommandEventArgs e) {
+      if(e.CommandName.Equals("EditRow")) {
+        var member = new Member();
+        member.LoadMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
+        PopulateMemberDetails(member);
+        NewMember.Text = "Edit Member";
+        NewMember.CommandName = "EditMember";
+        e.Item.Selected = true;
+      }
+    }
+
+    protected void PopulateMemberDetails(Member member) {
+      //View Details
+      MemberName.Text = member.DisplayName;
+      MemberStatus.Text = member.MaritalStatus.ToString();
+    }
+
+    protected void ClearMemberDetails() {
+      MemberName.Text = string.Empty;
+      MemberStatus.Text = string.Empty;
+    }
+
+    protected void CancelEdit_Click(object sender, EventArgs e) {
+      MemberList.Rebind();
+      ClearMemberDetails();
+      NewMember.Text = "New Member";
+      NewMember.CommandName = "NewMember";
+    }
+
+    protected void NewMember_Click(object sender, EventArgs e) {
+      if(((RadButton)sender).CommandName.Equals("NewMember")) {
+        //DisplayMemberDetails.Visible = false;
+        //EditMemberDetails.Visible = true;
+        NewMember.Text = "Save";
+        NewMember.CommandName = "UpdateMember";
+        //CancelEdit.Visible = true;
+      } else if(((RadButton)sender).CommandName.Equals("EditMember")) {
+        //DisplayMemberDetails.Visible = false;
+        //EditMemberDetails.Visible = true;
+        NewMember.Text = "Save";
+        NewMember.CommandName = "UpdateMember";
+        //CancelEdit.Visible = true;
+      }
+      CancelEdit_Click(sender, e);
+    }
   }
 }

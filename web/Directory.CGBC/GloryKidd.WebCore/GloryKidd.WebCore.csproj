@@ -46,6 +46,8 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseObjects\Enums.cs" />
+    <Compile Include="BaseObjects\GlobalErrorLogging.cs" />
     <Compile Include="BaseObjects\SystemSettings.cs" />
     <Compile Include="BaseObjects\SystemUser.cs" />
     <Compile Include="Helpers\BaseControl.cs">
