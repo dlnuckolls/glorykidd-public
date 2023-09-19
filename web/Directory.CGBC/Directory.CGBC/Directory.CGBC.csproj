@@ -152,7 +152,7 @@
     <Compile Include="MainDirectory.aspx.designer.cs">
       <DependentUpon>MainDirectory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Objects\Enums.cs" />
+    <Compile Include="Objects\Address.cs" />
     <Compile Include="Objects\Member.cs" />
     <Compile Include="PageMaster.Master.cs">
       <DependentUpon>PageMaster.Master</DependentUpon>

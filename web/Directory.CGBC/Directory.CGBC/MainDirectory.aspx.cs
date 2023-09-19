@@ -1,13 +1,10 @@
 ﻿using Directory.CGBC.Helpers;
+using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Telerik.Web.UI;
+
 namespace Directory.CGBC {
   public partial class MainDirectory : BasePage {
     protected void Page_Load(object sender, EventArgs e) {
@@ -20,7 +17,6 @@ namespace Directory.CGBC {
       SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
       //SiteApplicationInstructions.Text = SessionInfo.Settings.UploadMessage;
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
-      CancelEdit.Visible = false;
     }
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
 
@@ -35,25 +31,48 @@ namespace Directory.CGBC {
 
     protected void MemberList_EditCommand(object sender, GridCommandEventArgs e) {
       if(e.CommandName.Equals("EditRow")) {
-        var member = SqlDataLoader.GetMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
-        MemberName.Text = "{0} {1}".FormatWith(member.FirstName, member.LastName);
-        NewMember.Text = "Update Member";
-        NewMember.CommandName = "UpdateMember";
-        CancelEdit.Visible = true;
+        var member = new Member();
+        member.LoadMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
+        PopulateMemberDetails(member);
+        NewMember.Text = "Edit Member";
+        NewMember.CommandName = "EditMember";
         e.Item.Selected = true;
       }
     }
 
+    protected void PopulateMemberDetails(Member member) {
+      //View Details
+      MemberName.Text = member.DisplayName;
+      MemberStatus.Text = member.MaritalStatus.ToString();
+    }
+
+    protected void ClearMemberDetails() {
+      MemberName.Text = string.Empty;
+      MemberStatus.Text = string.Empty;
+    }
+
     protected void CancelEdit_Click(object sender, EventArgs e) {
       MemberList.Rebind();
-      MemberName.Text = string.Empty;
+      ClearMemberDetails();
       NewMember.Text = "New Member";
       NewMember.CommandName = "NewMember";
-      CancelEdit.Visible = false;
     }
 
     protected void NewMember_Click(object sender, EventArgs e) {
-
+      if(((RadButton)sender).CommandName.Equals("NewMember")) {
+        //DisplayMemberDetails.Visible = false;
+        //EditMemberDetails.Visible = true;
+        NewMember.Text = "Save";
+        NewMember.CommandName = "UpdateMember";
+        //CancelEdit.Visible = true;
+      } else if(((RadButton)sender).CommandName.Equals("EditMember")) {
+        //DisplayMemberDetails.Visible = false;
+        //EditMemberDetails.Visible = true;
+        NewMember.Text = "Save";
+        NewMember.CommandName = "UpdateMember";
+        //CancelEdit.Visible = true;
+      }
+      CancelEdit_Click(sender, e);
     }
   }
 }

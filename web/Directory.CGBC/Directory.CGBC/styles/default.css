@@ -41,11 +41,21 @@
   text-align: center;
 }
 
-#wrapper .apptext p {
-  padding-left: 80px;
-  padding-right: 80px;
-  text-align: justify;
+#wrapper .apptext {
+  background-color: bisque;
+  border-radius: 10px;
 }
+
+  #wrapper .apptext .labelText {
+    width: 100px;
+    text-align: right;
+  }
+
+  #wrapper .apptext p {
+    padding-left: 80px;
+    padding-right: 80px;
+    text-align: justify;
+  }
 
 #wrapper .forgotText {
   text-align: justify;
@@ -165,9 +175,9 @@ div span.RadInput.transparencyTextBox {
   font-size: 1em;
 }
 
-  .RadButton.rbRounded.css3Simple2 .rbText {
-    margin-top: 0 !important;
-  }
+.RadButton.rbRounded.css3Simple2 .rbText {
+  margin-top: 0 !important;
+}
 
 html body form .RadDropDownList {
   border-width: 2px;
@@ -219,7 +229,6 @@ html body form .RadInput .MyFocusedTextBox2 {
   background: beige;
   font: 12px/14x arial,sans-serif;
   line-height: 1em;
-
 }
 
 html body form .RadInput .MyDisabledTextBox {
@@ -331,9 +340,11 @@ div.RadUpload_Default .ruFileWrap .ruButtonHover {
   border-color: #a9c9a9;
   background: beige !important;
 }
+
 .RadComboBox_Bootstrap .rcbHovered {
   background: #bceff8 !important;
 }
+
 .RadComboBox_Bootstrap .rcbArrowCell {
   border-radius: 5px !important;
   border-width: 1px;
