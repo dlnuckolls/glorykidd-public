@@ -41,14 +41,26 @@ namespace Directory.CGBC {
     }
 
     protected void PopulateMemberDetails(Member member) {
+      ClearMemberDetails();
       //View Details
       MemberName.Text = member.DisplayName;
       MemberStatus.Text = member.MaritalStatus.ToString();
+      MemberAddress.Text = member.PrimaryAddress;
+      MemberPhone.Text = member.PrimaryPhone;
+      var phones = member.PhoneList.FindAll(p => p.IsPrimary != true);
+      if(!phones.IsNullOrEmpty()) 
+        phones.ForEach(p => { MemberPhone.Text += ", {0}".FormatWith(p.FormattedPhoneNumber); });
+      member.RelatedMembersList.ForEach(r => {
+        MemberRelation.Text += "{0} ({1})<br />".FormatWith(r.DisplayName, r.Relationship.Name);
+      });
     }
 
     protected void ClearMemberDetails() {
       MemberName.Text = string.Empty;
       MemberStatus.Text = string.Empty;
+      MemberAddress.Text = string.Empty;
+      MemberPhone.Text = string.Empty;
+      MemberRelation.Text = string.Empty;
     }
 
     protected void CancelEdit_Click(object sender, EventArgs e) {

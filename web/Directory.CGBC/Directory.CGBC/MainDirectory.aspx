@@ -119,7 +119,7 @@
       <Rows>
         <telerik:LayoutRow>
           <Columns>
-            <telerik:LayoutColumn Span="6">
+            <telerik:LayoutColumn Span="6" SpanMd="12">
               <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowFilteringByColumn="true"
                 HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource" OnItemCommand="MemberList_EditCommand">
@@ -137,59 +137,71 @@
                 <PagerStyle Mode="NextPrevAndNumeric" />
               </telerik:RadGrid>
             </telerik:LayoutColumn>
-            <telerik:LayoutColumn Span="6">
-                <telerik:RadPageLayout ID="MemberLayout" runat="server">
-                  <Rows>
-                    <telerik:LayoutRow>
-                      <Columns>
-                        <telerik:LayoutColumn Span="8" CssClass="headertitle">
-                          <telerik:RadLabel ID="MemberAreaTitle" runat="server" Text="Member Details"></telerik:RadLabel>
-                        </telerik:LayoutColumn>
-                        <telerik:LayoutColumn Span="4">
+            <telerik:LayoutColumn Span="6" SpanMd="12">
+              <telerik:RadPageLayout ID="MemberLayout" runat="server">
+                <Rows>
+                  <telerik:LayoutRow>
+                    <Columns>
+                      <telerik:LayoutColumn Span="8" CssClass="headertitle">
+                        <telerik:RadLabel ID="MemberAreaTitle" runat="server" Text="Member Details"></telerik:RadLabel>
+                      </telerik:LayoutColumn>
+                      <telerik:LayoutColumn Span="4">
+                        <div style="text-align: right;">
                           <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" Text="New Member" CommandName="NewMember" OnClick="NewMember_Click" />
-                        </telerik:LayoutColumn>
-                      </Columns>
-                    </telerik:LayoutRow>
-                    <telerik:LayoutRow CssClass="apptext">
-                      <Columns>
-                        <telerik:LayoutColumn Span="12">
-                          <telerik:RadPageLayout ID="DisplayMemberDetails" runat="server">
-                            <Rows>
-                              <telerik:LayoutRow>
-                                <Columns>
-                                  <telerik:LayoutColumn Span="8">
-                                    <telerik:RadLabel ID="RadLabel2" runat="server" Text="Name:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="MemberName" runat="server" />
-                                  </telerik:LayoutColumn>
-                                  <telerik:LayoutColumn Span="4">
-                                    <telerik:RadLabel ID="RadLabel3" runat="server" Text="Status:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="MemberStatus" runat="server" />
-                                  </telerik:LayoutColumn>
-                                </Columns>
-                              </telerik:LayoutRow>
-                              <telerik:LayoutRow>
-                                <Columns>
-                                  <telerik:LayoutColumn Span="8">
-                                    <telerik:RadLabel ID="RadLabel4" runat="server" Text="Address:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="RadLabel5" runat="server" />
-                                  </telerik:LayoutColumn>
-                                  <telerik:LayoutColumn Span="4">
-                                    <telerik:RadLabel ID="RadLabel6" runat="server" Text="Phone:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="RadLabel7" runat="server" /><br />
-                                    <telerik:RadLabel ID="RadLabel8" runat="server" Text="BirthDate:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="RadLabel9" runat="server" /><br />
-                                    <telerik:RadLabel ID="RadLabel10" runat="server" Text="Marriage:" Font-Bold="true" CssClass="labelText" />
-                                    &nbsp;&nbsp;<telerik:RadLabel ID="RadLabel11" runat="server" />
-                                  </telerik:LayoutColumn>
-                                </Columns>
-                              </telerik:LayoutRow>
-                            </Rows>
-                          </telerik:RadPageLayout>
-                        </telerik:LayoutColumn>
-                      </Columns>
-                    </telerik:LayoutRow>
-                  </Rows>
-                </telerik:RadPageLayout>
+                        </div>
+                      </telerik:LayoutColumn>
+                    </Columns>
+                  </telerik:LayoutRow>
+                  <telerik:LayoutRow CssClass="apptext">
+                    <Columns>
+                      <telerik:LayoutColumn Span="12">
+                        <telerik:RadPageLayout ID="DisplayMemberDetails" runat="server">
+                          <Rows>
+                            <telerik:LayoutRow>
+                              <Columns>
+                                <telerik:LayoutColumn Span="8">
+                                  <telerik:RadLabel ID="RadLabel2" runat="server" Text="Name:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberName" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                                <telerik:LayoutColumn Span="4">
+                                  <telerik:RadLabel ID="RadLabel3" runat="server" Text="Status:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberStatus" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                              </Columns>
+                            </telerik:LayoutRow>
+                            <telerik:LayoutRow>
+                              <Columns>
+                                <telerik:LayoutColumn Span="8">
+                                  <telerik:RadLabel ID="RadLabel4" runat="server" Text="Address:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberAddress" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                                <telerik:LayoutColumn Span="4">
+                                  <telerik:RadLabel ID="RadLabel8" runat="server" Text="BirthDate:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberDob" runat="server" CssClass=" labels" /><br />
+                                  <telerik:RadLabel ID="RadLabel10" runat="server" Text="Marriage:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberMarriage" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                              </Columns>
+                            </telerik:LayoutRow>
+                            <telerik:LayoutRow>
+                              <Columns>
+                                <telerik:LayoutColumn Span="6">
+                                  <telerik:RadLabel ID="RadLabel6" runat="server" Text="Phone:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberPhone" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                                <telerik:LayoutColumn Span="6">
+                                  <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberRelation" runat="server" CssClass=" labels" />
+                                </telerik:LayoutColumn>
+                              </Columns>
+                            </telerik:LayoutRow>
+                          </Rows>
+                        </telerik:RadPageLayout>
+                      </telerik:LayoutColumn>
+                    </Columns>
+                  </telerik:LayoutRow>
+                </Rows>
+              </telerik:RadPageLayout>
             </telerik:LayoutColumn>
           </Columns>
         </telerik:LayoutRow>

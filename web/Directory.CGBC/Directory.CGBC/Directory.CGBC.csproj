@@ -152,9 +152,8 @@
     <Compile Include="MainDirectory.aspx.designer.cs">
       <DependentUpon>MainDirectory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Objects\Address.cs" />
     <Compile Include="Objects\Member.cs" />
-    <Compile Include="Objects\State.cs" />
+    <Compile Include="Objects\TypeObjects.cs" />
     <Compile Include="PageMaster.Master.cs">
       <DependentUpon>PageMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,7 +212,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

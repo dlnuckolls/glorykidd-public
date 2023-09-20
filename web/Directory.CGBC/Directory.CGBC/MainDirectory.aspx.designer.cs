@@ -319,31 +319,13 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel4;
 
     /// <summary>
-    /// RadLabel5 control.
+    /// MemberAddress control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel5;
-
-    /// <summary>
-    /// RadLabel6 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel6;
-
-    /// <summary>
-    /// RadLabel7 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel7;
+    protected global::Telerik.Web.UI.RadLabel MemberAddress;
 
     /// <summary>
     /// RadLabel8 control.
@@ -355,13 +337,13 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel8;
 
     /// <summary>
-    /// RadLabel9 control.
+    /// MemberDob control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel9;
+    protected global::Telerik.Web.UI.RadLabel MemberDob;
 
     /// <summary>
     /// RadLabel10 control.
@@ -373,12 +355,48 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel10;
 
     /// <summary>
-    /// RadLabel11 control.
+    /// MemberMarriage control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel11;
+    protected global::Telerik.Web.UI.RadLabel MemberMarriage;
+
+    /// <summary>
+    /// RadLabel6 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel6;
+
+    /// <summary>
+    /// MemberPhone control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel MemberPhone;
+
+    /// <summary>
+    /// RadLabel5 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel5;
+
+    /// <summary>
+    /// MemberRelation control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel MemberRelation;
   }
 }
