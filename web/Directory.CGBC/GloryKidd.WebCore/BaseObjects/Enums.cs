@@ -11,16 +11,10 @@ namespace Directory.CGBC.Objects {
     [TextValue("Divorced")] Divorced = 5,
     [TextValue("Widowed")] Widowed = 6,
   }
+
   [CustomEnum(true)]
   public enum Gender {
     [TextValue("Male")] Male = 0,
     [TextValue("Female")] Female = 1,
-  }
-  [CustomEnum(true)]
-  public enum Salutation {
-    [TextValue("Mr")] Mr = 1,
-    [TextValue("Mrs")] Mrs = 2,
-    [TextValue("Ms")] Ms = 3,
-    [TextValue("Dr")] Dr = 4,
   }
 }

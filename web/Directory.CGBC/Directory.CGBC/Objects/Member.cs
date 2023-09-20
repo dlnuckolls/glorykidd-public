@@ -23,10 +23,12 @@ namespace Directory.CGBC.Objects {
     public DateTime Modified;
     public DateTime Created;
     public List<Address> AddressList;
+    public List<Phone> PhoneList;
+    public List<RelatedMember> RelatedMembersList;
 
     public string DisplayName {
       get {
-        var rtn = "{0} ".FormatWith(Salutation.ToString());
+        var rtn = "{0} ".FormatWith(Salutation.Name);
         rtn += PreFix.IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(PreFix);
         rtn += FirstName.IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(FirstName);
         rtn += MiddleName.IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(MiddleName);
@@ -35,13 +37,28 @@ namespace Directory.CGBC.Objects {
         return rtn;
       }
     }
+    public string PrimaryAddress {
+      get {
+        var address = AddressList.IsNullOrEmpty() || AddressList.Count == 0 ? new Address() : AddressList.FirstOrDefault(a => a.IsPrimary == true);
+        return address.FormattedAddress;
+      }
+    }
+
+    public string PrimaryPhone {
+      get {
+        var phone = PhoneList.IsNullOrEmpty() || PhoneList.Count == 0 ? new Phone() : PhoneList.FirstOrDefault(p => p.IsPrimary == true);
+        return phone.FormattedPhoneNumber;
+      }
+    }
+
     public Member() { }
 
+    #region Load Member Data 
     public void LoadMember(int memberId) {
       try {
         var row = SqlHelpers.Select(SqlStatements.SQL_GET_SINGLE_MEMBERS.FormatWith(memberId)).Rows[0];
         Id = row["Id"].ToString().GetInt32();
-        Salutation = (Salutation)Enum.Parse(typeof(Salutation), row["SalutationId"].ToString());
+        Salutation = SqlDataLoader.Salutations.FirstOrDefault(s => s.Id == row["SalutationId"].ToString().GetInt32());
         PreFix = row["Prefix"].ToString();
         FirstName = row["FirstName"].ToString();
         MiddleName = row["MiddleName"].ToString();
@@ -54,6 +71,8 @@ namespace Directory.CGBC.Objects {
         Modified = row["ModifiedDate"].ToString().GetAsDate();
         Created = row["CreateDate"].ToString().GetAsDate();
         LoadAddress();
+        LoadPhone();
+        LoadRelations();
       } catch(Exception ex) {
         GlobalErrorLogging.LogError("Member", ex);
       }
@@ -72,7 +91,7 @@ namespace Directory.CGBC.Objects {
               City = row["City"].ToString(),
               State = SqlDataLoader.States.FirstOrDefault(s => s.Id == row["StateId"].ToString().GetInt32()),
               ZipCode = row["Zip"].ToString(),
-              IsPrimary = row["IsPriamry"].ToString().GetAsBool()
+              IsPrimary = row["IsPrimary"].ToString().GetAsBool()
             });
           }
         }
@@ -80,6 +99,44 @@ namespace Directory.CGBC.Objects {
         GlobalErrorLogging.LogError("Member", ex);
       }
     }
+
+    private void LoadPhone() {
+      PhoneList = new List<Phone>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MEMBER_PHONES.FormatWith(Id)).Rows;
+      if(!rows.IsNullOrEmpty()) {
+        foreach(DataRow row in rows) {
+          PhoneList.Add(new Phone() {
+            Id = row["PhoneId"].ToString().GetInt32(),
+            PhoneNumber = row["Phone"].ToString(),
+            PhoneType = SqlDataLoader.PhoneTypes.FirstOrDefault(p => p.Id == row["TypeId"].ToString().GetInt32()),
+            IsPrimary = row["IsPrimary"].ToString().GetAsBool()
+          });
+        }
+      }
+    }
+
+    private void LoadRelations() {
+      RelatedMembersList = new List<RelatedMember>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MEMBER_RELATIONS.FormatWith(Id)).Rows;
+      if(!rows.IsNullOrEmpty()) {
+        RelatedMember _relatedMember = new RelatedMember();
+        foreach(DataRow row in rows) {
+          _relatedMember = new RelatedMember() {
+            Id = row["id"].ToString().GetInt32(),
+            Gender = (Gender)Enum.Parse(typeof(Gender), row["Gender"].ToString())
+          };
+          _relatedMember.DisplayName = "{0} ".FormatWith(SqlDataLoader.Salutations.FirstOrDefault(s => s.Id == row["SalutationId"].ToString().GetInt32()).Name);
+          _relatedMember.DisplayName += row["Prefix"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["Prefix"].ToString());
+          _relatedMember.DisplayName += row["FirstName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["FirstName"].ToString());
+          _relatedMember.DisplayName += row["MiddleName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["MiddleName"].ToString());
+          _relatedMember.DisplayName += row["LastName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["LastName"].ToString());
+          _relatedMember.DisplayName += row["Suffix"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["Suffix"].ToString());
+          _relatedMember.Relationship = SqlDataLoader.RelationshipTypes.FirstOrDefault(r => r.Id == row["RelationshipTypeId"].ToString().GetInt32());
+          RelatedMembersList.Add(_relatedMember);
+        }
+      }
+    }
+    #endregion
 
   }
 }

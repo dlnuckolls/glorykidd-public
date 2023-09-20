@@ -51,9 +51,9 @@ namespace GloryKidd.WebCore.Helpers {
       return p;
     }
     public static string FixShortSqlString(this string p, int len) {
-      if (p.IsNullOrEmpty()) return string.Empty;
+      if(p.IsNullOrEmpty()) return string.Empty;
       p = p.Replace("'", "''");
-      if (p.Length > len) p = p.Substring(p.Length - len, len);
+      if(p.Length > len) p = p.Substring(p.Length - len, len);
       return p;
     }
     /// <summary>
@@ -230,6 +230,19 @@ namespace GloryKidd.WebCore.Helpers {
         return rtn;
       } catch { return string.Empty; }
     }
+    public static string FormatPhone(this string s) {
+      try {
+        var rtn = string.Empty;
+        var chars = s.ToArray();
+        if(chars.Length <= 6) rtn = s;
+        else if(chars.Length == 10) {
+          rtn = "({0}) {1}-{2}".FormatWith(s.Substring(0, 3), s.Substring(3, 3), s.Substring(7));
+        } else if(chars.Length == 7) {
+          rtn = "{0}-{1}".FormatWith(s.Substring(0, 3), s.Substring(4));
+        }
+        return rtn;
+      } catch { return string.Empty; }
+    }
     #endregion
     #region Fluent
     /// <summary>
@@ -258,7 +271,7 @@ namespace GloryKidd.WebCore.Helpers {
       string value;
       try {
         var customEnumAttribute = (CustomEnumAttribute)myEnum.GetType().GetCustomAttributes(typeof(CustomEnumAttribute), false).FirstOrDefault();
-        if (customEnumAttribute == null || customEnumAttribute.IsCustomEnum == false) { throw new Exception(); }
+        if(customEnumAttribute == null || customEnumAttribute.IsCustomEnum == false) { throw new Exception(); }
         var textValueAttribute = (TextValueAttribute)myEnum.GetType().GetMember(myEnum.ToString()).Single().GetCustomAttributes(typeof(TextValueAttribute), false).FirstOrDefault();
         value = textValueAttribute != null ? textValueAttribute.Value : myEnum.ToString();
       } catch { value = myEnum.ToString(); }

@@ -38,13 +38,31 @@ SELECT m.Id, m.SalutationId, mg.Salutation, m.Prefix, m.FirstName, m.MiddleName,
  WHERE m.Id = {0}
  ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_GET_MEMBER_ADDRESSES = @"
-SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, ma.Zip, ma.IsPrimary
+SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, ma.Zip, xma.IsPrimary
   FROM dbo.Member m
  INNER join dbo.Xref_Member_Address xma ON m.Id = xma.MemberId
  INNER JOIN dbo.MemberAddress ma ON xma.MemberAddressId = ma.Id
  WHERE m.Id = {0};";
+    public const string SQL_GET_MEMBER_PHONES = @"
+SELECT m.Id [MemberId], mp.Id [PhoneId], mp.Phone, mp.TypeId, xmp.IsPrimary
+  FROM dbo.Member m
+ INNER JOIN dbo.Xref_Member_Phone xmp ON m.Id = xmp.MemberId
+ INNER JOIN dbo.MemberPhone mp ON xmp.MemberPhoneId = mp.Id
+ INNER JOIN dbo.PhoneType pt ON pt.Id = mp.TypeId
+ WHERE m.Id = {0};";
+    public const string SQL_GET_MEMBER_RELATIONS = @"
+SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, mm.RelationshipTypeId
+  FROM dbo.Xref_Member_Member mm 
+ INNER JOIN dbo.Member m ON mm.RelatedId = m.Id
+ INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
+ INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
+ WHERE mm.MemberId = {0} 
+ ORDER BY m.LastName, m.FirstName ASC;";
 
     //General Statements
     public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
+    public const string SQL_GET_PHONETYPES = "SELECT Id, PhoneType FROM dbo.PhoneType;";
+    public const string SQL_GET_RELATIONSHIPTYPES = "SELECT Id, RelationshipType FROM dbo.RelationshipType;";
+    public const string SQL_GET_SALUTATIONS = "SELECT Id,Salutation FROM dbo.Salutation;";
   }
 }
