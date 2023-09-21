@@ -13,11 +13,13 @@ namespace Directory.CGBC.Helpers {
     private static List<PhoneType> _phoneTypeList = null;
     private static List<RelationshipType> _relationshipTypeList = null;
     private static List<Salutation> _salutationList = null;
+    private static List<MaritalStatus> _maritalStatusList = null;
 
     public static List<State> States => _stateList.IsNullOrEmpty() || _stateList.Count == 0 ? _stateList = GetStates() : _stateList;
     public static List<PhoneType> PhoneTypes => _phoneTypeList.IsNullOrEmpty() || _phoneTypeList.Count == 0 ? _phoneTypeList = GetPhoneTypes() : _phoneTypeList;
     public static List<RelationshipType> RelationshipTypes => _relationshipTypeList.IsNullOrEmpty() || _relationshipTypeList.Count == 0 ? _relationshipTypeList = GetRelationshipTypes() : _relationshipTypeList;
     public static List<Salutation> Salutations => _salutationList.IsNullOrEmpty() || _salutationList.Count == 0 ? _salutationList = GetSalutations() : _salutationList;
+    public static List<MaritalStatus> MaritalStatuses => _maritalStatusList.IsNullOrEmpty() || _maritalStatusList.Count == 0 ? _maritalStatusList = GetMaritalStatuses() : _maritalStatusList;
 
     private static List<State> GetStates() {
       var states = new List<State>();
@@ -63,6 +65,17 @@ namespace Directory.CGBC.Helpers {
         });
       }
       return salutations;
+    }
+    private static List<MaritalStatus> GetMaritalStatuses() {
+      var maritalStatuses = new List<MaritalStatus>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MARITALSTATUSES).Rows;
+      foreach(DataRow row in rows) {
+        maritalStatuses.Add(new MaritalStatus() {
+          Id = row["Id"].ToString().GetInt32(),
+          Name = row["MaritalStatus"].ToString()
+        });
+      }
+      return maritalStatuses;
     }
   }
 }

@@ -44,7 +44,7 @@ namespace Directory.CGBC {
       ClearMemberDetails();
       //View Details
       MemberName.Text = member.DisplayName;
-      MemberStatus.Text = member.MaritalStatus.ToString();
+      MemberStatus.Text = member.MaritalStatus.Name;
       MemberAddress.Text = member.PrimaryAddress;
       MemberPhone.Text = member.PrimaryPhone;
       var phones = member.PhoneList.FindAll(p => p.IsPrimary != true);

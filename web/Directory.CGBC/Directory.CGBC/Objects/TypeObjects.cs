@@ -55,4 +55,5 @@ namespace Directory.CGBC.Objects {
   public class PhoneType: EnumItemType { }
   public class RelationshipType: EnumItemType { }
   public class Salutation: EnumItemType { }
+  public class MaritalStatus: EnumItemType { }
 }

@@ -64,8 +64,8 @@ namespace Directory.CGBC.Objects {
         MiddleName = row["MiddleName"].ToString();
         LastName = row["LastName"].ToString();
         Suffix = row["Suffix"].ToString();
-        Gender = (Gender)Enum.Parse(typeof(Gender), row["Gender"].ToString());
-        MaritalStatus = (MaritalStatus)Enum.Parse(typeof(MaritalStatus), row["MaritalStatusId"].ToString());
+        Gender = (row["Gender"].ToString().GetInt32() == 0) ? Gender.Male : Gender.Female;
+        MaritalStatus = SqlDataLoader.MaritalStatuses.FirstOrDefault(ms => ms.Id == row["MaritalStatusId"].ToString().GetInt32());
         MarriageDate = row["MarriageDate"].ToString().GetAsDate();
         DateOfBirth = row["DateOfBirth"].ToString().GetAsDate();
         Modified = row["ModifiedDate"].ToString().GetAsDate();

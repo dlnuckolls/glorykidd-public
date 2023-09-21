@@ -64,5 +64,6 @@ SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.
     public const string SQL_GET_PHONETYPES = "SELECT Id, PhoneType FROM dbo.PhoneType;";
     public const string SQL_GET_RELATIONSHIPTYPES = "SELECT Id, RelationshipType FROM dbo.RelationshipType;";
     public const string SQL_GET_SALUTATIONS = "SELECT Id,Salutation FROM dbo.Salutation;";
+    public const string SQL_GET_MARITALSTATUSES = "SELECT Id, MaritalStatus FROM dbo.MaritalStatus;";
   }
 }
