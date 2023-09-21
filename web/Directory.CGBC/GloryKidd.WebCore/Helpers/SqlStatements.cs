@@ -58,6 +58,7 @@ SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.
  INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
  WHERE mm.MemberId = {0} 
  ORDER BY m.LastName, m.FirstName ASC;";
+    public const string SQL_GET_MEMBER_NOTES = "SELECT Id, MemberId, Notes, CreateDate FROM dbo.MemberNotes ORDER BY CreateDate DESC;";
 
     //General Statements
     public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
@@ -65,5 +66,6 @@ SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.
     public const string SQL_GET_RELATIONSHIPTYPES = "SELECT Id, RelationshipType FROM dbo.RelationshipType;";
     public const string SQL_GET_SALUTATIONS = "SELECT Id,Salutation FROM dbo.Salutation;";
     public const string SQL_GET_MARITALSTATUSES = "SELECT Id, MaritalStatus FROM dbo.MaritalStatus;";
+    
   }
 }

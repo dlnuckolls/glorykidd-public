@@ -459,7 +459,58 @@ BEGIN
   COMMIT TRANSACTION Version1_8
 END
 
+SELECT @majorVersion = 1, @minorVersion = 9;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_9
+    SELECT @Notes = '';
 
+    ALTER TABLE dbo.MemberAddress ADD 
+      IsPrimary BIT NOT NULL DEFAULT 1;
+    SELECT @Notes = @Notes + ' Add Primary Flag to MemberAddress Table;';
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_9
+END
+
+SELECT @majorVersion = 1, @minorVersion = 10;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_10
+    SELECT @Notes = '';
+
+    ALTER TABLE dbo.MemberAddress DROP COLUMN IsPrimary;
+    SELECT @Notes = @Notes + ' Remove Primary Flag from MemberAddress Table;';
+    
+    ALTER TABLE dbo.Xref_Member_Phone ADD 
+      IsPrimary BIT NOT NULL DEFAULT 0;
+    SELECT @Notes = @Notes + ' Add Primary Flag to Xref_Member_Phone Table;';
+
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_10
+END
+
+SELECT @majorVersion = 1, @minorVersion = 11;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_11
+    SELECT @Notes = '';
+
+    CREATE TABLE dbo.MemberNotes (
+      Id             INT           NOT NULL IDENTITY(1,1),
+      MemberId       INT           NOT NULL,
+      Notes          VARCHAR(2000)     NULL,
+      CreateDate     SMALLDATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_MemberNotes PRIMARY KEY CLUSTERED (
+        [Id] ASC
+      ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY];
+
+    SELECT @Notes = @Notes + ' Add notes table for Members;';
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_11
+END
 /* 
   Use this model to create database changes
   Just change NEWVERSION to the next number in the sequence

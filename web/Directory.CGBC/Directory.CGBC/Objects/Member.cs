@@ -40,14 +40,14 @@ namespace Directory.CGBC.Objects {
     public string PrimaryAddress {
       get {
         var address = AddressList.IsNullOrEmpty() || AddressList.Count == 0 ? new Address() : AddressList.FirstOrDefault(a => a.IsPrimary == true);
-        return address.FormattedAddress;
+        return AddressList.Count == 0 ? string.Empty : address.FormattedAddress;
       }
     }
 
     public string PrimaryPhone {
       get {
         var phone = PhoneList.IsNullOrEmpty() || PhoneList.Count == 0 ? new Phone() : PhoneList.FirstOrDefault(p => p.IsPrimary == true);
-        return phone.FormattedPhoneNumber;
+        return PhoneList.Count == 0 ? string.Empty : phone.FormattedPhoneNumber;
       }
     }
 
