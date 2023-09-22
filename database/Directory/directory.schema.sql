@@ -206,6 +206,7 @@ BEGIN
     ALTER TABLE [dbo].[SystemConfigs] ADD  DEFAULT ((1)) FOR [RequireSsl];
     ALTER TABLE [dbo].[SystemConfigs] ADD  DEFAULT ((1)) FOR [RequireAuth];
 
+
     INSERT INTO [dbo].[SystemConfigs] ([MailServer],[ServerPort],[SmtpUser],[SmtpPassword],[FromEmail],[FromUsername])
     VALUES ('',25,'','','','');
 
@@ -272,6 +273,7 @@ BEGIN
     ALTER TABLE [dbo].[MemberPhone] WITH CHECK ADD FOREIGN KEY([MemberId]) REFERENCES [dbo].[Member] ([Id]);
     ALTER TABLE [dbo].[MemberPhone] WITH CHECK ADD FOREIGN KEY([TypeId])   REFERENCES [dbo].[PhoneType] ([Id]);
     ALTER TABLE [dbo].[MemberPhone] ADD  DEFAULT ((1)) FOR [TypeId];
+
 
     
     INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate) values (newid(), @majorVersion, @minorVersion, getutcdate());
@@ -510,6 +512,35 @@ BEGIN
     
     INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
   COMMIT TRANSACTION Version1_11
+END
+
+SELECT @majorVersion = 1, @minorVersion = 12;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_12
+    SELECT @Notes = '';
+
+    ALTER TABLE dbo.MemberEmail DROP COLUMN EmailType;
+    DROP TABLE dbo.EmailType;
+    SELECT @Notes = @Notes + ' Removing email types for Members;';
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_12
+END
+
+SELECT @majorVersion = 1, @minorVersion = 13;
+IF NOT EXISTS(SELECT * FROM dbo.SchemaVersion WHERE (MajorVersion = @majorVersion) AND (MinorVersion = @minorVersion))
+BEGIN
+  BEGIN TRANSACTION Version1_13
+    SELECT @Notes = '';
+
+    ALTER TABLE dbo.MemberNotes ADD
+      UserId INT NOT NULL DEFAULT 1;
+    ALTER TABLE dbo.MemberNotes ADD CONSTRAINT FK_AdminUser_Id FOREIGN KEY (UserId) REFERENCES dbo.AdminUsers (Id);
+    SELECT @Notes = @Notes + ' Removing email types for Members;';
+    
+    INSERT INTO dbo.SchemaVersion (Id, MajorVersion, MinorVersion, InstallDate, Description) values (newid(), @majorVersion, @minorVersion, getutcdate(), @Notes);
+  COMMIT TRANSACTION Version1_13
 END
 /* 
   Use this model to create database changes

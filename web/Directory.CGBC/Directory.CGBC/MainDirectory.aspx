@@ -187,7 +187,9 @@
                               <Columns>
                                 <telerik:LayoutColumn Span="6">
                                   <telerik:RadLabel ID="RadLabel6" runat="server" Text="Phone:" Font-Bold="true" CssClass="labelText labels" />
-                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberPhone" runat="server" CssClass=" labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberPhone" runat="server" CssClass=" labels" /><br />
+                                  <telerik:RadLabel ID="RadLabel9" runat="server" Text="Email:" Font-Bold="true" CssClass="labelText labels" />
+                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberEmails" runat="server" CssClass=" labels" />
                                 </telerik:LayoutColumn>
                                 <telerik:LayoutColumn Span="6">
                                   <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />

@@ -25,6 +25,7 @@ namespace Directory.CGBC.Objects {
     public List<Address> AddressList;
     public List<Phone> PhoneList;
     public List<RelatedMember> RelatedMembersList;
+    public List<EmailAddress> EmailList;
 
     public string DisplayName {
       get {
@@ -73,6 +74,7 @@ namespace Directory.CGBC.Objects {
         LoadAddress();
         LoadPhone();
         LoadRelations();
+        LoadEmails();
       } catch(Exception ex) {
         GlobalErrorLogging.LogError("Member", ex);
       }
@@ -136,6 +138,24 @@ namespace Directory.CGBC.Objects {
         }
       }
     }
+   
+    private void LoadEmails() {
+      try {
+        EmailList = new List<EmailAddress>();
+        var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MEMBER_EMAILS.FormatWith(Id)).Rows;
+        if(!rows.IsNullOrEmpty()) {
+          foreach(DataRow row in rows) {
+            EmailList.Add(new EmailAddress() {
+              Id = row["MemberEmailId"].ToString().GetInt32(),
+              Name = row["EmailAddress"].ToString(),
+            });
+          }
+        }
+      } catch(Exception ex) {
+        GlobalErrorLogging.LogError("Member", ex);
+      }
+    }
+
     #endregion
 
   }

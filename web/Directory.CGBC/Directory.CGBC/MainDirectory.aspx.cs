@@ -48,6 +48,7 @@ namespace Directory.CGBC {
       MemberAddress.Text = member.PrimaryAddress;
       member.PhoneList.ForEach(p => { MemberPhone.Text += "{0} ({1})<br />".FormatWith(p.FormattedPhoneNumber, p.PhoneType.Name); });
       member.RelatedMembersList.ForEach(r => { MemberRelation.Text += "{0} ({1})<br />".FormatWith(r.DisplayName, r.Relationship.Name); });
+      member.EmailList.ForEach(e => { MemberEmails.Text += "{0}<br />".FormatWith(e.Name); });
     }
 
     protected void ClearMemberDetails() {

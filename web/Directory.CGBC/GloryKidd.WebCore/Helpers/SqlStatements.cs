@@ -58,7 +58,8 @@ SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.
  INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
  WHERE mm.MemberId = {0} 
  ORDER BY m.LastName, m.FirstName ASC;";
-    public const string SQL_GET_MEMBER_NOTES = "SELECT Id, MemberId, Notes, CreateDate FROM dbo.MemberNotes ORDER BY CreateDate DESC;";
+    public const string SQL_GET_MEMBER_EMAILS = "SELECT xme.MemberId, xme.MemberEmailId, me.EmailAddress FROM dbo.Xref_Member_Email xme INNER JOIN dbo.MemberEmail me ON xme.MemberEmailId = me.Id WHERE xme.MemberId = {0};";
+    public const string SQL_GET_MEMBER_NOTES = "SELECT mn.Id, mn.MemberId, mn.UserId, au.DisplayName, mn.Notes, mn.CreateDate FROM dbo.MemberNotes mn INNER JOIN dbo.AdminUsers au ON mn.UserId = au.Id WHERE mn.MemberId = {0} ORDER BY mn.CreateDate DESC;";
 
     //General Statements
     public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
