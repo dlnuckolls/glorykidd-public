@@ -2,6 +2,7 @@
 using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
+using System.Drawing;
 using System.Web.UI;
 using Telerik.Web.UI;
 
@@ -57,6 +58,7 @@ namespace Directory.CGBC {
       MemberAddress.Text = string.Empty;
       MemberPhone.Text = string.Empty;
       MemberRelation.Text = string.Empty;
+      MemberEmails.Text = string.Empty;
     }
 
     protected void CancelEdit_Click(object sender, EventArgs e) {

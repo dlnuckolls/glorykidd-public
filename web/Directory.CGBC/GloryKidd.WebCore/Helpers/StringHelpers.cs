@@ -236,9 +236,9 @@ namespace GloryKidd.WebCore.Helpers {
         var chars = s.ToArray();
         if(chars.Length <= 6) rtn = s;
         else if(chars.Length == 10) {
-          rtn = "({0}) {1}-{2}".FormatWith(s.Substring(0, 3), s.Substring(3, 3), s.Substring(7));
+          rtn = "({0}) {1}-{2}".FormatWith(s.Substring(0, 3), s.Substring(3, 3), s.Substring(6));
         } else if(chars.Length == 7) {
-          rtn = "{0}-{1}".FormatWith(s.Substring(0, 3), s.Substring(4));
+          rtn = "{0}-{1}".FormatWith(s.Substring(0, 3), s.Substring(3));
         }
         return rtn;
       } catch { return string.Empty; }
