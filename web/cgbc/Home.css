@@ -342,6 +342,53 @@
   margin: 11px auto 0;
 }
 
+.u-section-2 .u-container-layout-7 {
+  padding: 30px 80px;
+}
+
+.u-section-2 .u-image-7 {
+  width: 83px;
+  height: 83px;
+  background-position: 50% 50%;
+  --animation-custom_in-translate_x: -200px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 0deg;
+  --animation-custom_in-scale: 1;
+  margin: 0 auto;
+}
+
+.u-section-2 .u-text-19 {
+  font-size: 1.25rem;
+  --animation-custom_in-translate_x: 0px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 180deg;
+  --animation-custom_in-scale: 1;
+  margin: 20px 0 0;
+}
+
+.u-section-2 .u-text-20 {
+  font-weight: 700;
+  --animation-custom_in-translate_x: 50px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 180deg;
+  --animation-custom_in-scale: 0.3;
+  margin: 34px 209px 0 219px;
+}
+
+.u-section-2 .u-text-21 {
+  font-size: 1rem;
+  font-weight: 400;
+  --animation-custom_in-translate_x: -300px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 180deg;
+  --animation-custom_in-scale: 0.3;
+  margin: 10px auto 0;
+}
+
 .u-section-2 .u-carousel-control-1 {
   width: 43px;
   height: 43px;
@@ -355,6 +402,14 @@
   left: auto;
   position: absolute;
   right: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-2 .u-text-20 {
+    margin-left: 119px;
+    margin-right: 109px;
+    width: 165px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -390,6 +445,16 @@
   .u-section-2 .u-container-layout-6 {
     padding-left: 65px;
     padding-right: 65px;
+  }
+
+  .u-section-2 .u-container-layout-7 {
+    padding-left: 65px;
+    padding-right: 65px;
+  }
+
+  .u-section-2 .u-text-20 {
+    margin-left: 59px;
+    margin-right: 49px;
   }
 }
 
@@ -433,6 +498,16 @@
   .u-section-2 .u-container-layout-6 {
     padding-left: 60px;
     padding-right: 60px;
+  }
+
+  .u-section-2 .u-container-layout-7 {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .u-section-2 .u-text-20 {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -499,6 +574,15 @@
   }
 
   .u-section-2 .u-text-16 {
+    font-size: 1.125rem;
+  }
+
+  .u-section-2 .u-container-layout-7 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-2 .u-text-19 {
     font-size: 1.125rem;
   }
 }.u-section-3 .u-sheet-1 {
