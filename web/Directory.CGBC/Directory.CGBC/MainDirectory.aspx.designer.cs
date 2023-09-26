@@ -382,6 +382,24 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel MemberPhone;
 
     /// <summary>
+    /// RadLabel9 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel9;
+
+    /// <summary>
+    /// MemberEmails control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel MemberEmails;
+
+    /// <summary>
     /// RadLabel5 control.
     /// </summary>
     /// <remarks>
@@ -398,5 +416,41 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadLabel MemberRelation;
+
+    /// <summary>
+    /// RadLabel7 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel7;
+
+    /// <summary>
+    /// MemberNotes control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel MemberNotes;
+
+    /// <summary>
+    /// RadLabel11 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel11;
+
+    /// <summary>
+    /// MemberNoteMetadata control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel MemberNoteMetadata;
   }
 }

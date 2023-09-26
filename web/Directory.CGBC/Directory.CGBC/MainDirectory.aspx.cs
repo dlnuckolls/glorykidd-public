@@ -2,11 +2,12 @@
 using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
+using System.Drawing;
 using System.Web.UI;
 using Telerik.Web.UI;
 
 namespace Directory.CGBC {
-  public partial class MainDirectory : BasePage {
+  public partial class MainDirectory: BasePage {
     protected void Page_Load(object sender, EventArgs e) {
       if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
       SessionInfo.CurrentPage = PageNames.Home;
@@ -46,13 +47,9 @@ namespace Directory.CGBC {
       MemberName.Text = member.DisplayName;
       MemberStatus.Text = member.MaritalStatus.Name;
       MemberAddress.Text = member.PrimaryAddress;
-      MemberPhone.Text = member.PrimaryPhone;
-      var phones = member.PhoneList.FindAll(p => p.IsPrimary != true);
-      if(!phones.IsNullOrEmpty()) 
-        phones.ForEach(p => { MemberPhone.Text += ", {0}".FormatWith(p.FormattedPhoneNumber); });
-      member.RelatedMembersList.ForEach(r => {
-        MemberRelation.Text += "{0} ({1})<br />".FormatWith(r.DisplayName, r.Relationship.Name);
-      });
+      member.PhoneList.ForEach(p => { MemberPhone.Text += "{0} ({1})<br />".FormatWith(p.FormattedPhoneNumber, p.PhoneType.Name); });
+      member.RelatedMembersList.ForEach(r => { MemberRelation.Text += "{0} ({1})<br />".FormatWith(r.DisplayName, r.Relationship.Name); });
+      member.EmailList.ForEach(e => { MemberEmails.Text += "{0}<br />".FormatWith(e.Name); });
     }
 
     protected void ClearMemberDetails() {
@@ -61,6 +58,7 @@ namespace Directory.CGBC {
       MemberAddress.Text = string.Empty;
       MemberPhone.Text = string.Empty;
       MemberRelation.Text = string.Empty;
+      MemberEmails.Text = string.Empty;
     }
 
     protected void CancelEdit_Click(object sender, EventArgs e) {
