@@ -29,11 +29,11 @@ namespace Directory.CGBC.Objects {
   }
 
   public class Phone {
-    public int Id;
-    public string PhoneNumber;
-    public PhoneType PhoneType;
+    public int Id { get; set; }
+    public string PhoneNumber { get; set; }
+    public PhoneType PhoneType { get; set; }
     public string FormattedPhoneNumber => PhoneNumber.FormatPhone();
-    public bool IsPrimary;
+    public bool IsPrimary { get; set; }
   }
 
   public class RelatedMember {
@@ -44,8 +44,8 @@ namespace Directory.CGBC.Objects {
   }
 
   public class EnumItemType {
-    public int Id;
-    public string Name;
+    public int Id { get; set; }
+    public string Name { get; set; }
   }
 
   public class State: EnumItemType {

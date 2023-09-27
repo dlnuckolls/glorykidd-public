@@ -16,8 +16,8 @@ namespace Directory.CGBC {
       PasswordChange.DestroyOnClose = true;
       SuccessLabel.Text = string.Empty;
       SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
-      //SiteApplicationInstructions.Text = SessionInfo.Settings.UploadMessage;
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
+      CancelMember.Visible = false;
     }
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
 
@@ -36,8 +36,9 @@ namespace Directory.CGBC {
         member.LoadMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
         PopulateMemberDetails(member);
         NewMember.Text = "Edit Member";
-        NewMember.CommandName = "EditMember";
+        SessionInfo.CurrentMember = member;
         e.Item.Selected = true;
+        CancelMember.Visible = true;
       }
     }
 
@@ -65,24 +66,12 @@ namespace Directory.CGBC {
       MemberList.Rebind();
       ClearMemberDetails();
       NewMember.Text = "New Member";
-      NewMember.CommandName = "NewMember";
+      SessionInfo.CurrentMember = null;
+      CancelMember.Visible = false;
     }
 
     protected void NewMember_Click(object sender, EventArgs e) {
-      if(((RadButton)sender).CommandName.Equals("NewMember")) {
-        //DisplayMemberDetails.Visible = false;
-        //EditMemberDetails.Visible = true;
-        NewMember.Text = "Save";
-        NewMember.CommandName = "UpdateMember";
-        //CancelEdit.Visible = true;
-      } else if(((RadButton)sender).CommandName.Equals("EditMember")) {
-        //DisplayMemberDetails.Visible = false;
-        //EditMemberDetails.Visible = true;
-        NewMember.Text = "Save";
-        NewMember.CommandName = "UpdateMember";
-        //CancelEdit.Visible = true;
-      }
-      CancelEdit_Click(sender, e);
+      Response.Redirect("~/EditMember.aspx");
     }
   }
 }

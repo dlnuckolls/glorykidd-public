@@ -55,6 +55,9 @@ namespace Directory.CGBC.Helpers {
       }
       return relationshipTypes;
     }
+    public static List<Salutation> GetSalutationTypes() {
+      return Salutations;
+    }
     private static List<Salutation> GetSalutations() {
       var salutations = new List<Salutation>();
       var rows = SqlHelpers.Select(SqlStatements.SQL_GET_SALUTATIONS).Rows;

@@ -225,6 +225,20 @@ html body form .RadInput .MyFocusedTextBox {
   font: 14px/18px arial,sans-serif;
 }
 
+html body form .RadDropDownList_Silk .rddlInner,
+html body form .RadDropDownList_Silk .rddlInner .rddlFocused {
+  border-width: 1px;
+  border-color: #a9c9a9;
+  background: beige;
+  font-size: 18px;
+  font-family: arial,sans-serif;
+  color: #5f5f5f;
+}
+html body form .RadDropDownList_Silk .rddlHovered {
+  color: #5f5f5f;
+  background-color: #a9c9a9;
+}
+
 html body form .RadInput .MyEmptyTextBox2,
 html body form .RadInput .MyEnabledTextBox2,
 html body form .RadInput .MyHoveredTextBox2,

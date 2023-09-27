@@ -27,15 +27,6 @@
           </telerik:LayoutColumn>
         </Columns>
       </telerik:LayoutRow>
-      <telerik:LayoutRow>
-        <Columns>
-          <telerik:LayoutColumn>
-            <p>
-              <telerik:RadLabel ID="SiteApplicationInstructions" runat="server" />
-            </p>
-          </telerik:LayoutColumn>
-        </Columns>
-      </telerik:LayoutRow>
     </Rows>
   </telerik:RadPageLayout>
 </asp:Content>
@@ -100,7 +91,7 @@
       </telerik:RadAjaxPanel>
     </ContentTemplate>
   </telerik:RadWindow>
-  <div style="width: 100%; padding: 75px 5px 25px;">
+  <div style="width: 100%; padding: 25px 5px 25px;">
     <telerik:RadLabel ID="CurrentUser" runat="server"></telerik:RadLabel>
   </div>
   <div style="width: 100%; padding: 5px;">
@@ -120,15 +111,16 @@
         <telerik:LayoutRow>
           <Columns>
             <telerik:LayoutColumn Span="6" SpanMd="12">
+              <telerik:RadLabel ID="RadLabel12" runat="server" Text="All Member Directory" CssClass="headertitle" />
               <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowFilteringByColumn="true"
                 HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource" OnItemCommand="MemberList_EditCommand">
                 <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id">
                   <Columns>
-                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="LastName" AllowFiltering="True" HeaderText="Last Name" AllowSorting="true" ItemStyle-Width="150px" />
-                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="FirstName" AllowFiltering="True" HeaderText="First Name" AllowSorting="true" ItemStyle-Width="150px" />
+                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="LastName" AllowFiltering="True" HeaderText="Last Name" AllowSorting="true" />
+                    <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="FirstName" AllowFiltering="True" HeaderText="First Name" AllowSorting="true" />
                     <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" ItemStyle-Width="100px" DataFormatString="{0:MM/dd/yyyy}" />
-                    <telerik:GridButtonColumn ButtonType="LinkButton" Text="Details" CommandName="EditRow" ItemStyle-Width="75px" />
+                    <telerik:GridButtonColumn ButtonType="LinkButton" Text="Details" CommandName="EditRow" ItemStyle-Width="50px" />
                   </Columns>
                 </MasterTableView>
                 <ClientSettings EnableRowHoverStyle="true">
@@ -142,12 +134,13 @@
                 <Rows>
                   <telerik:LayoutRow>
                     <Columns>
-                      <telerik:LayoutColumn Span="8" CssClass="headertitle">
+                      <telerik:LayoutColumn Span="6" CssClass="headertitle">
                         <telerik:RadLabel ID="MemberAreaTitle" runat="server" Text="Member Details"></telerik:RadLabel>
                       </telerik:LayoutColumn>
-                      <telerik:LayoutColumn Span="4">
+                      <telerik:LayoutColumn Span="6">
                         <div style="text-align: right;">
-                          <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" Text="New Member" CommandName="NewMember" OnClick="NewMember_Click" />
+                          <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" RenderMode="Auto" Text="New Member" OnClick="NewMember_Click" />
+                          &nbsp;&nbsp;<telerik:RadButton ID="CancelMember" runat="server" Skin="Silk" RenderMode="Auto" Text="Cancel" OnClick="CancelEdit_Click" />
                         </div>
                       </telerik:LayoutColumn>
                     </Columns>
@@ -199,13 +192,9 @@
                             </telerik:LayoutRow>
                             <telerik:LayoutRow>
                               <Columns>
-                                <telerik:LayoutColumn Span="8">
+                                <telerik:LayoutColumn Span="12">
                                   <telerik:RadLabel ID="RadLabel7" runat="server" Text="Notes:" Font-Bold="true" CssClass="labelText labels" />
                                   &nbsp;&nbsp;<telerik:RadLabel ID="MemberNotes" runat="server" CssClass=" labels" />
-                                </telerik:LayoutColumn>
-                                <telerik:LayoutColumn Span="4">
-                                  <telerik:RadLabel ID="RadLabel11" runat="server" Text="Saved:" Font-Bold="true" CssClass="labelText labels" />
-                                  &nbsp;&nbsp;<telerik:RadLabel ID="MemberNoteMetadata" runat="server" CssClass=" labels" />
                                 </telerik:LayoutColumn>
                               </Columns>
                             </telerik:LayoutRow>
