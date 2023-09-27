@@ -175,19 +175,21 @@
 
   .u-section-1 .u-shape-2 {
     width: calc(((100% - 340px) / 2) + 340px);
+    margin-top: -272px;
   }
 
   .u-section-1 .u-image-1 {
     width: 340px;
     height: 315px;
-    margin-right: calc(((100% - 340px) / 2));
+    margin-top: 54px;
+    margin-right: calc(((100% - 340px) / 2) + -9px);
   }
 
   .u-section-1 .u-group-1 {
     min-height: 319px;
     width: 340px;
-    margin-top: -644px;
-    margin-left: calc(((100% - 340px) / 2) + -13px);
+    margin-top: -598px;
+    margin-left: calc(((100% - 340px) / 2) + -9px);
   }
 
   .u-section-1 .u-container-layout-1 {
@@ -205,7 +207,7 @@
   }
 
   .u-section-1 .u-btn-2 {
-    margin-top: 356px;
+    margin-top: 104px;
     margin-left: auto;
     margin-bottom: 14px;
   }
