@@ -418,6 +418,15 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadDatePicker dpMemberMarriage;
 
     /// <summary>
+    /// RadLabel6 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel6;
+
+    /// <summary>
     /// gMemberPhones control.
     /// </summary>
     /// <remarks>
@@ -425,6 +434,15 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadGrid gMemberPhones;
+
+    /// <summary>
+    /// PhoneTypeDatasource control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ObjectDataSource PhoneTypeDatasource;
 
     /// <summary>
     /// RadLabel9 control.

@@ -157,22 +157,33 @@
         <telerik:LayoutRow>
           <Columns>
             <telerik:LayoutColumn Span="6">
-                <div style="padding-left: 120px;">
-                  <telerik:RadGrid Skin="Silk" RenderMode="Auto" ID="gMemberPhones" runat="server" Width="70%" AllowPaging="false" PagerStyle-AlwaysVisible="false"
-                    HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
-                    MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false">
-                    <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id" InsertItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnFirstPage">
-                      <Columns>
-                        <telerik:GridEditCommandColumn />
-                        <telerik:GridBoundColumn DataField="FormattedPhoneNumber" HeaderText="Phone" />
-                        <telerik:GridDropDownColumn UniqueName="ddl1" ListTextField="PhoneType.Name" ListValueField="PhoneType.Id" HeaderText="Type"  />
-                      </Columns>
-                    </MasterTableView>
-                    <ClientSettings EnableRowHoverStyle="true">
-                      <Selecting AllowRowSelect="True" />
-                    </ClientSettings>
-                  </telerik:RadGrid>
-                </div>
+                <telerik:RadLabel ID="RadLabel6" runat="server" Text="Phone:" Font-Bold="true" CssClass="labelText labels" />
+              <div style="padding-left: 122px;">
+                <telerik:RadGrid Skin="Silk" RenderMode="Auto" ID="gMemberPhones" runat="server" Width="70%" AllowPaging="false" PagerStyle-AlwaysVisible="false"
+                  HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
+                  MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnItemCommand="gMemberPhones_ItemCommand" OnItemDataBound="gMemberPhones_ItemDataBound" ShowHeader="false">
+                  <MasterTableView AutoGenerateColumns="False" EditMode="EditForms" DataKeyNames="Id" GridLines="None" CommandItemDisplay="TopAndBottom" ClientDataKeyNames="Id" InsertItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnFirstPage">
+                    <Columns>
+                      <telerik:GridEditCommandColumn />
+                      <telerik:GridBoundColumn DataField="FormattedPhoneNumber" HeaderText="Phone" />
+                      <telerik:GridBoundColumn DataField="PhoneType.Name" HeaderText="Type" />
+                    </Columns>
+                    <EditFormSettings EditFormType="Template">
+                      <FormTemplate>
+                        <telerik:RadMaskedTextBox ID="tMemberPhone" runat="server" Mask="(###) ###-####" Skin="Silk" CssClass="MyEnabledTextBox2"  />
+                        <telerik:RadDropDownList ID="rddMemberPhoneType" runat="server" Skin="Silk" DataSourceID="PhoneTypeDatasource" DataTextField="Name" DataValueField="Id" />
+                        &nbsp;
+                        <asp:Button ID="btnUpdate" Text='<%# (Container is GridEditFormInsertItem) ? "Insert" : "Update" %>' runat="server" CommandName='<%# (Container is GridEditFormInsertItem) ? "PerformInsert" : "Update" %>' />&nbsp;
+                        <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
+                      </FormTemplate>
+                    </EditFormSettings>
+                  </MasterTableView>
+                  <ClientSettings EnableRowHoverStyle="true">
+                    <Selecting AllowRowSelect="True" />
+                  </ClientSettings>
+                </telerik:RadGrid>
+                <asp:ObjectDataSource ID="PhoneTypeDatasource" runat="server" SelectMethod="GetPhoneTypes" TypeName="Directory.CGBC.Helpers.SqlDataLoader"></asp:ObjectDataSource>
+              </div>
               <telerik:RadLabel ID="RadLabel9" runat="server" Text="Email:" Font-Bold="true" CssClass="labelText labels" />
               &nbsp;&nbsp;
             </telerik:LayoutColumn>

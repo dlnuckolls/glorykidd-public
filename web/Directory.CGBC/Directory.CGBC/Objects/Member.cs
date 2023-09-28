@@ -52,7 +52,25 @@ namespace Directory.CGBC.Objects {
       }
     }
 
-    public Member() { }
+    public Member() {
+      Id = 0;
+      Salutation = SqlDataLoader.Salutations.FirstOrDefault();
+      PreFix = string.Empty;
+      FirstName = string.Empty;
+      MiddleName = string.Empty;
+      LastName = string.Empty;
+      Suffix = string.Empty;
+      Gender = Gender.Male;
+      MaritalStatus = SqlDataLoader.MaritalStatuses.FirstOrDefault();
+      MarriageDate = DateTime.MinValue;
+      DateOfBirth = DateTime.MinValue;
+      Modified = DateTime.MinValue;
+      Created = DateTime.MinValue;
+      AddressList = new List<Address>();
+      PhoneList = new List<Phone>();
+      RelatedMembersList = new List<RelatedMember>();
+      EmailList = new List<EmailAddress>();
+    }
 
     #region Load Member Data 
     public void LoadMember(int memberId) {
@@ -138,7 +156,7 @@ namespace Directory.CGBC.Objects {
         }
       }
     }
-   
+
     private void LoadEmails() {
       try {
         EmailList = new List<EmailAddress>();

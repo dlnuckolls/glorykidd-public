@@ -33,7 +33,7 @@ namespace Directory.CGBC.Helpers {
       }
       return states;
     }
-    private static List<PhoneType> GetPhoneTypes() {
+    public static List<PhoneType> GetPhoneTypes() {
       var phoneTypes = new List<PhoneType>();
       var rows = SqlHelpers.Select(SqlStatements.SQL_GET_PHONETYPES).Rows;
       foreach(DataRow row in rows) {

@@ -1,4 +1,5 @@
-﻿using GloryKidd.WebCore.Helpers;
+﻿using Directory.CGBC.Helpers;
+using GloryKidd.WebCore.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,12 @@ namespace Directory.CGBC.Objects {
     public PhoneType PhoneType { get; set; }
     public string FormattedPhoneNumber => PhoneNumber.FormatPhone();
     public bool IsPrimary { get; set; }
+    public Phone() {
+      Id = 0;
+      PhoneNumber = string.Empty;
+      PhoneType = SqlDataLoader.PhoneTypes.FirstOrDefault();
+      IsPrimary = true;
+    }
   }
 
   public class RelatedMember {

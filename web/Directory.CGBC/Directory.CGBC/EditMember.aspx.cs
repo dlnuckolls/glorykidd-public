@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
+using Telerik.Web.UI.Skins;
 
 namespace Directory.CGBC {
   public partial class EditMember: BasePage {
@@ -26,24 +27,26 @@ namespace Directory.CGBC {
       PopulateMember();
     }
     private void PopulateMember() {
+      Member member = new Member();
       if(!SessionInfo.CurrentMember.IsNullOrEmpty()) {
-        Member member = (Member)SessionInfo.CurrentMember;
-        rddSalutation.SelectedValue = member.Salutation.Id.ToString();
-        tMemberFirstName.Text = member.FirstName;
-        tMemberMiddleName.Text = !member.MiddleName.IsNullOrEmpty() ? member.MiddleName : tMemberMiddleName.EmptyMessage = string.Empty;
-        tMemberLastName.Text = member.LastName;
-        tMemberSuffix.Text = !member.Suffix.IsNullOrEmpty() ? member.Suffix : tMemberSuffix.EmptyMessage = string.Empty;
-        rddMaritalStatus.SelectedValue = member.MaritalStatus.Id.ToString();
-        if(member.AddressList.Count > 0) {
-          tMemberAddress1.Text = member.AddressList[0].Address1;
-          tMemberAddress2.Text = member.AddressList[0].Address2;
-          tMemberCity.Text = member.AddressList[0].City;
-          rddStates.SelectedValue = member.AddressList[0].State.Id.ToString();
-        }
-        gMemberPhones.DataSource = member.PhoneList;
-        gMemberPhones.DataBind();
+        member = (Member)SessionInfo.CurrentMember;
       }
+      rddSalutation.SelectedValue = member.Salutation.Id.ToString();
+      tMemberFirstName.Text = member.FirstName;
+      tMemberMiddleName.Text = !member.MiddleName.IsNullOrEmpty() ? member.MiddleName : tMemberMiddleName.EmptyMessage = string.Empty;
+      tMemberLastName.Text = member.LastName;
+      tMemberSuffix.Text = !member.Suffix.IsNullOrEmpty() ? member.Suffix : tMemberSuffix.EmptyMessage = string.Empty;
+      rddMaritalStatus.SelectedValue = member.MaritalStatus.Id.ToString();
+      if(member.AddressList.Count > 0) {
+        tMemberAddress1.Text = member.AddressList[0].Address1;
+        tMemberAddress2.Text = member.AddressList[0].Address2;
+        tMemberCity.Text = member.AddressList[0].City;
+        rddStates.SelectedValue = member.AddressList[0].State.Id.ToString();
+      }
+      gMemberPhones.DataSource = member.PhoneList;
+      gMemberPhones.DataBind();
     }
+
     private void PopulateDdl() {
       rddSalutation.Items.Clear();
       SqlDataLoader.Salutations.ForEach(s => {
@@ -60,7 +63,9 @@ namespace Directory.CGBC {
       dpMemberBirthdate.MinDate = "01/01/1900".GetAsDate();
       dpMemberMarriage.MinDate = "01/01/1900".GetAsDate();
     }
+
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
+
     protected void ConfirmChangePassword_Click(object sender, EventArgs e) {
       if(!Page.IsValid) return;
       SessionInfo.CurrentUser.SetUserPassword(SessionInfo.CurrentUser.Id, NewPassword.Text.Trim());
@@ -73,14 +78,24 @@ namespace Directory.CGBC {
       Response.Redirect("~/MainDirectory.aspx");
     }
 
-    protected void gMemberPhones_ItemDataBound(object sender, GridItemEventArgs e) {
-
-      if(e.Item is GridDataItem) {
-        GridDataItem item = (GridDataItem)e.Item;
-        var phone = (Phone)e.Item.DataItem;
-        item["ddl1"].Text = phone.PhoneType.Name;
+    protected void gMemberPhones_ItemCommand(object sender, GridCommandEventArgs e) {
+      switch(e.CommandName) {
+        case "Update":
+          break;
       }
     }
 
+    protected void gMemberPhones_ItemDataBound(object sender, GridItemEventArgs e) {
+      if(e.Item.IsInEditMode) {
+        GridEditableItem editItem = (GridEditableItem)e.Item;
+        if(editItem.ItemIndex != -1) {
+          RadMaskedTextBox tphone = editItem.FindControl("tMemberPhone") as RadMaskedTextBox;
+          Telerik.Web.UI.RadDropDownList tphonetype = editItem.FindControl("rddMemberPhoneType") as Telerik.Web.UI.RadDropDownList;
+          var phone = (Phone)editItem.DataItem;
+          tphone.Text = phone.FormattedPhoneNumber;
+          tphonetype.SelectedValue = phone.PhoneType.Id.ToString();
+        }
+      }
+    }
   }
 }
