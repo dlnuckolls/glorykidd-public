@@ -128,7 +128,7 @@
                     <Columns>
                       <telerik:LayoutColumn Span="8">
                         <telerik:RadLabel ID="RadLabel2" runat="server" Text="Name:" Font-Bold="true" CssClass="labelText labels" />
-                        &nbsp;&nbsp;<telerik:RadDropDownList ID="rddSalutation" runat="server" Width="80px" Skin="Silk" />
+                        &nbsp;&nbsp;<telerik:RadDropDownList ID="rddSalutation" runat="server" Width="80px" Skin="Silk" AutoPostBack="true" />
                         <telerik:RadTextBox ID="tMemberFirstName" runat="server" EmptyMessage="First" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                         <telerik:RadTextBox ID="tMemberMiddleName" runat="server" EmptyMessage="Middle" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                         <telerik:RadTextBox ID="tMemberLastName" runat="server" EmptyMessage="Last" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
@@ -136,7 +136,7 @@
                       </telerik:LayoutColumn>
                       <telerik:LayoutColumn Span="4">
                         <telerik:RadLabel ID="RadLabel3" runat="server" Text="Status:" Font-Bold="true" CssClass="labelText labels" />
-                        &nbsp;&nbsp;<telerik:RadDropDownList ID="rddMaritalStatus" runat="server" Width="200px" Skin="Silk" />
+                        &nbsp;&nbsp;<telerik:RadDropDownList ID="rddMaritalStatus" runat="server" Width="200px" Skin="Silk" AutoPostBack="true" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>

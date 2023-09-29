@@ -73,8 +73,8 @@ namespace Directory.CGBC.Objects {
         Suffix = row["Suffix"].ToString();
         Gender = (row["Gender"].ToString().GetInt32() == 0) ? Gender.Male : Gender.Female;
         MaritalStatus = SqlDataLoader.MaritalStatuses().FirstOrDefault(ms => ms.Id == row["MaritalStatusId"].ToString().GetInt32());
-        MarriageDate = row["MarriageDate"].ToString().GetAsDate();
-        DateOfBirth = row["DateOfBirth"].ToString().GetAsDate();
+        MarriageDate = row["MarriageDate"].ToString().GetAsDate() == Convert.ToDateTime("1900-01-01") ? DateTime.MinValue : row["MarriageDate"].ToString().GetAsDate();
+        DateOfBirth = row["DateOfBirth"].ToString().GetAsDate() == Convert.ToDateTime("1900-01-01") ? DateTime.MinValue : row["DateOfBirth"].ToString().GetAsDate();
         Modified = row["ModifiedDate"].ToString().GetAsDate();
         Created = row["CreateDate"].ToString().GetAsDate();
         AddressList = new Address() {

@@ -15,6 +15,7 @@ using Telerik.Web.UI.Skins;
 namespace Directory.CGBC {
   public partial class EditMember: BasePage {
     protected void Page_Load(object sender, EventArgs e) {
+      if(Page.IsPostBack) return;
       if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
       SessionInfo.CurrentPage = PageNames.EditMember;
       TitleTag.Text = SessionInfo.DisplayCurrentPage;
@@ -49,6 +50,10 @@ namespace Directory.CGBC {
         tMemberHistoricalNotes.Text += "{0} - {1}<br />".FormatWith(n.UserName, n.NoteDate.ToShortDateString());
         tMemberHistoricalNotes.Text += "{0}<br /><br />".FormatWith(n.NoteText);
       });
+      if(member.DateOfBirth != DateTime.MinValue)
+        dpMemberBirthdate.DateInput.SelectedDate = member.DateOfBirth;
+      if(member.MarriageDate != DateTime.MinValue)
+        dpMemberMarriage.DateInput.SelectedDate = member.MarriageDate;
       tMemberLastUpdate.Text = member.Modified != DateTime.MinValue ? member.Modified.ToShortDateString() : string.Empty;
       SessionInfo.CurrentMember = member;
     }
@@ -95,8 +100,14 @@ namespace Directory.CGBC {
       member.HomePhone = tMemberHome.Text.Trim();
       member.Email1 = tMemberEmail1.Text.Trim();
       member.Email2 = tMemberEmail2.Text.Trim();
+      if(dpMemberBirthdate.SelectedDate.HasValue)
+        member.DateOfBirth = dpMemberBirthdate.SelectedDate.Value;
+      if(dpMemberMarriage.SelectedDate.HasValue)
+        member.MarriageDate = dpMemberMarriage.SelectedDate.Value;
       var memberNote = tMemberNotes.Text.Trim();
       member.SaveMember(memberNote, SessionInfo.CurrentUser.Id.GetInt32());
+      UpdateMember.Visible = false;
+      CancelUpdate.Text = "Done";
     }
   }
 }
