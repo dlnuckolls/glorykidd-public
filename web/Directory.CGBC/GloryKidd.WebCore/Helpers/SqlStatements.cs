@@ -31,39 +31,38 @@ SELECT m.Id, m.FirstName, m.LastName, m.ModifiedDate
   FROM dbo.Member m 
  ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_GET_SINGLE_MEMBERS = @"
-SELECT m.Id, m.SalutationId, mg.Salutation, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, m.MaritalStatusId, ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.ModifiedDate, m.CreateDate 
+SELECT m.Id, m.SalutationId, mg.Salutation, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, m.MaritalStatusId, 
+       ms.MaritalStatus, m.DateOfBirth, m.MarriageDate, m.Address1, m.Address2, m.City, m.StateId, m.Zip, m.CellPhone, m.HomePhone, 
+       m.EmailAddress1, m.EmailAddress2, m.ModifiedDate, m.CreateDate 
   FROM dbo.Member m 
  INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
  INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
  WHERE m.Id = {0}
  ORDER BY m.LastName, m.FirstName ASC;";
-    public const string SQL_GET_MEMBER_ADDRESSES = @"
-SELECT m.id [MemberId], ma.id [AddressId], ma.Address1, ma.Address2, ma.City, ma.StateId, ma.Zip, xma.IsPrimary
-  FROM dbo.Member m
- INNER join dbo.Xref_Member_Address xma ON m.Id = xma.MemberId
- INNER JOIN dbo.MemberAddress ma ON xma.MemberAddressId = ma.Id
- WHERE m.Id = {0};";
-    public const string SQL_GET_MEMBER_PHONES = @"
-SELECT m.Id [MemberId], mp.Id [PhoneId], mp.Phone, mp.TypeId, xmp.IsPrimary
-  FROM dbo.Member m
- INNER JOIN dbo.Xref_Member_Phone xmp ON m.Id = xmp.MemberId
- INNER JOIN dbo.MemberPhone mp ON xmp.MemberPhoneId = mp.Id
- INNER JOIN dbo.PhoneType pt ON pt.Id = mp.TypeId
- WHERE m.Id = {0};";
     public const string SQL_GET_MEMBER_RELATIONS = @"
-SELECT m.Id, m.SalutationId, m.Prefix, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, mm.RelationshipTypeId
+SELECT m.Id, m.SalutationId, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.Gender, mm.RelationshipTypeId
   FROM dbo.Xref_Member_Member mm 
  INNER JOIN dbo.Member m ON mm.RelatedId = m.Id
- INNER JOIN dbo.MaritalStatus ms ON ms.Id = m.MaritalStatusId
  INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
  WHERE mm.MemberId = {0} 
  ORDER BY m.LastName, m.FirstName ASC;";
-    public const string SQL_GET_MEMBER_EMAILS = "SELECT xme.MemberId, xme.MemberEmailId, me.EmailAddress FROM dbo.Xref_Member_Email xme INNER JOIN dbo.MemberEmail me ON xme.MemberEmailId = me.Id WHERE xme.MemberId = {0};";
-    public const string SQL_GET_MEMBER_NOTES = "SELECT mn.Id, mn.MemberId, mn.UserId, au.DisplayName, mn.Notes, mn.CreateDate FROM dbo.MemberNotes mn INNER JOIN dbo.AdminUsers au ON mn.UserId = au.Id WHERE mn.MemberId = {0} ORDER BY mn.CreateDate DESC;";
+    public const string SQL_GET_MEMBER_NOTES = "SELECT mn.Id, au.DisplayName, mn.Notes, mn.CreateDate FROM dbo.MemberNotes mn INNER JOIN dbo.AdminUsers au ON mn.UserId = au.Id WHERE mn.MemberId = {0} ORDER BY mn.CreateDate DESC;";
+    public const string SQL_SAVE_MEMBER = @"
+INSERT INTO [dbo].[Member] ([SalutationId],[FirstName],[MiddleName],[LastName],[Suffix],[Gender],[Address1],[Address2],
+                            [City],[StateId],[Zip],[CellPhone],[HomePhone],[EmailAddress1],[EmailAddress2],[MaritalStatusId],
+                            [DateOfBirth],[MarriageDate],[ModifiedDate],[CreateDate])
+     VALUES ({0},'{1}','{2}','{3}','{4}',{5},'{6}','{7}','{8}',{9},'{10}','{11}','{12}','{13}','{14}',{15},{16},{17},GETDATE(),GETDATE()); SELECT IDENT_CURRENT('Member');";
+    public const string SQL_UPDATE_MEMBER = @"
+UPDATE [dbo].[Member] 
+   SET [SalutationId] = {0}, [FirstName] = '{1}', [MiddleName] = '{2}', [LastName] = '{3}', [Suffix] = '{4}', [Gender] = {5}, 
+       [Address1] = '{6}', [Address2] = '{7}', [City] = '{8}', [StateId] = {9}, [Zip] = '{10}', [CellPhone] = '{11}',
+       [HomePhone] = '{12}', [EmailAddress1] = '{13}', [EmailAddress2] = '{14}', [MaritalStatusId] = {15},
+       [DateOfBirth] = {16}, [MarriageDate] = {17}, [ModifiedDate] = GETDATE()
+ WHERE [Id] = {18};";
+    public const string SQL_SAVE_MEMBER_NOTE = "INSERT INTO [dbo].[MemberNotes] ([MemberId], [Notes], [CreateDate], [UserId]) VALUES ({0}, '{1}', GETDATE(), {2});";
 
     //General Statements
     public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";
-    public const string SQL_GET_PHONETYPES = "SELECT Id, PhoneType FROM dbo.PhoneType;";
     public const string SQL_GET_RELATIONSHIPTYPES = "SELECT Id, RelationshipType FROM dbo.RelationshipType;";
     public const string SQL_GET_SALUTATIONS = "SELECT Id,Salutation FROM dbo.Salutation;";
     public const string SQL_GET_MARITALSTATUSES = "SELECT Id, MaritalStatus FROM dbo.MaritalStatus;";

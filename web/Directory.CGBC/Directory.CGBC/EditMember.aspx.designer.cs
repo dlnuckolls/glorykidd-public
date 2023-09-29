@@ -49,15 +49,6 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel SiteApplicationTitle;
 
     /// <summary>
-    /// SiteApplicationInstructions control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel SiteApplicationInstructions;
-
-    /// <summary>
     /// PasswordChange control.
     /// </summary>
     /// <remarks>
@@ -227,6 +218,42 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
+
+    /// <summary>
+    /// PageContentArea control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadPageLayout PageContentArea;
+
+    /// <summary>
+    /// EditMemberLabel control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel EditMemberLabel;
+
+    /// <summary>
+    /// UpdateMember control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadButton UpdateMember;
+
+    /// <summary>
+    /// CancelUpdate control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadButton CancelUpdate;
 
     /// <summary>
     /// DisplayMemberDetails control.
@@ -427,22 +454,40 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel6;
 
     /// <summary>
-    /// gMemberPhones control.
+    /// tMemberCell control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadGrid gMemberPhones;
+    protected global::Telerik.Web.UI.RadMaskedTextBox tMemberCell;
 
     /// <summary>
-    /// PhoneTypeDatasource control.
+    /// RadLabel14 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ObjectDataSource PhoneTypeDatasource;
+    protected global::Telerik.Web.UI.RadLabel RadLabel14;
+
+    /// <summary>
+    /// tMemberHome control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadMaskedTextBox tMemberHome;
+
+    /// <summary>
+    /// RadLabel15 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel RadLabel15;
 
     /// <summary>
     /// RadLabel9 control.
@@ -452,6 +497,24 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadLabel RadLabel9;
+
+    /// <summary>
+    /// tMemberEmail1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox tMemberEmail1;
+
+    /// <summary>
+    /// tMemberEmail2 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox tMemberEmail2;
 
     /// <summary>
     /// RadLabel5 control.
@@ -472,6 +535,24 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel7;
 
     /// <summary>
+    /// tMemberNotes control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox tMemberNotes;
+
+    /// <summary>
+    /// tMemberHistoricalNotes control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel tMemberHistoricalNotes;
+
+    /// <summary>
     /// RadLabel11 control.
     /// </summary>
     /// <remarks>
@@ -479,5 +560,14 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadLabel RadLabel11;
+
+    /// <summary>
+    /// tMemberLastUpdate control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel tMemberLastUpdate;
   }
 }

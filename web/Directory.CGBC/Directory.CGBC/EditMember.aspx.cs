@@ -2,6 +2,7 @@
 using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace Directory.CGBC {
       PasswordChange.DestroyOnClose = true;
       SuccessLabel.Text = string.Empty;
       SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
-      SiteApplicationInstructions.Text = "Edit Member";
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
       PopulateDdl();
       PopulateMember();
@@ -37,65 +37,66 @@ namespace Directory.CGBC {
       tMemberLastName.Text = member.LastName;
       tMemberSuffix.Text = !member.Suffix.IsNullOrEmpty() ? member.Suffix : tMemberSuffix.EmptyMessage = string.Empty;
       rddMaritalStatus.SelectedValue = member.MaritalStatus.Id.ToString();
-      if(member.AddressList.Count > 0) {
-        tMemberAddress1.Text = member.AddressList[0].Address1;
-        tMemberAddress2.Text = member.AddressList[0].Address2;
-        tMemberCity.Text = member.AddressList[0].City;
-        rddStates.SelectedValue = member.AddressList[0].State.Id.ToString();
-      }
-      gMemberPhones.DataSource = member.PhoneList;
-      gMemberPhones.DataBind();
+      tMemberAddress1.Text = member.AddressList.Address1;
+      tMemberAddress2.Text = member.AddressList.Address2;
+      tMemberCity.Text = member.AddressList.City;
+      rddStates.SelectedValue = member.AddressList.State.Id.ToString();
+      tMemberCell.Text = member.CellPhone.FormatPhone();
+      tMemberHome.Text = member.HomePhone.FormatPhone();
+      tMemberEmail1.Text = member.Email1;
+      tMemberEmail2.Text = member.Email2;
+      member.MemberNotes.ForEach(n => {
+        tMemberHistoricalNotes.Text += "{0} - {1}<br />".FormatWith(n.UserName, n.NoteDate.ToShortDateString());
+        tMemberHistoricalNotes.Text += "{0}<br /><br />".FormatWith(n.NoteText);
+      });
+      tMemberLastUpdate.Text = member.Modified != DateTime.MinValue ? member.Modified.ToShortDateString() : string.Empty;
+      SessionInfo.CurrentMember = member;
     }
-
     private void PopulateDdl() {
       rddSalutation.Items.Clear();
-      SqlDataLoader.Salutations.ForEach(s => {
+      SqlDataLoader.Salutations().ForEach(s => {
         rddSalutation.Items.Add(new DropDownListItem(s.Name, s.Id.ToString()));
       });
       rddMaritalStatus.Items.Clear();
-      SqlDataLoader.MaritalStatuses.ForEach(s => {
+      SqlDataLoader.MaritalStatuses().ForEach(s => {
         rddMaritalStatus.Items.Add(new DropDownListItem(s.Name, s.Id.ToString()));
       });
       rddStates.Items.Clear();
-      SqlDataLoader.States.ForEach(s => {
+      SqlDataLoader.States().ForEach(s => {
         rddStates.Items.Add(new DropDownListItem(s.Name, s.Id.ToString()));
       });
       dpMemberBirthdate.MinDate = "01/01/1900".GetAsDate();
       dpMemberMarriage.MinDate = "01/01/1900".GetAsDate();
     }
-
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
-
     protected void ConfirmChangePassword_Click(object sender, EventArgs e) {
       if(!Page.IsValid) return;
       SessionInfo.CurrentUser.SetUserPassword(SessionInfo.CurrentUser.Id, NewPassword.Text.Trim());
       ConfirmChangePassword.Visible = false;
       SuccessLabel.Text = "Success!";
     }
-
     protected void rbdirectory_Click(object sender, EventArgs e) {
       SessionInfo.CurrentMember = null;
       Response.Redirect("~/MainDirectory.aspx");
     }
-
-    protected void gMemberPhones_ItemCommand(object sender, GridCommandEventArgs e) {
-      switch(e.CommandName) {
-        case "Update":
-          break;
-      }
-    }
-
-    protected void gMemberPhones_ItemDataBound(object sender, GridItemEventArgs e) {
-      if(e.Item.IsInEditMode) {
-        GridEditableItem editItem = (GridEditableItem)e.Item;
-        if(editItem.ItemIndex != -1) {
-          RadMaskedTextBox tphone = editItem.FindControl("tMemberPhone") as RadMaskedTextBox;
-          Telerik.Web.UI.RadDropDownList tphonetype = editItem.FindControl("rddMemberPhoneType") as Telerik.Web.UI.RadDropDownList;
-          var phone = (Phone)editItem.DataItem;
-          tphone.Text = phone.FormattedPhoneNumber;
-          tphonetype.SelectedValue = phone.PhoneType.Id.ToString();
-        }
-      }
+    protected void UpdateMember_Click(object sender, EventArgs e) {
+      var member = (Member)SessionInfo.CurrentMember;
+      member.Salutation = SqlDataLoader.Salutations().FirstOrDefault(s => s.Id == rddSalutation.SelectedValue.GetInt32());
+      member.FirstName = tMemberFirstName.Text.Trim();
+      member.MiddleName = tMemberMiddleName.Text.Trim();
+      member.LastName = tMemberLastName.Text.Trim();
+      member.Suffix = tMemberSuffix.Text.Trim();
+      member.MaritalStatus = SqlDataLoader.MaritalStatuses().FirstOrDefault(s => s.Id == rddMaritalStatus.SelectedValue.GetInt32());
+      member.AddressList.Address1 = tMemberAddress1.Text.Trim();
+      member.AddressList.Address2 = tMemberAddress2.Text.Trim();
+      member.AddressList.City = tMemberCity.Text.Trim();
+      member.AddressList.State = SqlDataLoader.States().FirstOrDefault(s => s.Id == rddStates.SelectedValue.GetInt32());
+      member.CellPhone = tMemberCell.Text.Trim();
+      member.HomePhone = tMemberHome.Text.Trim();
+      member.Email1 = tMemberEmail1.Text.Trim();
+      member.Email2 = tMemberEmail2.Text.Trim();
+      var memberNote = tMemberNotes.Text.Trim();
+      member.SaveMember(memberNote, SessionInfo.CurrentUser.Id.GetInt32());
     }
   }
 }
