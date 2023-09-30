@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Directory.CGBC.Helpers {
   public static class SqlDataLoader {
@@ -14,9 +15,11 @@ namespace Directory.CGBC.Helpers {
     private static List<RelationshipType> _relationshipTypeList = null;
     private static List<Salutation> _salutationList = null;
     private static List<MaritalStatus> _maritalStatusList = null;
+    private static List<MemberRelations> _memberRelations = null;
 
     public static List<State> States() => _stateList.IsNullOrEmpty() || _stateList.Count == 0 ? _stateList = GetStates() : _stateList;
     public static List<RelationshipType> RelationshipTypes() => _relationshipTypeList.IsNullOrEmpty() || _relationshipTypeList.Count == 0 ? _relationshipTypeList = GetRelationshipTypes() : _relationshipTypeList;
+    public static List<MemberRelations> AllMemberRelations() => _memberRelations.IsNullOrEmpty() || _memberRelations.Count == 0 ? _memberRelations = GetMemberRelations() : _memberRelations;
     public static List<Salutation> Salutations() => _salutationList.IsNullOrEmpty() || _salutationList.Count == 0 ? _salutationList = GetSalutations() : _salutationList;
     public static List<MaritalStatus> MaritalStatuses() => _maritalStatusList.IsNullOrEmpty() || _maritalStatusList.Count == 0 ? _maritalStatusList = GetMaritalStatuses() : _maritalStatusList;
 
@@ -88,6 +91,25 @@ namespace Directory.CGBC.Helpers {
         });
       }
       return maritalStatuses;
+    }
+    private static List<MemberRelations> GetMemberRelations() {
+      var memberRelations = new List<MemberRelations>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_MEMBER_RELATION_LIST).Rows;
+      if(!rows.IsNullOrEmpty()) {
+        MemberRelations _relatedMember = new MemberRelations();
+        foreach(DataRow row in rows) {
+          _relatedMember = new MemberRelations() {
+            Id = row["id"].ToString().GetInt32()
+          };
+          _relatedMember.Name = "{0} ".FormatWith(row["Salutation"].ToString());
+          _relatedMember.Name += row["FirstName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["FirstName"].ToString());
+          _relatedMember.Name += row["MiddleName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["MiddleName"].ToString());
+          _relatedMember.Name += row["LastName"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["LastName"].ToString());
+          _relatedMember.Name += row["Suffix"].IsNullOrEmpty() ? string.Empty : "{0} ".FormatWith(row["Suffix"].ToString());
+          memberRelations.Add(_relatedMember);
+        }
+      }
+      return memberRelations;
     }
   }
 }

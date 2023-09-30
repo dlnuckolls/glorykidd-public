@@ -517,13 +517,22 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadTextBox tMemberEmail2;
 
     /// <summary>
-    /// RadLabel5 control.
+    /// RadLabel11 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel5;
+    protected global::Telerik.Web.UI.RadLabel RadLabel11;
+
+    /// <summary>
+    /// tMemberLastUpdate control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel tMemberLastUpdate;
 
     /// <summary>
     /// RadLabel7 control.
@@ -553,21 +562,39 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel tMemberHistoricalNotes;
 
     /// <summary>
-    /// RadLabel11 control.
+    /// RadLabel5 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel11;
+    protected global::Telerik.Web.UI.RadLabel RadLabel5;
 
     /// <summary>
-    /// tMemberLastUpdate control.
+    /// MemberRelations control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel tMemberLastUpdate;
+    protected global::Telerik.Web.UI.RadGrid MemberRelations;
+
+    /// <summary>
+    /// ObjectDataSource1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+
+    /// <summary>
+    /// ObjectDataSource2 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
   }
 }

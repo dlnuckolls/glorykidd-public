@@ -34,10 +34,10 @@ namespace Directory.CGBC.Objects {
     }
   }
   public class RelatedMember {
-    public int Id;
-    public string DisplayName;
-    public Gender Gender;
-    public RelationshipType Relationship;
+    public int Id { get; set; }
+    public string DisplayName { get; set; }
+    public Gender Gender { get; set; }
+    public RelationshipType Relationship { get; set; }
   }
   public class MemberNote {
     public int Id;
@@ -63,4 +63,5 @@ namespace Directory.CGBC.Objects {
   public class Salutation: EnumItemType { }
   public class MaritalStatus: EnumItemType { }
   public class EmailAddress: EnumItemType { }
+  public class MemberRelations: EnumItemType { }
 }

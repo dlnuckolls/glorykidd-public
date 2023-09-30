@@ -54,6 +54,7 @@ namespace Directory.CGBC {
         dpMemberBirthdate.DateInput.SelectedDate = member.DateOfBirth;
       if(member.MarriageDate != DateTime.MinValue)
         dpMemberMarriage.DateInput.SelectedDate = member.MarriageDate;
+
       tMemberLastUpdate.Text = member.Modified != DateTime.MinValue ? member.Modified.ToShortDateString() : string.Empty;
       SessionInfo.CurrentMember = member;
     }
@@ -108,6 +109,20 @@ namespace Directory.CGBC {
       member.SaveMember(memberNote, SessionInfo.CurrentUser.Id.GetInt32());
       UpdateMember.Visible = false;
       CancelUpdate.Text = "Done";
+    }
+
+    protected void MemberRelations_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { MemberRelations.DataSource = ((Member)SessionInfo.CurrentMember).RelatedMembersList; }
+
+    protected void MemberRelations_UpdateCommand(object sender, GridCommandEventArgs e) {
+      var editableItem = ((GridEditableItem)e.Item);
+      //populate its properties
+      Hashtable values = new Hashtable();
+      editableItem.ExtractValues(values);
+
+    }
+
+    protected void MemberRelations_InsertCommand(object sender, GridCommandEventArgs e) {
+
     }
   }
 }

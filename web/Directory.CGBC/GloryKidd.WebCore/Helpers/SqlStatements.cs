@@ -46,6 +46,11 @@ SELECT m.Id, m.SalutationId, m.FirstName, m.MiddleName, m.LastName, m.Suffix, m.
  INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
  WHERE mm.MemberId = {0} 
  ORDER BY m.LastName, m.FirstName ASC;";
+    public const string SQL_GET_MEMBER_RELATION_LIST = @"
+SELECT m.Id, mg.Salutation, m.FirstName, m.MiddleName, m.LastName, m.Suffix
+  FROM dbo.Member m 
+ INNER JOIN dbo.Salutation mg ON mg.Id = m.SalutationId
+ ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_GET_MEMBER_NOTES = "SELECT mn.Id, au.DisplayName, mn.Notes, mn.CreateDate FROM dbo.MemberNotes mn INNER JOIN dbo.AdminUsers au ON mn.UserId = au.Id WHERE mn.MemberId = {0} ORDER BY mn.CreateDate DESC;";
     public const string SQL_SAVE_MEMBER = @"
 INSERT INTO [dbo].[Member] ([SalutationId],[FirstName],[MiddleName],[LastName],[Suffix],[Gender],[Address1],[Address2],

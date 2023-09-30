@@ -167,8 +167,8 @@
                         &nbsp;&nbsp;<telerik:RadTextBox ID="tMemberEmail1" runat="server" EmptyMessage="Email Address 1" Width="325px" Skin="Silk" CssClass="MyEnabledTextBox2" />&nbsp;<telerik:RadTextBox ID="tMemberEmail2" runat="server" EmptyMessage="Email Address 2" Width="325px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                       </telerik:LayoutColumn>
                       <telerik:LayoutColumn Span="4">
-                        <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />
-                        &nbsp;&nbsp;
+                         <telerik:RadLabel ID="RadLabel11" runat="server" Text="Saved:" Font-Bold="true" CssClass="labelText labels" />
+                        &nbsp;&nbsp;<telerik:RadLabel ID="tMemberLastUpdate" runat="server" Text="tMemberUpdate" Font-Bold="true" CssClass="labels" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>
@@ -180,8 +180,21 @@
                         &nbsp;&nbsp;&nbsp;<telerik:RadLabel ID="tMemberHistoricalNotes" runat="server" CssClass="labels" />
                       </telerik:LayoutColumn>
                       <telerik:LayoutColumn Span="4">
-                        <telerik:RadLabel ID="RadLabel11" runat="server" Text="Saved:" Font-Bold="true" CssClass="labelText labels" />
-                        &nbsp;&nbsp;<telerik:RadLabel ID="tMemberLastUpdate" runat="server" Text="tMemberUpdate" Font-Bold="true" CssClass="labels" />
+                       <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />
+                        &nbsp;&nbsp;<telerik:RadGrid ID="MemberRelations" RenderMode="Auto" runat="server" AllowPaging="true" GridLines="None"
+                          PagerStyle-AlwaysVisible="false" AllowSorting="false" Skin="Silk" OnNeedDataSource="MemberRelations_NeedDataSource" OnUpdateCommand="MemberRelations_UpdateCommand"
+                          OnInsertCommand="MemberRelations_InsertCommand" GroupingSettings-CaseSensitive="False">
+                          <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None"
+                            ClientDataKeyNames="Id" CommandItemDisplay="Bottom" InsertItemPageIndexAction="ShowItemOnFirstPage">
+                            <Columns>
+                              <telerik:GridEditCommandColumn UniqueName="EditCommandColumn" />
+                              <telerik:GridDropDownColumn ListTextField="Name" ListValueField="Id" DataField="Id" HeaderText="Relation" DataSourceID="ObjectDataSource2" DropDownControlType="DropDownList" />
+                              <telerik:GridDropDownColumn UniqueName="RelationType" ListTextField="Name" ListValueField="Id" DataField="Relationship.Id" HeaderText="Type" DataSourceID="ObjectDataSource1" DropDownControlType="DropDownList"  />
+                            </Columns>
+                          </MasterTableView>
+                        </telerik:RadGrid>
+                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RelationshipTypes" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
+                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>
