@@ -1,12 +1,7 @@
 ﻿using Directory.CGBC.Objects;
-using GloryKidd.WebCore.BaseObjects;
 using GloryKidd.WebCore.Helpers;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 
 namespace Directory.CGBC.Helpers {
   public static class SqlDataLoader {
@@ -46,6 +41,48 @@ namespace Directory.CGBC.Helpers {
           SqlHelpers.Insert(queryString);
         }
       }
+    }
+    public static void SaveMemberRelations(Member member) {
+      //Remove Existing Relations
+      var queryString = string.Empty;
+      queryString = SqlStatements.SQL_REMOVE_MEMBER_RELATIONS.FormatWith(member.Id);
+      SqlHelpers.Update(queryString);
+      //Add Relations
+      member.RelatedMembersList.ForEach(r => {
+        //Add Main relation
+        queryString = SqlStatements.SQL_SAVE_MEMBER_RELATIONS.FormatWith(member.Id, r.Id, r.Relationship.Id);
+        SqlHelpers.Insert(queryString);
+        switch(r.Relationship.Id) {
+          case 1: //Spouse
+          case 3: //Sibling
+            queryString = SqlStatements.SQL_SAVE_MEMBER_RELATIONS.FormatWith(r.Id, member.Id, r.Relationship.Id);
+            SqlHelpers.Insert(queryString);
+            break;
+          case 2: //Child
+            queryString = SqlStatements.SQL_SAVE_MEMBER_RELATIONS.FormatWith(r.Id, member.Id, 4); //Was Child, Add Parent
+            SqlHelpers.Insert(queryString);
+            break;
+          case 4: //Parent
+            queryString = SqlStatements.SQL_SAVE_MEMBER_RELATIONS.FormatWith(r.Id, member.Id, 2); //Was Parent, Add Child
+            SqlHelpers.Insert(queryString);
+            break;
+        }
+      });
+    }
+    public static List<DirectoryList> GetDirectoryList() {
+      var list = new List<DirectoryList>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_MEMBERS).Rows;
+      foreach(DataRow row in rows) {
+        list.Add(new DirectoryList() {
+          Id = row["Id"].ToString().GetInt32(),
+          FirstName = row["FirstName"].ToString(),
+          LastName = row["LastName"].ToString(),
+          CellPhone = row["CellPhone"].ToString().FormatPhone(),
+          HomePhone = row["HomePhone"].ToString().FormatPhone(),
+          LastUpdate = row["ModifiedDate"].ToString().GetAsDate()
+        });
+      }
+      return list;
     }
     private static List<State> GetStates() {
       var states = new List<State>();

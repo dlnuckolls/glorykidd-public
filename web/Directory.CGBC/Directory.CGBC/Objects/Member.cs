@@ -4,9 +4,7 @@ using GloryKidd.WebCore.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Dynamic;
 using System.Linq;
-using Telerik.Web.UI.HtmlChart.PlotArea;
 
 namespace Directory.CGBC.Objects {
   public class Member {
@@ -131,6 +129,7 @@ namespace Directory.CGBC.Objects {
     #endregion
     public void SaveMember(string memberNote, int userId) {
       SqlDataLoader.SaveMember(this, memberNote, userId);
+      SqlDataLoader.SaveMemberRelations(this);
     }
   }
 }

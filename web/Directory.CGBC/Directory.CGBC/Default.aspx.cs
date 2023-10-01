@@ -21,7 +21,6 @@ namespace Directory.CGBC {
         //SessionInfo.CurrentUser = new SystemUser();
         SessionInfo.CurrentUser.AuthenticateUser(((RadTextBox)Login2.FindControl("UserName")).Text.Trim(), ((RadTextBox)Login2.FindControl("Password")).Text.Trim().EncryptString());
         if(!SessionInfo.IsAuthenticated) { return; }
-        locationRedirect = (SessionInfo.IsAdmin) ? "~/Administration.aspx" : (SessionInfo.CurrentUser.UserPassReset) ? "~/MyAccount.aspx" : "~/MainDirectory.aspx";
         SessionInfo.CurrentPage = (SessionInfo.IsAdmin) ? PageNames.Home : (SessionInfo.CurrentUser.UserPassReset) ? PageNames.ResetPassword : PageNames.Home;
         locationRedirect = "~/MainDirectory.aspx";
         e.Authenticated= true;

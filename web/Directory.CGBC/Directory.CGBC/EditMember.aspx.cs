@@ -2,15 +2,9 @@
 using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Telerik.Web.UI;
-using Telerik.Web.UI.Skins;
 
 namespace Directory.CGBC {
   public partial class EditMember: BasePage {
@@ -47,7 +41,7 @@ namespace Directory.CGBC {
       tMemberEmail1.Text = member.Email1;
       tMemberEmail2.Text = member.Email2;
       member.MemberNotes.ForEach(n => {
-        tMemberHistoricalNotes.Text += "{0} - {1}<br />".FormatWith(n.UserName, n.NoteDate.ToShortDateString());
+        tMemberHistoricalNotes.Text += "<b><i>{0} - {1}</i></b><br />".FormatWith(n.UserName, n.NoteDate.ToShortDateString());
         tMemberHistoricalNotes.Text += "{0}<br /><br />".FormatWith(n.NoteText);
       });
       if(member.DateOfBirth != DateTime.MinValue)
@@ -113,16 +107,22 @@ namespace Directory.CGBC {
 
     protected void MemberRelations_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { MemberRelations.DataSource = ((Member)SessionInfo.CurrentMember).RelatedMembersList; }
 
-    protected void MemberRelations_UpdateCommand(object sender, GridCommandEventArgs e) {
+    protected void MemberRelations_InsertCommand(object sender, GridCommandEventArgs e) {
       var editableItem = ((GridEditableItem)e.Item);
       //populate its properties
-      Hashtable values = new Hashtable();
-      editableItem.ExtractValues(values);
-
+      var relation = (RadDropDownList)editableItem.FindControl("rdRelatedMember");
+      var relationship = (RadDropDownList)editableItem.FindControl("rdRelationType");
+      var rm = new RelatedMember();
+      rm.Id = relation.SelectedValue.GetInt32();
+      rm.DisplayName = SqlDataLoader.AllMemberRelations().FirstOrDefault(r => r.Id == rm.Id).Name;
+      rm.Relationship = SqlDataLoader.RelationshipTypes().FirstOrDefault(r => r.Id == relationship.SelectedValue.GetInt32());
+      ((Member)SessionInfo.CurrentMember).RelatedMembersList.Add(rm);
     }
 
-    protected void MemberRelations_InsertCommand(object sender, GridCommandEventArgs e) {
-
+    protected void MemberRelations_DeleteCommand(object sender, GridCommandEventArgs e) {
+      var i = (int)((GridDataItem)e.Item).GetDataKeyValue("Id");
+      var rm = ((Member)SessionInfo.CurrentMember).RelatedMembersList.FirstOrDefault(r => r.Id == i);
+      ((Member)SessionInfo.CurrentMember).RelatedMembersList.Remove(rm);
     }
   }
 }

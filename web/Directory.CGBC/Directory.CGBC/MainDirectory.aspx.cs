@@ -2,7 +2,6 @@
 using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
-using System.Drawing;
 using System.Web.UI;
 using Telerik.Web.UI;
 
@@ -25,8 +24,9 @@ namespace Directory.CGBC {
       ConfirmChangePassword.Visible = false;
       SuccessLabel.Text = "Success!";
     }
-    protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_MEMBERS); }
+    protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlDataLoader.GetDirectoryList(); }
     protected void NewMember_Click(object sender, EventArgs e) {
+      SessionInfo.CurrentMember = null;
       Response.Redirect("~/EditMember.aspx");
     }
     protected void MemberList_ItemCommand(object sender, GridCommandEventArgs e) {

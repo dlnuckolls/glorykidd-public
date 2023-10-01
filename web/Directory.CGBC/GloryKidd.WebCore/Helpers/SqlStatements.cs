@@ -27,7 +27,7 @@
 
     //Member Statements
     public const string SQL_GET_ALL_MEMBERS = @"
-SELECT m.Id, m.FirstName, m.LastName, m.ModifiedDate 
+SELECT m.Id, m.FirstName, m.LastName, m.CellPhone, m.HomePhone, m.ModifiedDate 
   FROM dbo.Member m 
  ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_GET_SINGLE_MEMBERS = @"
@@ -65,6 +65,8 @@ UPDATE [dbo].[Member]
        [DateOfBirth] = {16}, [MarriageDate] = {17}, [ModifiedDate] = GETDATE()
  WHERE [Id] = {18};";
     public const string SQL_SAVE_MEMBER_NOTE = "INSERT INTO [dbo].[MemberNotes] ([MemberId], [Notes], [CreateDate], [UserId]) VALUES ({0}, '{1}', GETDATE(), {2});";
+    public const string SQL_REMOVE_MEMBER_RELATIONS = "DELETE dbo.Xref_Member_Member WHERE (MemberId = {0} OR RelatedId = {0});";
+    public const string SQL_SAVE_MEMBER_RELATIONS = "INSERT INTO dbo.Xref_Member_Member (MemberId,RelatedId,RelationshipTypeId) VALUES ({0}, {1}, {2});";
 
     //General Statements
     public const string SQL_GET_STATES = "SELECT Id, State, Abbreviation FROM dbo.States;";

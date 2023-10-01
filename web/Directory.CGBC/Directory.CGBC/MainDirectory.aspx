@@ -125,7 +125,9 @@
                   <Columns>
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="LastName" AllowFiltering="True" HeaderText="Last Name" AllowSorting="true" />
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="FirstName" AllowFiltering="True" HeaderText="First Name" AllowSorting="true" />
-                    <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="ModifiedDate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" ItemStyle-Width="100px" DataFormatString="{0:MM/dd/yyyy}" />
+                    <telerik:GridBoundColumn DataField="CellPhone" AllowFiltering="false" HeaderText="Cell" AllowSorting="true" />
+                    <telerik:GridBoundColumn DataField="HomePhone" AllowFiltering="false" HeaderText="Home" AllowSorting="true" />
+                    <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="LastUpdate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" ItemStyle-Width="100px" DataFormatString="{0:MM/dd/yyyy}" />
                     <telerik:GridButtonColumn ButtonType="LinkButton" Text="Edit" CommandName="EditRow" ItemStyle-Width="50px" />
                   </Columns>
                   <NestedViewTemplate>

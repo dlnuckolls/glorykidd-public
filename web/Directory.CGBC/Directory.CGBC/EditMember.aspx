@@ -127,14 +127,16 @@
                   <telerik:LayoutRow>
                     <Columns>
                       <telerik:LayoutColumn Span="8">
-                        <telerik:RadLabel ID="RadLabel2" runat="server" Text="Name:" Font-Bold="true" CssClass="labelText labels" />
+                        <div style="width: 100%;">&nbsp;</div>
+                        <telerik:RadLabel ID="RadLabel2" runat="server" Text="Name:<font style='font-size: .8em;'><br />(F-M-L-S)</font>" Font-Bold="true" CssClass="labelText labels" />
                         &nbsp;&nbsp;<telerik:RadDropDownList ID="rddSalutation" runat="server" Width="80px" Skin="Silk" AutoPostBack="true" />
-                        <telerik:RadTextBox ID="tMemberFirstName" runat="server" EmptyMessage="First" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
-                        <telerik:RadTextBox ID="tMemberMiddleName" runat="server" EmptyMessage="Middle" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
-                        <telerik:RadTextBox ID="tMemberLastName" runat="server" EmptyMessage="Last" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
-                        <telerik:RadTextBox ID="tMemberSuffix" runat="server" EmptyMessage="Suffix" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
+                        <telerik:RadTextBox ID="tMemberFirstName" runat="server" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
+                        <telerik:RadTextBox ID="tMemberMiddleName" runat="server" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
+                        <telerik:RadTextBox ID="tMemberLastName" runat="server" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" />
+                        <telerik:RadTextBox ID="tMemberSuffix" runat="server" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                       </telerik:LayoutColumn>
                       <telerik:LayoutColumn Span="4">
+                        <div style="width: 100%;">&nbsp;</div>
                         <telerik:RadLabel ID="RadLabel3" runat="server" Text="Status:" Font-Bold="true" CssClass="labelText labels" />
                         &nbsp;&nbsp;<telerik:RadDropDownList ID="rddMaritalStatus" runat="server" Width="200px" Skin="Silk" AutoPostBack="true" />
                       </telerik:LayoutColumn>
@@ -144,8 +146,8 @@
                     <Columns>
                       <telerik:LayoutColumn Span="8">
                         <telerik:RadLabel ID="RadLabel4" runat="server" Text="Address:" Font-Bold="true" CssClass="labelText labels" />
-                        &nbsp;&nbsp;<telerik:RadTextBox ID="tMemberAddress1" runat="server" EmptyMessage="Address Line 1" Width="450px" Skin="Silk" CssClass="MyEnabledTextBox2" /><br />
-                        &nbsp;&nbsp;&nbsp;<telerik:RadLabel ID="RadLabel12" runat="server" Text="" Font-Bold="true" CssClass="labelText labels" /><telerik:RadTextBox ID="tMemberAddress2" runat="server" EmptyMessage="Address Line 2" Skin="Silk" Width="450px" CssClass="MyEnabledTextBox2" /><br />
+                        &nbsp;&nbsp;<telerik:RadTextBox ID="tMemberAddress1" runat="server" Width="450px" Skin="Silk" CssClass="MyEnabledTextBox2" /><br />
+                        &nbsp;&nbsp;&nbsp;<telerik:RadLabel ID="RadLabel12" runat="server" Text="" Font-Bold="true" CssClass="labelText labels" /><telerik:RadTextBox ID="tMemberAddress2" runat="server" Skin="Silk" Width="450px" CssClass="MyEnabledTextBox2" /><br />
                         &nbsp;&nbsp;&nbsp;<telerik:RadLabel ID="RadLabel13" runat="server" Text="" Font-Bold="true" CssClass="labelText labels" /><telerik:RadTextBox ID="tMemberCity" runat="server" EmptyMessage="City" Width="200px" Skin="Silk" CssClass="MyEnabledTextBox2" /><telerik:RadDropDownList ID="rddStates" runat="server" Skin="Silk" Width="180px" />
                         &nbsp;<telerik:RadTextBox ID="tMemberZip" runat="server" EmptyMessage="Zip" Width="80px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                       </telerik:LayoutColumn>
@@ -167,32 +169,42 @@
                         &nbsp;&nbsp;<telerik:RadTextBox ID="tMemberEmail1" runat="server" EmptyMessage="Email Address 1" Width="325px" Skin="Silk" CssClass="MyEnabledTextBox2" />&nbsp;<telerik:RadTextBox ID="tMemberEmail2" runat="server" EmptyMessage="Email Address 2" Width="325px" Skin="Silk" CssClass="MyEnabledTextBox2" />
                       </telerik:LayoutColumn>
                       <telerik:LayoutColumn Span="4">
-                         <telerik:RadLabel ID="RadLabel11" runat="server" Text="Saved:" Font-Bold="true" CssClass="labelText labels" />
+                        <telerik:RadLabel ID="RadLabel11" runat="server" Text="Last Update:" Font-Bold="true" CssClass="labelText labels" />
                         &nbsp;&nbsp;<telerik:RadLabel ID="tMemberLastUpdate" runat="server" Text="tMemberUpdate" Font-Bold="true" CssClass="labels" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>
                   <telerik:LayoutRow>
                     <Columns>
-                      <telerik:LayoutColumn Span="8">
+                      <telerik:LayoutColumn Span="6">
                         <telerik:RadLabel ID="RadLabel7" runat="server" Text="Notes:" Font-Bold="true" CssClass="labelText labels" />
                         &nbsp;&nbsp;<telerik:RadTextBox ID="tMemberNotes" runat="server" TextMode="MultiLine" Rows="3" Width="600px" Skin="Silk" CssClass="MyEnabledTextBox2" EmptyMessage="Member Notes" /><br />
                         &nbsp;&nbsp;&nbsp;<telerik:RadLabel ID="tMemberHistoricalNotes" runat="server" CssClass="labels" />
+                        <div style="width: 100%;">&nbsp;</div>
                       </telerik:LayoutColumn>
-                      <telerik:LayoutColumn Span="4">
-                       <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />
+                      <telerik:LayoutColumn Span="6">
+                        <telerik:RadLabel ID="RadLabel5" runat="server" Text="Related:" Font-Bold="true" CssClass="labelText labels" />
                         &nbsp;&nbsp;<telerik:RadGrid ID="MemberRelations" RenderMode="Auto" runat="server" AllowPaging="true" GridLines="None"
-                          PagerStyle-AlwaysVisible="false" AllowSorting="false" Skin="Silk" OnNeedDataSource="MemberRelations_NeedDataSource" OnUpdateCommand="MemberRelations_UpdateCommand"
-                          OnInsertCommand="MemberRelations_InsertCommand" GroupingSettings-CaseSensitive="False">
-                          <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None"
+                          PagerStyle-AlwaysVisible="false" AllowSorting="false" Skin="Silk" OnNeedDataSource="MemberRelations_NeedDataSource"
+                          OnInsertCommand="MemberRelations_InsertCommand" GroupingSettings-CaseSensitive="False" OnDeleteCommand="MemberRelations_DeleteCommand">
+                          <MasterTableView AutoGenerateColumns="False" EditMode="EditForms" DataKeyNames="Id" GridLines="None"
                             ClientDataKeyNames="Id" CommandItemDisplay="Bottom" InsertItemPageIndexAction="ShowItemOnFirstPage">
                             <Columns>
-                              <telerik:GridEditCommandColumn UniqueName="EditCommandColumn" />
                               <telerik:GridDropDownColumn ListTextField="Name" ListValueField="Id" DataField="Id" HeaderText="Relation" DataSourceID="ObjectDataSource2" DropDownControlType="DropDownList" />
-                              <telerik:GridDropDownColumn UniqueName="RelationType" ListTextField="Name" ListValueField="Id" DataField="Relationship.Id" HeaderText="Type" DataSourceID="ObjectDataSource1" DropDownControlType="DropDownList"  />
+                              <telerik:GridDropDownColumn UniqueName="RelationType" ListTextField="Name" ListValueField="Id" DataField="Relationship.Id" HeaderText="Type" DataSourceID="ObjectDataSource1" DropDownControlType="DropDownList" />
+                              <telerik:GridButtonColumn ConfirmText="Delete this Relationship?" ConfirmDialogType="RadWindow" ConfirmTitle="Delete" ButtonType="FontIconButton" CommandName="Delete" ItemStyle-Width="40px" />
                             </Columns>
+                            <EditFormSettings EditFormType="Template">
+                              <FormTemplate>
+                                <telerik:RadDropDownList ID="rdRelatedMember" runat="server" Skin="Silk" DataSourceID="ObjectDataSource2" DataTextField="Name" DataValueField="Id" Width="300px" />
+                                <telerik:RadDropDownList ID="rdRelationType" runat="server" Skin="Silk" DataSourceID="ObjectDataSource1" DataTextField="Name" DataValueField="Id" />
+                                &nbsp;&nbsp;<telerik:RadButton ID="btnUpdate" Text='<%# (Container is GridEditFormInsertItem) ? "Save" : "Update" %>' runat="server" CommandName='<%# (Container is GridEditFormInsertItem) ? "PerformInsert" : "Update" %>' Skin="Silk" />
+                                <telerik:RadButton ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Skin="Silk" />
+                              </FormTemplate>
+                            </EditFormSettings>
                           </MasterTableView>
                         </telerik:RadGrid>
+                        <div style="width: 100%;">&nbsp;</div>
                         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RelationshipTypes" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
                         <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
                       </telerik:LayoutColumn>

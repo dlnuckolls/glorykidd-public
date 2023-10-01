@@ -1,9 +1,7 @@
 ﻿using Directory.CGBC.Helpers;
 using GloryKidd.WebCore.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Directory.CGBC.Objects {
   public class Address {
@@ -51,6 +49,14 @@ namespace Directory.CGBC.Objects {
       UserName = string.Empty;
       NoteText = string.Empty;
     }
+  }
+  public class DirectoryList {
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string CellPhone { get; set; }
+    public string HomePhone { get; set; }
+    public DateTime LastUpdate { get; set; }
   }
   public class EnumItemType {
     public int Id { get; set; }
