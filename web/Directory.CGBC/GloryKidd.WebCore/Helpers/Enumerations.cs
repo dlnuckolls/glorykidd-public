@@ -19,11 +19,9 @@ namespace GloryKidd.WebCore.Helpers {
   public enum PageNames {
     [TextValue("Login Page")] Login,
     [TextValue("CGBC Directory")] Home,
-    [TextValue("About")] About,
+    [TextValue("Edit Member")] EditMember,
     [TextValue("Reset Password")] ResetPassword,
     [TextValue("Forgot Password")] ForgotPassword,
-    [TextValue("Helpful Links")] Resources,
-    [TextValue("Admin Dashboard")] Admin,
   }
 
 }

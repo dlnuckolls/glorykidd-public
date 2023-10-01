@@ -10,7 +10,7 @@ namespace GloryKidd.WebCore.Helpers {
     /// </summary>
     /// <param name="d">The d.</param>
     /// <returns></returns>
-    internal static string ConvertSqlDate(this DateTime d) {
+    public static string ConvertSqlDate(this DateTime d) {
       var maxdate = "06/06/2079".GetAsDate();
       var mindate = "01/01/1900".GetAsDate();
       if(d > maxdate) d = maxdate;
@@ -18,7 +18,7 @@ namespace GloryKidd.WebCore.Helpers {
       if(d == DateTime.MinValue) d = mindate;
       return string.Format("'{0}'", d.ToString("yyyy-MM-dd"));
     }
-    internal static string ConvertSqlDateTime(this DateTime d) {
+    public static string ConvertSqlDateTime(this DateTime d) {
       var maxdate = "06/06/2079".GetAsDate();
       var mindate = "01/01/1900".GetAsDate();
       if(d > maxdate) d = maxdate;
