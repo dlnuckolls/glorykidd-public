@@ -17,8 +17,8 @@
         </telerik:LayoutRow>
         <telerik:LayoutRow>
           <Columns>
-            <telerik:LayoutColumn Span="4" SpanMd="3" SpanSm="12" HiddenXs="true" />
-            <telerik:LayoutColumn Span="4" SpanMd="6" SpanSm="12">
+            <telerik:LayoutColumn Span="4" SpanMd="3" HiddenSm="true" HiddenXs="true" />
+            <telerik:LayoutColumn Span="4" SpanMd="6" SpanSm="12" SpanXs="12">
               <telerik:RadAjaxPanel ID="UpdatePanel1" runat="server">
                 <div style="min-width: 400px;">
                   <telerik:RadLabel ID="lErrorMessage" runat="server" CssClass="errorMessageDisplay" />
@@ -48,7 +48,7 @@
                 </div>
               </telerik:RadAjaxPanel>
             </telerik:LayoutColumn>
-            <telerik:LayoutColumn Span="4" SpanMd="3" SpanSm="12" HiddenXs="true" />
+            <telerik:LayoutColumn Span="4" SpanMd="3" HiddenSm="true" HiddenXs="true" />
           </Columns>
         </telerik:LayoutRow>
       </Rows>

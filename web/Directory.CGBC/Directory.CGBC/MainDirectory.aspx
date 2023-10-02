@@ -110,8 +110,8 @@
       <Rows>
         <telerik:LayoutRow>
           <Columns>
-            <telerik:LayoutColumn Span="2" />
-            <telerik:LayoutColumn Span="8">
+            <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true" />
+            <telerik:LayoutColumn Span="8" SpanMd="12" SpanSm="12" SpanXs="12">
               <div style="width: 70%; float: left; text-align: center;">
                 <telerik:RadLabel ID="RadLabel12" runat="server" Text="All Member Directory" CssClass="headertitle" />
               </div>
@@ -191,7 +191,7 @@
                 <PagerStyle Mode="NextPrevAndNumeric" />
               </telerik:RadGrid>
             </telerik:LayoutColumn>
-            <telerik:LayoutColumn Span="2" />
+            <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true" />
           </Columns>
         </telerik:LayoutRow>
       </Rows>
