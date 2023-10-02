@@ -16,6 +16,8 @@ namespace Directory.CGBC {
       SuccessLabel.Text = string.Empty;
       SiteApplicationTitle.Text = "Cedar Grove Baptist Church Online Directory";
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
+      if(!SessionInfo.IsAdmin)
+        NewMember.Visible = false;
     }
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
     protected void ConfirmChangePassword_Click(object sender, EventArgs e) {
@@ -43,6 +45,17 @@ namespace Directory.CGBC {
           member.LoadMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
           //View Details
           var viewPanel = ((GridDataItem)e.Item).ChildItem;
+          //Clear contents
+          ((RadLabel)viewPanel.FindControl("MemberName")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberStatus")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberAddress")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberPhone")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberPhone")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberEmails")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberEmails")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberRelation")).Text = string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberNotes")).Text = string.Empty;
+          //Set Display
           ((RadLabel)viewPanel.FindControl("MemberName")).Text = member.DisplayName;
           ((RadLabel)viewPanel.FindControl("MemberStatus")).Text = member.MaritalStatus.Name;
           ((RadLabel)viewPanel.FindControl("MemberAddress")).Text = member.AddressList.FormattedAddress;
@@ -69,6 +82,11 @@ namespace Directory.CGBC {
       foreach(GridItem item in MemberList.MasterTableView.Items) {
         item.Expanded = false;
       }
+    }
+
+    protected void MemberList_PreRender(object sender, EventArgs e) {
+      if(!SessionInfo.IsAdmin)
+        MemberList.MasterTableView.GetColumn("EditMemberRow").Visible = false;
     }
   }
 }

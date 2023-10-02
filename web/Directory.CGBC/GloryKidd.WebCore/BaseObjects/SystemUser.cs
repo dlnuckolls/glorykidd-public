@@ -4,7 +4,7 @@ using GloryKidd.WebCore.Helpers;
 
 namespace GloryKidd.WebCore.BaseObjects {
   public class SystemUser {
-    public string Id { get; set; }
+    public int Id { get; set; }
     public string RoleId { get; set; }
     public string Role { get; set; }
     public bool IsAuthenticated { get; set; }
@@ -13,8 +13,8 @@ namespace GloryKidd.WebCore.BaseObjects {
     public string UserName { get; set; }
     public bool UserPassReset { get; set; }
     public string Notes { get; set; }
-    public bool SuperAdmin { get; set; }
     public bool IsSuperAdmin { get; set; }
+    public int MemberId { get; set; }
 
     private static SystemUser _instance = null;
 
@@ -29,14 +29,15 @@ namespace GloryKidd.WebCore.BaseObjects {
 
     public void LogoutUser() => _instance = null;
 
-    public void LoadUserDetails(string id) {
+    public void LoadUserDetails(int id) {
       try {
         var dataRow = SqlHelpers.Select(SqlStatements.SQL_GET_USER_DETAILS.FormatWith(id)).Rows[0];
         if (dataRow.IsNullOrEmpty()) return;
-        Id = dataRow["Id"].ToString();
+        Id = dataRow["Id"].ToString().GetInt32();
         DisplayName = dataRow["DisplayName"].ToString();
         UserName = dataRow["UserName"].ToString();
         Notes = dataRow["Notes"].ToString();
+        MemberId = dataRow["MemberId"].ToString().GetInt32();
       } catch (Exception ex) {
         LogError("SystemUser: Load User method", ex);
         throw new ApplicationException("Record not found");
@@ -47,13 +48,14 @@ namespace GloryKidd.WebCore.BaseObjects {
       try {
         var dataRow = SqlHelpers.Select(SqlStatements.SQL_AUTHENTICATE_USER.FormatWith(userName, password)).Rows[0];
         if (dataRow.IsNullOrEmpty()) return;
-        Id = dataRow["Id"].ToString();
+        Id = dataRow["Id"].ToString().GetInt32();
         RoleId = dataRow["RoleId"].ToString();
         DisplayName = dataRow["DisplayName"].ToString();
         UserName = dataRow["UserName"].ToString();
         IsSuperAdmin = dataRow["SuperAdmin"].ToString().GetAsBool();
         UserPassReset = dataRow["PasswordReset"].ToString().GetAsBool();
         Notes = dataRow["Notes"].ToString();
+        MemberId = dataRow["MemberId"].ToString().GetInt32();
         Role = SqlHelpers.SelectScalar(SqlStatements.SQL_GET_USER_ROLE.FormatWith(RoleId)).ToString();
         IsAuthenticated = true;
         IsAdmin = Role == "System Admin";
@@ -76,7 +78,7 @@ namespace GloryKidd.WebCore.BaseObjects {
         if (Id.IsNullOrEmpty()) {
           // Create New User
           Id = SqlHelpers.InsertScalar(SqlStatements.SQL_CREATE_USER_DETAILS.FormatWith(DisplayName.FixSqlString(),
-            UserName.FixSqlString(), Notes.FixSqlString(250)));
+            UserName.FixSqlString(), Notes.FixSqlString(250))).GetInt32();
         } else {
           // Update User
           SqlHelpers.Update(SqlStatements.SQL_UPDATE_USER_DETAILS.FormatWith(DisplayName.FixSqlString(),
@@ -95,13 +97,13 @@ namespace GloryKidd.WebCore.BaseObjects {
       return rtn;
     }
 
-    public string ResetUserPassword(string id) {
+    public string ResetUserPassword(int id) {
       var tempPassword = Membership.GeneratePassword(10, 2);
       SqlHelpers.Update(SqlStatements.SQL_RESET_USER_PASSWORD.FormatWith(tempPassword.EncryptString(), id));
       return tempPassword;
     }
 
-    public void SetUserPassword(string id, string password) {
+    public void SetUserPassword(int id, string password) {
       SqlHelpers.Update(SqlStatements.SQL_UPDATE_USER_PASSWORD.FormatWith(password.EncryptString(), id));
     }
   }

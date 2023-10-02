@@ -100,7 +100,7 @@ namespace Directory.CGBC {
       if(dpMemberMarriage.SelectedDate.HasValue)
         member.MarriageDate = dpMemberMarriage.SelectedDate.Value;
       var memberNote = tMemberNotes.Text.Trim();
-      member.SaveMember(memberNote, SessionInfo.CurrentUser.Id.GetInt32());
+      member.SaveMember(memberNote, SessionInfo.CurrentUser.Id);
       UpdateMember.Visible = false;
       CancelUpdate.Text = "Done";
     }
