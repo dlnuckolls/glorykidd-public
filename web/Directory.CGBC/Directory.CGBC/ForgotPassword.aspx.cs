@@ -11,7 +11,7 @@ namespace Directory.CGBC {
     }
     protected void SubmitLogin_OnClick(object sender, EventArgs e) {
       try {
-        var s = (new SystemUser()).ValidateUser(userName.Text.Trim());
+        var s = (new SystemUser()).ValidateUser(userName.Text.Trim()).GetInt32();
         if(!s.IsNullOrEmpty()) {
           var usrRec = new SystemUser();
           usrRec.LoadUserDetails(s);
