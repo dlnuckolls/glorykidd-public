@@ -1,6 +1,8 @@
 ﻿using Directory.CGBC.Helpers;
+using GloryKidd.WebCore.BaseObjects;
 using GloryKidd.WebCore.Helpers;
 using System;
+using System.Collections;
 using Telerik.Web.UI;
 
 namespace Directory.CGBC {
@@ -30,11 +32,54 @@ namespace Directory.CGBC {
     protected void UserList_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlDataLoader.GetAdminUsers(); }
 
     protected void UserList_EditCommand(object sender, GridCommandEventArgs e) {
-
+      var userId = (int)((GridDataItem)e.Item).GetDataKeyValue("Id");
+      var sysUser = new SystemUser();
+      sysUser.LoadUserDetails(userId);
+      var editableItem = ((GridEditableItem)e.Item);
+      //populate its properties
+      Hashtable values = new Hashtable();
+      editableItem.ExtractValues(values);
+      sysUser.RoleId = values["RoleId"].ToString();
+      sysUser.DisplayName = values["DisplayName"].ToString();
+      sysUser.UserName = values["UserName"].ToString();
+      sysUser.Notes += "| Update to user record on {0}".FormatWith(DateTime.Now.ToShortDateString());
+      sysUser.MemberId = values["MemberId"].ToString().GetInt32();
+      sysUser.SaveUserDetails();
     }
 
     protected void UserList_InsertCommand(object sender, GridCommandEventArgs e) {
+      var editableItem = ((GridEditableItem)e.Item);
+      //populate its properties
+      Hashtable values = new Hashtable();
+      editableItem.ExtractValues(values);
+      var sysUser = new SystemUser();
+      sysUser.RoleId = values["RoleId"].ToString();
+      sysUser.DisplayName = values["DisplayName"].ToString();
+      sysUser.UserName = values["UserName"].ToString();
+      sysUser.Notes += "| New user record added on {0}".FormatWith(DateTime.Now.ToShortDateString());
+      sysUser.MemberId = values["MemberId"].ToString().GetInt32();
+      sysUser.SaveUserDetails();
+    }
 
+    protected void UserList_DeleteCommand(object sender, GridCommandEventArgs e) {
+      var i = (int)((GridDataItem)e.Item).GetDataKeyValue("Id");
+      var sysUser = new SystemUser();
+      sysUser.Id = i;
+      sysUser.RemoveUser();
+    }
+
+    protected void UserList_ItemCommand(object sender, GridCommandEventArgs e) {
+      if(e.CommandName == "ResetPassword") {
+        try {
+          var clientId = (int)((GridDataItem)e.Item).GetDataKeyValue("Id");
+          var usrRec = new SystemUser();
+          usrRec.LoadUserDetails(clientId);
+          var tempPassword = usrRec.ResetUserPassword(clientId);
+          SessionInfo.SendResetEmail(usrRec, tempPassword);
+        } catch(Exception ex) {
+          SessionInfo.Settings.LogError("Admin: Reset Account Password", ex);
+        }
+      }
     }
   }
 }

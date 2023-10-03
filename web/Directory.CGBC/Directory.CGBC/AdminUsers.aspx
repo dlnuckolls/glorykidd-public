@@ -104,8 +104,8 @@
           <Columns>
             <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true" />
             <telerik:LayoutColumn Span="8" SpanMd="12" SpanSm="12" SpanXs="12">
-              <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="UserList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" 
-                HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
+              <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="UserList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" OnItemCommand="UserList_ItemCommand"
+                HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0" OnDeleteCommand="UserList_DeleteCommand"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="UserList_NeedDataSource" OnUpdateCommand="UserList_EditCommand" OnInsertCommand="UserList_InsertCommand">
                 <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id" CommandItemDisplay="Bottom" InsertItemPageIndexAction="ShowItemOnFirstPage">
                   <Columns>
@@ -113,7 +113,9 @@
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="DisplayName" AllowFiltering="True" HeaderText="Display" AllowSorting="true" />
                     <telerik:GridBoundColumn DataField="UserName" AllowFiltering="false" HeaderText="UserName" AllowSorting="true" />
                     <telerik:GridDropDownColumn ListValueField="Id" ListTextField="Name" DataField="MemberId" HeaderText="Member" DataSourceID="ObjectDataSource2" />
+                    <telerik:GridButtonColumn ShowFilterIcon="false" HeaderText="Password" ButtonType="LinkButton" Text="Reset&nbsp;Password" CommandName="ResetPassword" ShowInEditForm="False" ItemStyle-Width="150px" />
                     <telerik:GridEditCommandColumn />
+                    <telerik:GridButtonColumn ConfirmText="Delete this User?" ConfirmDialogType="RadWindow" ConfirmTitle="Delete" ButtonType="FontIconButton" CommandName="Delete" ItemStyle-Width="40px" />
                   </Columns>
                 </MasterTableView>
                 <ClientSettings EnableRowHoverStyle="true" EnablePostBackOnRowClick="true">
