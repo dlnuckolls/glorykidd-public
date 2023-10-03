@@ -84,6 +84,35 @@ namespace Directory.CGBC.Helpers {
       }
       return list;
     }
+    public static DataTable GetAdminUsers() {
+      return SqlHelpers.Select(SqlStatements.SQL_GET_ALL_USERS);
+    }
+    public static List<AdminRoles> GetAdminRoles() {
+      var list = new List<AdminRoles>();
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_ROLES).Rows;
+      foreach(DataRow row in rows) {
+        list.Add(new AdminRoles() {
+          Id = row["Id"].ToString().GetInt32(),
+          Name = row["RoleName"].ToString()
+        });
+      }
+      return list;
+    }
+    public static List<AdminMembers> GetUserMembers() {
+      var members = new List<AdminMembers>();
+      members.Add(new AdminMembers() {
+        Id = 0,
+        Name = "--Select--"
+      });
+      var rows = SqlHelpers.Select(SqlStatements.SQL_GET_ALL_USER_MEMBERS).Rows;
+      foreach(DataRow row in rows) {
+        members.Add(new AdminMembers() {
+          Id = row["Id"].ToString().GetInt32(),
+          Name = "{0} {1}".FormatWith(row["FirstName"].ToString(), row["LastName"].ToString())
+        }); 
+      }
+      return members;
+    }
     private static List<State> GetStates() {
       var states = new List<State>();
       var rows = SqlHelpers.Select(SqlStatements.SQL_GET_STATES).Rows;

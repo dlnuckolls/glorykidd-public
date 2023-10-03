@@ -24,13 +24,17 @@
             <h2>
               <telerik:RadLabel ID="SiteApplicationTitle" runat="server" />
             </h2>
+            <div style="width: 100%; padding: 5px;">
+              <telerik:RadLabel ID="CurrentUser" runat="server" CssClass="headertitle" />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<telerik:RadButton ID="rbdirectory" runat="server" Skin="Silk" RenderMode="Auto" Text="Directory" OnClick="rbdirectory_Click" CssClass="css3SimpleAction" />
+              &nbsp;&nbsp;<telerik:RadButton ID="rbPassword" runat="server" Skin="Silk" RenderMode="Auto" Text="Change Password" CssClass="css3SimpleAction" />
+              &nbsp;&nbsp;<telerik:RadButton ID="rbLogout" runat="server" Skin="Silk" RenderMode="Auto" Text="Logout" OnClick="rbLogout_OnClick" CssClass="css3SimpleAction" />
+            </div>
           </telerik:LayoutColumn>
         </Columns>
       </telerik:LayoutRow>
     </Rows>
   </telerik:RadPageLayout>
-</asp:Content>
-<asp:Content runat="server" ID="ActionButtonArea" ContentPlaceHolderID="ActionButtons">
   <telerik:RadWindow RenderMode="Auto" ID="PasswordChange" runat="server" Width="800px" Height="400px" Modal="true" Style="z-index: 1001;"
     Behaviors="Close" VisibleOnPageLoad="False" OpenerElementID="rbPassword" Skin="Outlook" ReloadOnShow="True" IconUrl="~/images/logo.jpg">
     <ContentTemplate>
@@ -91,18 +95,6 @@
       </telerik:RadAjaxPanel>
     </ContentTemplate>
   </telerik:RadWindow>
-  <div style="width: 100%; padding: 25px 5px 25px;">
-    <telerik:RadLabel ID="CurrentUser" runat="server"></telerik:RadLabel>
-  </div>
-  <div style="width: 100%; padding: 5px;">
-    <telerik:RadButton ID="rbPassword" runat="server" Skin="Silk" RenderMode="Auto" Text="Change Password" CssClass="css3SimpleAction" />
-  </div>
-  <div style="width: 100%; padding: 5px;">
-    <telerik:RadButton ID="rbLogout" runat="server" Skin="Silk" RenderMode="Auto" Text="Logout" OnClick="rbLogout_OnClick" CssClass="css3SimpleAction" />
-  </div>
-  <div style="width: 100%; padding: 5px;">
-    <telerik:RadButton ID="rbdirectory" runat="server" Skin="Silk" RenderMode="Auto" Text="Directory" OnClick="rbdirectory_Click" CssClass="css3SimpleAction" />
-  </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContentArea" runat="server">
   <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" BackgroundPosition="Center">
