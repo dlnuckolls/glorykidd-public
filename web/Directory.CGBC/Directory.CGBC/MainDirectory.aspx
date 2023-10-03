@@ -114,16 +114,16 @@
                 <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" RenderMode="Auto" Text="New Member" OnClick="NewMember_Click" />
               </div>
               <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="MemberList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowFilteringByColumn="true"
-                HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0"
+                HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0" PageSize="50"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="MemberList_NeedDataSource" OnItemCommand="MemberList_ItemCommand" OnPreRender="MemberList_PreRender">
                 <MasterTableView AutoGenerateColumns="False" EditMode="InPlace" DataKeyNames="Id" GridLines="None" ClientDataKeyNames="Id">
                   <Columns>
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="LastName" AllowFiltering="True" HeaderText="Last Name" AllowSorting="true" />
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="FirstName" AllowFiltering="True" HeaderText="First Name" AllowSorting="true" />
-                    <telerik:GridBoundColumn DataField="CellPhone" AllowFiltering="false" HeaderText="Cell" AllowSorting="true" />
-                    <telerik:GridBoundColumn DataField="HomePhone" AllowFiltering="false" HeaderText="Home" AllowSorting="true" />
+                    <telerik:GridBoundColumn DataField="CellPhone" AllowFiltering="false" HeaderText="Cell" AllowSorting="true" ItemStyle-Width="100px" />
+                    <telerik:GridBoundColumn DataField="HomePhone" AllowFiltering="false" HeaderText="Home" AllowSorting="true" ItemStyle-Width="100px" />
                     <telerik:GridDateTimeColumn ShowFilterIcon="false" DataField="LastUpdate" AllowFiltering="False" HeaderText="Last Update" AllowSorting="true" ItemStyle-Width="100px" DataFormatString="{0:MM/dd/yyyy}" />
-                    <telerik:GridButtonColumn UniqueName="EditMemberRow" ButtonType="LinkButton" Text="Edit" CommandName="EditRow" ItemStyle-Width="50px" />
+                    <telerik:GridButtonColumn UniqueName="EditMemberRow" ButtonType="LinkButton" Text="Edit" CommandName="EditRow" />
                   </Columns>
                   <NestedViewTemplate>
                     <telerik:RadPageLayout ID="DisplayMemberDetails" runat="server" CssClass="apptext">
@@ -181,6 +181,7 @@
                   </NestedViewTemplate>
                 </MasterTableView>
                 <ClientSettings EnableRowHoverStyle="true" EnablePostBackOnRowClick="true">
+                  <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"  />
                   <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                 </ClientSettings>
                 <PagerStyle Mode="NextPrevAndNumeric" />
