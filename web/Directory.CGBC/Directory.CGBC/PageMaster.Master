@@ -20,12 +20,8 @@
           <telerik:LayoutRow CssClass="header">
             <Columns>
               <%--Header Area--%>
-              <telerik:LayoutColumn Span="10" SpanMd="10" SpanSm="12" SpanXs="12">
+              <telerik:LayoutColumn Span="12">
                 <asp:ContentPlaceHolder ID="HeaderArea" runat="server" />
-              </telerik:LayoutColumn>
-              <%--Nav Buttons--%>
-              <telerik:LayoutColumn Span="2" SpanMd="2" SpanSm="12" SpanXs="12">
-                <asp:ContentPlaceHolder ID="ActionButtons" runat="server" />
               </telerik:LayoutColumn>
             </Columns>
           </telerik:LayoutRow>
@@ -41,7 +37,6 @@
               </telerik:CompositeLayoutColumn>
             </Columns>
           </telerik:LayoutRow>
-
           <%--Footer--%>
           <telerik:LayoutRow>
             <Columns>

@@ -10,7 +10,7 @@ namespace Directory.CGBC {
   public partial class EditMember: BasePage {
     protected void Page_Load(object sender, EventArgs e) {
       if(Page.IsPostBack) return;
-      if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
+      if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("~/");
       SessionInfo.CurrentPage = PageNames.EditMember;
       TitleTag.Text = SessionInfo.DisplayCurrentPage;
       PasswordChange.OpenerElementID = rbPassword.ClientID;

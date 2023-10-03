@@ -70,4 +70,6 @@ namespace Directory.CGBC.Objects {
   public class MaritalStatus: EnumItemType { }
   public class EmailAddress: EnumItemType { }
   public class MemberRelations: EnumItemType { }
+  public class AdminRoles: EnumItemType { }
+  public class AdminMembers: EnumItemType { }
 }

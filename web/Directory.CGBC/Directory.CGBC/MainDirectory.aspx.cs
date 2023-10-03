@@ -8,7 +8,7 @@ using Telerik.Web.UI;
 namespace Directory.CGBC {
   public partial class MainDirectory: BasePage {
     protected void Page_Load(object sender, EventArgs e) {
-      if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("/");
+      if(SessionInfo.CurrentUser.IsNullOrEmpty() || !SessionInfo.IsAuthenticated) Response.Redirect("~/");
       SessionInfo.CurrentPage = PageNames.Home;
       TitleTag.Text = SessionInfo.DisplayCurrentPage;
       PasswordChange.OpenerElementID = rbPassword.ClientID;
@@ -18,6 +18,8 @@ namespace Directory.CGBC {
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
       if(!SessionInfo.IsAdmin)
         NewMember.Visible = false;
+      if(!SessionInfo.CurrentUser.IsSuperAdmin)
+        SuperAdmin.Visible = false;
     }
     protected void rbLogout_OnClick(object sender, EventArgs e) { SessionInfo.CurrentUser.LogoutUser(); Response.Redirect("~/"); }
     protected void ConfirmChangePassword_Click(object sender, EventArgs e) {
@@ -87,6 +89,11 @@ namespace Directory.CGBC {
     protected void MemberList_PreRender(object sender, EventArgs e) {
       if(!SessionInfo.IsAdmin)
         MemberList.MasterTableView.GetColumn("EditMemberRow").Visible = false;
+    }
+
+    protected void SuperAdmin_Click(object sender, EventArgs e) {
+      SessionInfo.CurrentMember = null;
+      Response.Redirect("~/AdminUsers.aspx");
     }
   }
 }

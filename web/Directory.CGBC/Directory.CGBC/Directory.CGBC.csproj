@@ -13,7 +13,7 @@
     <RootNamespace>Directory.CGBC</RootNamespace>
     <AssemblyName>Directory.CGBC</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminUsers.aspx" />
     <Content Include="EditMember.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="images\logo.jpg" />
@@ -131,6 +132,13 @@
     <Content Include="styles\default.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminUsers.aspx.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsers.aspx.designer.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,7 +220,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49573</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49573/</IISUrl>
+          <IISUrl>https://glorykidd.tractmanager.com/Directory.CGBC</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -220,7 +228,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

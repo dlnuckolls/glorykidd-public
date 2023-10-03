@@ -10,7 +10,7 @@
 namespace Directory.CGBC {
 
 
-  public partial class MainDirectory {
+  public partial class AdminUsers {
 
     /// <summary>
     /// TitleTag control.
@@ -58,13 +58,13 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel CurrentUser;
 
     /// <summary>
-    /// SuperAdmin control.
+    /// rbdirectory control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadButton SuperAdmin;
+    protected global::Telerik.Web.UI.RadButton rbdirectory;
 
     /// <summary>
     /// rbPassword control.
@@ -202,15 +202,6 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel SuccessLabel;
 
     /// <summary>
-    /// RadAjaxLoadingPanel1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
-
-    /// <summary>
     /// RadAjaxPanel1 control.
     /// </summary>
     /// <remarks>
@@ -229,30 +220,30 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadPageLayout PageContentArea;
 
     /// <summary>
-    /// RadLabel12 control.
+    /// UserList control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadLabel RadLabel12;
+    protected global::Telerik.Web.UI.RadGrid UserList;
 
     /// <summary>
-    /// NewMember control.
+    /// ObjectDataSource1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadButton NewMember;
+    protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
 
     /// <summary>
-    /// MemberList control.
+    /// ObjectDataSource2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadGrid MemberList;
+    protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
   }
 }

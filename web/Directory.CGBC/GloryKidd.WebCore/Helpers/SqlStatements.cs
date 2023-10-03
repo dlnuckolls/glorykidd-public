@@ -8,6 +8,15 @@
     public const string SQL_AUTHENTICATE_USER = "SELECT * FROM dbo.AdminUsers WHERE UserName = '{0}' AND UserPass = '{1}' AND Deleted = 0;";
     public const string SQL_GET_USER_ROLE = "SELECT RoleName FROM dbo.AdminRoles WHERE Id = '{0}';";
     public const string SQL_GET_USER_DETAILS = "SELECT * FROM dbo.AdminUsers WHERE Id = '{0}';";
+    public const string SQL_GET_ALL_USERS = @"
+SELECT [Id],[RoleId],[DisplayName],[UserName],[Notes],[SuperAdmin],[MemberId]
+  FROM [CGBCDirectory].[dbo].[AdminUsers]
+ ORDER BY DisplayName ASC;";
+    public const string SQL_GET_ALL_ROLES = "SELECT Id, RoleName FROM dbo.AdminRoles;";
+    public const string SQL_GET_ALL_USER_MEMBERS = @"
+SELECT m.Id, m.FirstName, m.LastName
+  FROM dbo.Member m 
+ ORDER BY m.LastName, m.FirstName ASC;";
     public const string SQL_UPDATE_USER_DETAILS = "UPDATE dbo.AdminUsers SET DisplayName = '{0}', UserName = '{1}', Notes = '{2}' WHERE Id = '{3}';";
     public const string SQL_RESET_USER_PASSWORD = "UPDATE dbo.AdminUsers SET UserPass = '{0}', PasswordReset = 1 WHERE Id = '{1}';";
     public const string SQL_UPDATE_USER_PASSWORD = "UPDATE dbo.AdminUsers SET UserPass = '{0}', PasswordReset = 0 WHERE Id = '{1}';";
