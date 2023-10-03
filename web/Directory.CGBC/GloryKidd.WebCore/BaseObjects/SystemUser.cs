@@ -32,13 +32,13 @@ namespace GloryKidd.WebCore.BaseObjects {
     public void LoadUserDetails(int id) {
       try {
         var dataRow = SqlHelpers.Select(SqlStatements.SQL_GET_USER_DETAILS.FormatWith(id)).Rows[0];
-        if (dataRow.IsNullOrEmpty()) return;
+        if(dataRow.IsNullOrEmpty()) return;
         Id = dataRow["Id"].ToString().GetInt32();
         DisplayName = dataRow["DisplayName"].ToString();
         UserName = dataRow["UserName"].ToString();
         Notes = dataRow["Notes"].ToString();
         MemberId = dataRow["MemberId"].ToString().GetInt32();
-      } catch (Exception ex) {
+      } catch(Exception ex) {
         LogError("SystemUser: Load User method", ex);
         throw new ApplicationException("Record not found");
       }
@@ -47,7 +47,7 @@ namespace GloryKidd.WebCore.BaseObjects {
     public void AuthenticateUser(string userName, string password) {
       try {
         var dataRow = SqlHelpers.Select(SqlStatements.SQL_AUTHENTICATE_USER.FormatWith(userName, password)).Rows[0];
-        if (dataRow.IsNullOrEmpty()) return;
+        if(dataRow.IsNullOrEmpty()) return;
         Id = dataRow["Id"].ToString().GetInt32();
         RoleId = dataRow["RoleId"].ToString();
         DisplayName = dataRow["DisplayName"].ToString();
@@ -59,7 +59,7 @@ namespace GloryKidd.WebCore.BaseObjects {
         Role = SqlHelpers.SelectScalar(SqlStatements.SQL_GET_USER_ROLE.FormatWith(RoleId)).ToString();
         IsAuthenticated = true;
         IsAdmin = Role == "System Admin";
-      } catch (Exception ex) {
+      } catch(Exception ex) {
         LogError("SystemUser: Authenticate User method", ex);
         throw new ApplicationException("Record not found");
       }
@@ -72,19 +72,21 @@ namespace GloryKidd.WebCore.BaseObjects {
     private void LogError(string module, string error) {
       SqlHelpers.Insert(SqlStatements.SQL_LOG_EXCEPTION.FormatWith(DateTime.Now.ConvertSqlDateTime(), module.FixSqlString(), error.FixSqlString(), string.Empty));
     }
-
+    public void RemoveUser() {
+      SqlHelpers.Update(SqlStatements.SQL_DELETE_USER.FormatWith(Id));
+    }
     public void SaveUserDetails() {
       try {
-        if (Id.IsNullOrEmpty()) {
+        if(Id.IsNullOrEmpty() || Id == 0) {
           // Create New User
-          Id = SqlHelpers.InsertScalar(SqlStatements.SQL_CREATE_USER_DETAILS.FormatWith(DisplayName.FixSqlString(),
-            UserName.FixSqlString(), Notes.FixSqlString(250))).GetInt32();
+          Id = SqlHelpers.InsertScalar(SqlStatements.SQL_CREATE_USER_DETAILS.FormatWith(RoleId, DisplayName.FixSqlString(),
+            UserName.FixSqlString(), Notes.FixSqlString(250), MemberId == 0 ? "NULL" : MemberId.ToString())).GetInt32();
         } else {
           // Update User
           SqlHelpers.Update(SqlStatements.SQL_UPDATE_USER_DETAILS.FormatWith(DisplayName.FixSqlString(),
-            UserName.FixSqlString(), Notes.FixSqlString(250), Id));
+            UserName.FixSqlString(), Notes.FixSqlString(250), MemberId == 0 ? "NULL" : MemberId.ToString(), Id));
         }
-      } catch (Exception ex) {
+      } catch(Exception ex) {
         LogError("SystemUser: Save User method", ex);
         throw new ApplicationException("Record not Saved");
       }
@@ -93,7 +95,7 @@ namespace GloryKidd.WebCore.BaseObjects {
     public string ValidateUser(string userName) {
       var rtn = string.Empty;
       var uid = SqlHelpers.SelectScalar(SqlStatements.SQL_VALIDATE_USER.FormatWith(userName));
-      if (!uid.IsNullOrEmpty()) rtn = uid.ToString();
+      if(!uid.IsNullOrEmpty()) rtn = uid.ToString();
       return rtn;
     }
 

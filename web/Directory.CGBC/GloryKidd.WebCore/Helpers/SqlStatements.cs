@@ -11,17 +11,18 @@
     public const string SQL_GET_ALL_USERS = @"
 SELECT [Id],[RoleId],[DisplayName],[UserName],[Notes],[SuperAdmin],[MemberId]
   FROM [CGBCDirectory].[dbo].[AdminUsers]
+ WHERE Deleted = 0
  ORDER BY DisplayName ASC;";
     public const string SQL_GET_ALL_ROLES = "SELECT Id, RoleName FROM dbo.AdminRoles;";
     public const string SQL_GET_ALL_USER_MEMBERS = @"
 SELECT m.Id, m.FirstName, m.LastName
   FROM dbo.Member m 
  ORDER BY m.LastName, m.FirstName ASC;";
-    public const string SQL_UPDATE_USER_DETAILS = "UPDATE dbo.AdminUsers SET DisplayName = '{0}', UserName = '{1}', Notes = '{2}' WHERE Id = '{3}';";
+    public const string SQL_UPDATE_USER_DETAILS = "UPDATE dbo.AdminUsers SET DisplayName = '{0}', UserName = '{1}', Notes = '{2}', MemberId = {3} WHERE Id = '{4}';";
     public const string SQL_RESET_USER_PASSWORD = "UPDATE dbo.AdminUsers SET UserPass = '{0}', PasswordReset = 1 WHERE Id = '{1}';";
     public const string SQL_UPDATE_USER_PASSWORD = "UPDATE dbo.AdminUsers SET UserPass = '{0}', PasswordReset = 0 WHERE Id = '{1}';";
-    public const string SQL_CREATE_USER_DETAILS = "INSERT INTO dbo.AdminUsers (RoleId, DisplayName, UserName, Notes) OUTPUT inserted.Id  VALUES (2, '{0}', '{1}', '{2}');";
-    public const string SQL_DELETE_USER = "DELETE dbo.AdminUsers WHERE Id = '{0}';";
+    public const string SQL_CREATE_USER_DETAILS = "INSERT INTO dbo.AdminUsers (RoleId, DisplayName, UserName, Notes, MemberId) OUTPUT inserted.Id  VALUES ({0}, '{1}', '{2}', '{3}', {4});";
+    public const string SQL_DELETE_USER = "UPDATE dbo.AdminUsers SET Deleted = 1 WHERE Id = '{0}';";
     public const string SQL_VALIDATE_USER = "SELECT Id FROM dbo.AdminUsers WHERE UserName = '{0}' AND Deleted = 0;";
 
     // Exceptions
