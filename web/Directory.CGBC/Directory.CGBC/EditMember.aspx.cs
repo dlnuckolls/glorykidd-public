@@ -76,6 +76,7 @@ namespace Directory.CGBC {
       SuccessLabel.Text = "Success!";
     }
     protected void rbdirectory_Click(object sender, EventArgs e) {
+      SqlDataLoader.ReloadMemberRelations();
       SessionInfo.CurrentMember = null;
       Response.Redirect("~/MainDirectory.aspx");
     }

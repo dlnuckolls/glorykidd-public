@@ -109,10 +109,11 @@ namespace Directory.CGBC.Helpers {
         members.Add(new AdminMembers() {
           Id = row["Id"].ToString().GetInt32(),
           Name = "{0} {1}".FormatWith(row["FirstName"].ToString(), row["LastName"].ToString())
-        }); 
+        });
       }
       return members;
     }
+    public static void ReloadMemberRelations() { _memberRelations.Clear(); }
     private static List<State> GetStates() {
       var states = new List<State>();
       var rows = SqlHelpers.Select(SqlStatements.SQL_GET_STATES).Rows;

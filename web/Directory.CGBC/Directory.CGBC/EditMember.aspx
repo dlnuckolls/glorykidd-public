@@ -198,7 +198,7 @@
                         </telerik:RadGrid>
                         <div style="width: 100%;">&nbsp;</div>
                         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RelationshipTypes" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
-                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
+                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations"  TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>
