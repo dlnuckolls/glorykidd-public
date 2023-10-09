@@ -36,6 +36,7 @@ namespace Directory.CGBC {
       tMemberAddress2.Text = member.AddressList.Address2;
       tMemberCity.Text = member.AddressList.City;
       rddStates.SelectedValue = member.AddressList.State.Id.ToString();
+      tMemberZip.Text = member.AddressList.ZipCode;
       tMemberCell.Text = member.CellPhone.FormatPhone();
       tMemberHome.Text = member.HomePhone.FormatPhone();
       tMemberEmail1.Text = member.Email1;
@@ -92,6 +93,7 @@ namespace Directory.CGBC {
       member.AddressList.Address2 = tMemberAddress2.Text.Trim();
       member.AddressList.City = tMemberCity.Text.Trim();
       member.AddressList.State = SqlDataLoader.States().FirstOrDefault(s => s.Id == rddStates.SelectedValue.GetInt32());
+      member.AddressList.ZipCode = tMemberZip.Text.Trim();
       member.CellPhone = tMemberCell.Text.Trim();
       member.HomePhone = tMemberHome.Text.Trim();
       member.Email1 = tMemberEmail1.Text.Trim();
