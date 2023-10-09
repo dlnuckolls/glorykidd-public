@@ -113,7 +113,7 @@ namespace Directory.CGBC.Helpers {
       }
       return members;
     }
-    public static void ReloadMemberRelations() { _memberRelations.Clear(); }
+    public static void ReloadMemberRelations() { if(!_memberRelations.IsNullOrEmpty()) _memberRelations.Clear(); }
     private static List<State> GetStates() {
       var states = new List<State>();
       var rows = SqlHelpers.Select(SqlStatements.SQL_GET_STATES).Rows;
