@@ -102,8 +102,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdminUsers.aspx" />
-    <Content Include="EditMember.aspx" />
+    <Content Include="Admin\AdminUsers.aspx" />
+    <Content Include="Admin\EditMember.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="images\logo.jpg" />
     <Content Include="MasterPage.Master" />
@@ -132,11 +132,11 @@
     <Content Include="styles\default.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminUsers.aspx.cs">
+    <Compile Include="Admin\AdminUsers.aspx.cs">
       <DependentUpon>AdminUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminUsers.aspx.designer.cs">
+    <Compile Include="Admin\AdminUsers.aspx.designer.cs">
       <DependentUpon>AdminUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -146,11 +146,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditMember.aspx.cs">
+    <Compile Include="Admin\EditMember.aspx.cs">
       <DependentUpon>EditMember.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditMember.aspx.designer.cs">
+    <Compile Include="Admin\EditMember.aspx.designer.cs">
       <DependentUpon>EditMember.aspx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
@@ -228,7 +228,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
