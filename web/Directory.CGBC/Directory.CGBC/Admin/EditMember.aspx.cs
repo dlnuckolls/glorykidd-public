@@ -46,9 +46,9 @@ namespace Directory.CGBC {
         tMemberHistoricalNotes.Text += "{0}<br /><br />".FormatWith(n.NoteText);
       });
       if(member.DateOfBirth != DateTime.MinValue)
-        dpMemberBirthdate.DateInput.SelectedDate = member.DateOfBirth;
+        dpMemberBirthdate.SelectedDate = member.DateOfBirth;
       if(member.MarriageDate != DateTime.MinValue)
-        dpMemberMarriage.DateInput.SelectedDate = member.MarriageDate;
+        dpMemberMarriage.SelectedDate = member.MarriageDate;
 
       tMemberLastUpdate.Text = member.Modified != DateTime.MinValue ? member.Modified.ToShortDateString() : string.Empty;
       SessionInfo.CurrentMember = member;

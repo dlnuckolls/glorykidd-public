@@ -3,6 +3,7 @@ using Directory.CGBC.Objects;
 using GloryKidd.WebCore.Helpers;
 using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
 namespace Directory.CGBC {
@@ -31,7 +32,7 @@ namespace Directory.CGBC {
     protected void MemberList_NeedDataSource(object sender, GridNeedDataSourceEventArgs e) { ((RadGrid)sender).DataSource = SqlDataLoader.GetDirectoryList(); }
     protected void NewMember_Click(object sender, EventArgs e) {
       SessionInfo.CurrentMember = null;
-      Response.Redirect("~/EditMember.aspx");
+      Response.Redirect("~/Admin/EditMember.aspx");
     }
     protected void MemberList_ItemCommand(object sender, GridCommandEventArgs e) {
       var member = new Member();
@@ -65,6 +66,8 @@ namespace Directory.CGBC {
           ((RadLabel)viewPanel.FindControl("MemberPhone")).Text += !member.HomePhone.IsNullOrEmpty() ? "{0} ({1})<br />".FormatWith(member.HomePhone.FormatPhone(), "Home") : string.Empty;
           ((RadLabel)viewPanel.FindControl("MemberEmails")).Text += !member.Email1.IsNullOrEmpty() ? "{0}<br />".FormatWith(member.Email1) : string.Empty;
           ((RadLabel)viewPanel.FindControl("MemberEmails")).Text += !member.Email2.IsNullOrEmpty() ? "{0}<br />".FormatWith(member.Email2) : string.Empty;
+          ((RadLabel)viewPanel.FindControl("MemberDob")).Text = member.DateOfBirth == DateTime.MinValue ? string.Empty : member.DateOfBirth.ToShortDateString();
+          ((RadLabel)viewPanel.FindControl("MemberMarriage")).Text = member.MarriageDate == DateTime.MinValue ? string.Empty : member.MarriageDate.ToShortDateString();
           member.RelatedMembersList.ForEach(r => { ((RadLabel)viewPanel.FindControl("MemberRelation")).Text += "{0} ({1})<br />".FormatWith(r.DisplayName, r.Relationship.Name); });
           member.MemberNotes.ForEach(n => {
             ((RadLabel)viewPanel.FindControl("MemberNotes")).Text += "{0} - {1}<br />".FormatWith(n.UserName, n.NoteDate.ToShortDateString());
@@ -76,7 +79,7 @@ namespace Directory.CGBC {
           CollapseAllRows();
           member.LoadMember((int)((GridDataItem)e.Item).GetDataKeyValue("Id"));
           SessionInfo.CurrentMember = member;
-          Response.Redirect("~/EditMember.aspx");
+          Response.Redirect("~/Admin/EditMember.aspx");
           break;
       }
     }
@@ -87,13 +90,24 @@ namespace Directory.CGBC {
     }
 
     protected void MemberList_PreRender(object sender, EventArgs e) {
-      if(!SessionInfo.IsAdmin)
-        MemberList.MasterTableView.GetColumn("EditMemberRow").Visible = false;
+      //if(!SessionInfo.IsAdmin)
+      //  MemberList.MasterTableView.GetColumn("EditMemberRow").Visible = false;
+
+      foreach(GridDataItem dataItem in MemberList.MasterTableView.Items) {
+        var lButton = ((LinkButton)dataItem["EditMemberRow"].Controls[0]);
+        if(SessionInfo.IsAdmin || (int)(dataItem).GetDataKeyValue("Id") == SessionInfo.CurrentUser.MemberId) {
+          lButton.Enabled = true;
+        } else {
+          lButton.Enabled = false;
+          lButton.Text = string.Empty;
+        }
+      }
+
     }
 
     protected void SuperAdmin_Click(object sender, EventArgs e) {
       SessionInfo.CurrentMember = null;
-      Response.Redirect("~/AdminUsers.aspx");
+      Response.Redirect("~/Admin/AdminUsers.aspx");
     }
   }
 }
