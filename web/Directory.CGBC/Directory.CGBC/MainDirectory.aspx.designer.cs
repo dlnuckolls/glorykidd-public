@@ -121,6 +121,15 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel RadLabel1;
 
     /// <summary>
+    /// username control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox username;
+
+    /// <summary>
     /// UserNameRequired control.
     /// </summary>
     /// <remarks>
