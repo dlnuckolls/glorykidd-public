@@ -74,8 +74,8 @@ jobs:
       - name: Add Rewrite Rule
         run: |
           $file = "C:/www-root/directory.cedargrovebaptist.church/web.config"
-          (Get-Content $file).replace('<!--<rule name', '<rule name') | Set-Content $file         
-          (Get-Content $file).replace('</rule>-->', '</rule>') | Set-Content $file         
+          (Get-Content $file).replace('<!--<rewrite>', '<rewrite>') | Set-Content $file         
+          (Get-Content $file).replace('</rewrite>-->', '</rewrite>') | Set-Content $file         
 
   create-release:
     runs-on: [ self-hosted ]

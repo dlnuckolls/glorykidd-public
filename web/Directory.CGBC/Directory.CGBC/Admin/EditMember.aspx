@@ -55,6 +55,7 @@
                 <Columns>
                   <telerik:LayoutColumn>
                     <div style="width: 500px;">
+                      <telerik:RadTextBox runat="server" ID="username" name="username" type="hidden" value="NotRequired" autocomplete="username" />
                       <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="CurrentPassword" CssClass="appErrorMessage" Display="Dynamic"
                         ErrorMessage="Current Password is Required<br />" ToolTip="Current Password is Required" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:RequiredFieldValidator>
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="NewPassword" CssClass="appErrorMessage" Display="Dynamic"
@@ -64,19 +65,19 @@
                       <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="New Password and Confirmation did not match<br />" Display="Dynamic" ControlToCompare="NewPassword"
                         ControlToValidate="ConfirmPassword" CssClass="appErrorMessage" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:CompareValidator>
                       <div style="width: 100%; padding: 1px;">
-                        <telerik:RadTextBox ID="CurrentPassword" TextMode="Password" runat="server" Width="100%" Label="Current Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
+                        <telerik:RadTextBox ID="CurrentPassword" TextMode="Password" runat="server" Width="100%" Label="Current Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3" AutoComplete="current-password">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
                       </div>
                       <div style="width: 100%; padding: 1px;">
-                        <telerik:RadTextBox ID="NewPassword" TextMode="Password" runat="server" Width="100%" Label="New Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
+                        <telerik:RadTextBox ID="NewPassword" TextMode="Password" runat="server" Width="100%" Label="New Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3" AutoComplete="new-password">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
                       </div>
                       <div style="width: 100%; padding: 1px;">
-                        <telerik:RadTextBox ID="ConfirmPassword" TextMode="Password" runat="server" Width="100%" Label="Confirm Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3">
+                        <telerik:RadTextBox ID="ConfirmPassword" TextMode="Password" runat="server" Width="100%" Label="Confirm Password" CssClass="MyEnabledTextBox2" LabelCssClass="MyLabel3" AutoComplete="new-password">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
@@ -107,11 +108,12 @@
           <Columns>
             <telerik:LayoutColumn Span="1" />
             <telerik:LayoutColumn Span="10">
-              <div style="width: 70%; float: left; text-align: center;">
+              <div style="width: 60%; float: left; text-align: center;">
                 <telerik:RadLabel ID="EditMemberLabel" runat="server" Text="Edit Member" CssClass="headertitle" />
               </div>
-              <div style="width: 28%; float: right; text-align: right;">
-                <telerik:RadButton ID="UpdateMember" runat="server" Primary="true" Skin="Silk" RenderMode="Auto" Text="Save" OnClick="UpdateMember_Click" />
+              <div style="width: 38%; float: right; text-align: right;">
+                <telerik:RadButton ID="NewMember" runat="server" Primary="true" Skin="Silk" RenderMode="Auto" Text="New" OnClick="NewMember_Click" />
+                &nbsp;&nbsp;<telerik:RadButton ID="UpdateMember" runat="server" Primary="true" Skin="Silk" RenderMode="Auto" Text="Save" OnClick="UpdateMember_Click" />
                 &nbsp;&nbsp;<telerik:RadButton ID="CancelUpdate" runat="server" Skin="Silk" RenderMode="Auto" Text="Cancel" OnClick="rbdirectory_Click" />
               </div>
               <telerik:RadPageLayout ID="DisplayMemberDetails" runat="server" CssClass="apptext">
@@ -198,7 +200,7 @@
                         </telerik:RadGrid>
                         <div style="width: 100%;">&nbsp;</div>
                         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RelationshipTypes" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
-                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations"  TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
+                        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="AllMemberRelations" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
                       </telerik:LayoutColumn>
                     </Columns>
                   </telerik:LayoutRow>

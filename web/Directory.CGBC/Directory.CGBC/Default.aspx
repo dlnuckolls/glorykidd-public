@@ -25,7 +25,7 @@
                   <asp:Login ID="Login2" runat="server" Width="100%" EnableViewState="false" OnAuthenticate="Login2_Authenticate">
                     <LayoutTemplate>
                       <div style="width: 100%; padding: 5px;">
-                        <telerik:RadTextBox ID="UserName" runat="server" Width="100%" Label="Email Address" CssClass="MyEnabledTextBox" LabelCssClass="MyLabel">
+                        <telerik:RadTextBox ID="UserName" runat="server" Width="100%" Label="Email Address" CssClass="MyEnabledTextBox" LabelCssClass="MyLabel" AutoComplete="username">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
@@ -33,7 +33,7 @@
                           ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1"></asp:RequiredFieldValidator><br />
                       </div>
                       <div style="width: 100%; padding: 5px;">
-                        <telerik:RadTextBox ID="Password" TextMode="Password" runat="server" Width="100%" Label="Password" CssClass="MyEnabledTextBox" LabelCssClass="MyLabel">
+                        <telerik:RadTextBox ID="Password" TextMode="Password" runat="server" Width="100%" Label="Password" CssClass="MyEnabledTextBox" LabelCssClass="MyLabel" AutoComplete="current-password">
                           <HoveredStyle CssClass="MyHoveredTextBox"></HoveredStyle>
                           <FocusedStyle CssClass="MyFocusedTextBox"></FocusedStyle>
                         </telerik:RadTextBox>
