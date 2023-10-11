@@ -247,6 +247,15 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadLabel EditMemberLabel;
 
     /// <summary>
+    /// NewMember control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadButton NewMember;
+
+    /// <summary>
     /// UpdateMember control.
     /// </summary>
     /// <remarks>

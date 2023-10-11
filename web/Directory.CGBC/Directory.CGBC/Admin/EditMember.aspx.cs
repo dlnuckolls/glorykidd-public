@@ -20,11 +20,17 @@ namespace Directory.CGBC {
       CurrentUser.Text = $"Welcome {SessionInfo.CurrentUser.DisplayName}";
       PopulateDdl();
       PopulateMember();
+      if(!SessionInfo.IsAdmin) {
+        NewMember.Visible = true;
+      } else {
+        NewMember.Visible = false;
+      }
     }
     private void PopulateMember() {
       Member member = new Member();
       if(!SessionInfo.CurrentMember.IsNullOrEmpty()) {
         member = (Member)SessionInfo.CurrentMember;
+        NewMember.Visible = false;
       }
       rddSalutation.SelectedValue = member.Salutation.Id.ToString();
       tMemberFirstName.Text = member.FirstName;
@@ -104,6 +110,7 @@ namespace Directory.CGBC {
         member.MarriageDate = dpMemberMarriage.SelectedDate.Value;
       var memberNote = tMemberNotes.Text.Trim();
       member.SaveMember(memberNote, SessionInfo.CurrentUser.Id);
+      NewMember.Visible = true;
       UpdateMember.Visible = false;
       CancelUpdate.Text = "Done";
     }
@@ -126,6 +133,16 @@ namespace Directory.CGBC {
       var i = (int)((GridDataItem)e.Item).GetDataKeyValue("Id");
       var rm = ((Member)SessionInfo.CurrentMember).RelatedMembersList.FirstOrDefault(r => r.Id == i);
       ((Member)SessionInfo.CurrentMember).RelatedMembersList.Remove(rm);
+    }
+
+    protected void NewMember_Click(object sender, EventArgs e) {
+      SqlDataLoader.ReloadMemberRelations();
+      SessionInfo.CurrentMember = null;
+      PopulateDdl();
+      PopulateMember();
+      NewMember.Visible = false;
+      UpdateMember.Visible = true;
+      CancelUpdate.Text = "Cancel";
     }
   }
 }

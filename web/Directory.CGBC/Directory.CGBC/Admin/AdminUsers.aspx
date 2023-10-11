@@ -55,7 +55,7 @@
                 <Columns>
                   <telerik:LayoutColumn>
                     <div style="width: 500px;">
-                      <telerik:RadTextBox runat="server" id="username" name="username" type="hidden" value="NotRequired" autocomplete="username"/>
+                      <telerik:RadTextBox runat="server" ID="username" name="username" type="hidden" value="NotRequired" autocomplete="username" />
                       <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="CurrentPassword" CssClass="appErrorMessage" Display="Dynamic"
                         ErrorMessage="Current Password is Required<br />" ToolTip="Current Password is Required" ValidationGroup="Login1" ForeColor="Red" Font-Size="1em"></asp:RequiredFieldValidator>
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="NewPassword" CssClass="appErrorMessage" Display="Dynamic"
@@ -105,6 +105,7 @@
           <Columns>
             <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true" />
             <telerik:LayoutColumn Span="8" SpanMd="12" SpanSm="12" SpanXs="12">
+              <telerik:RadLabel ID="lErrorMessage" runat="server" CssClass="errorMessageDisplay" />
               <telerik:RadGrid Skin="Silk" RenderMode="Auto" runat="server" ID="UserList" AllowPaging="true" Width="100%" PagerStyle-AlwaysVisible="True" AllowSorting="true" OnItemCommand="UserList_ItemCommand"
                 HorizontalAlign="Left" AutoGenerateColumns="False" CellPadding="0" BorderWidth="0px" BorderStyle="None" MasterTableView-CellPadding="0" MasterTableView-CellSpacing="0" OnDeleteCommand="UserList_DeleteCommand"
                 MasterTableView-GridLines="Horizontal" GroupingSettings-CaseSensitive="false" OnNeedDataSource="UserList_NeedDataSource" OnUpdateCommand="UserList_EditCommand" OnInsertCommand="UserList_InsertCommand">
@@ -113,7 +114,7 @@
                     <telerik:GridDropDownColumn ShowFilterIcon="false" ListValueField="Id" ListTextField="Name" DataField="RoleId" HeaderText="Role" DataSourceID="ObjectDataSource1" />
                     <telerik:GridBoundColumn ShowFilterIcon="false" FilterControlWidth="100%" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" DataField="DisplayName" AllowFiltering="True" HeaderText="Display" AllowSorting="true" />
                     <telerik:GridBoundColumn DataField="UserName" AllowFiltering="false" HeaderText="UserName" AllowSorting="true" />
-                    <telerik:GridDropDownColumn ListValueField="Id" ListTextField="Name" DataField="MemberId" HeaderText="Member" DataSourceID="ObjectDataSource2" />
+                    <telerik:GridDropDownColumn DropDownControlType="RadComboBox" ListValueField="Id" ListTextField="Name" DataField="MemberId" HeaderText="Member" DataSourceID="ObjectDataSource2" ItemStyle-Width="250px" ColumnEditorID="dropdownEditor" />
                     <telerik:GridButtonColumn ShowFilterIcon="false" HeaderText="Password" ButtonType="LinkButton" Text="Reset&nbsp;Password" CommandName="ResetPassword" ShowInEditForm="False" ItemStyle-Width="150px" />
                     <telerik:GridEditCommandColumn />
                     <telerik:GridButtonColumn ConfirmText="Delete this User?" ConfirmDialogType="RadWindow" ConfirmTitle="Delete" ButtonType="FontIconButton" CommandName="Delete" ItemStyle-Width="40px" />
@@ -124,6 +125,9 @@
                 </ClientSettings>
                 <PagerStyle Mode="NextPrevAndNumeric" />
               </telerik:RadGrid>
+              <telerik:GridDropDownListColumnEditor ID="dropdownEditor" runat="server" DataTextField="Name" DataValueField="Id">
+                <DropDownStyle Width="100%" />
+              </telerik:GridDropDownListColumnEditor>
               <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetAdminRoles" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
               <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetUserMembers" TypeName="Directory.CGBC.Helpers.SqlDataLoader" />
             </telerik:LayoutColumn>
@@ -134,3 +138,4 @@
     </telerik:RadPageLayout>
   </telerik:RadAjaxPanel>
 </asp:Content>
+

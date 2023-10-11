@@ -229,6 +229,15 @@ namespace Directory.CGBC {
     protected global::Telerik.Web.UI.RadPageLayout PageContentArea;
 
     /// <summary>
+    /// lErrorMessage control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadLabel lErrorMessage;
+
+    /// <summary>
     /// UserList control.
     /// </summary>
     /// <remarks>
@@ -236,6 +245,15 @@ namespace Directory.CGBC {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadGrid UserList;
+
+    /// <summary>
+    /// dropdownEditor control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.GridDropDownListColumnEditor dropdownEditor;
 
     /// <summary>
     /// ObjectDataSource1 control.
