@@ -37,7 +37,7 @@ jobs:
 #          msbuild web/elusivesoftware/ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       - name: Output Values
         run: |
-          echo "The value is set as ${{ vars.ELUSIVE_VERSION }}"
+          echo "The value is set as ${{ vars.ELUSIVE_VERSION }}.${{ github.RUN_NUMBER }}"
 #      - name: Upload Build Artifact
 #        uses: actions/upload-artifact@v2.2.4
 #        with:
