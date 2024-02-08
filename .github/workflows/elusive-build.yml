@@ -29,15 +29,18 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.3
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
-      - name: Install dependencies
+#      - name: Install dependencies
+#        run: |
+#          nuget restore web/elusivesoftware/ElusiveSoftware.sln
+#      - name: Build Solution
+#        run: |
+#          msbuild web/elusivesoftware/ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      - name: Output Values
         run: |
-          nuget restore web/elusivesoftware/ElusiveSoftware.sln
-      - name: Build Solution
-        run: |
-          msbuild web/elusivesoftware/ElusiveSoftware.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: GKWeb Build - ${{ steps.buildid.outputs.time }}
-          path: web/elusivesoftware/ElusiveSoftware.net/bin/app.publish/*
-          retention-days: 30
+          echo "The value is set as $ELUSIVE_VERSION"
+#      - name: Upload Build Artifact
+#        uses: actions/upload-artifact@v2.2.4
+#        with:
+#          name: GKWeb Build - ${{ steps.buildid.outputs.time }}
+#          path: web/elusivesoftware/ElusiveSoftware.net/bin/app.publish/*
+#          retention-days: 30
