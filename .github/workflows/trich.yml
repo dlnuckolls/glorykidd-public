@@ -46,12 +46,12 @@ jobs:
       - name: Create Backup
         run: |
           New-Item -ItemType "directory" -Path "C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }}/" -Force
-          Copy-Item C:/www-root/turleyrichards.com/newweb/* -Destination C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
+          Copy-Item C:/www-root/turleyrichards.com/* -Destination C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }}/ -Recurse
           Compress-Archive -Path "C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }}/*" -Update -DestinationPath C:/backups/trich-${{ steps.buildid.outputs.formattedTime }}.zip -CompressionLevel "Fastest"
           Remove-Item -Path C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/trich/* -Destination C:/www-root/turleyrichards.com/newweb/ -Recurse -Force          
+          Copy-Item web/trich/* -Destination C:/www-root/turleyrichards.com/ -Recurse -Force          
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
