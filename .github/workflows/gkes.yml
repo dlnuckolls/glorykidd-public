@@ -32,10 +32,10 @@ jobs:
       build: ${{ steps.buildid.outputs.formattedTime }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Generate Build Number
         id: buildid
-        uses: josStorer/get-current-time@v2.0.2
+        uses: josStorer/get-current-time@v2.1.2
         with:
           utcOffset: "00:00"
           format: YYYY.MM.DD-HH.mm
@@ -71,7 +71,7 @@ jobs:
       output2: 
     steps:
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.14.0
         with:
           removeArtifacts: true
           tag: gkes-${{ needs.deploy.outputs.build }}

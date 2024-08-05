@@ -23,12 +23,12 @@ jobs:
     name: Deploy CGBC Web
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
       - name: Generate Build Number
         id: buildid
-        uses: josStorer/get-current-time@v2.0.2
+        uses: josStorer/get-current-time@v2.1.2
         with:
           utcOffset: "00:00"
           format: YYYY.MM.DD-HH.mm
@@ -55,7 +55,7 @@ jobs:
         run: |
           Copy-Item web/cgbc/* -Destination C:/www-root/cedargrovebaptist.church/ -Recurse -Force          
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.14.0
         with:
           removeArtifacts: true
           tag: cgbc-${{ steps.buildid.outputs.formattedTime }}
