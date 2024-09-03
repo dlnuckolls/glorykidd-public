@@ -3,8 +3,6 @@ using GloryKidd.WebCore.BaseObjects;
 using GloryKidd.WebCore.Helpers;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
 namespace Directory.CGBC {

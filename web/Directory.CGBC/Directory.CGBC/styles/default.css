@@ -41,6 +41,30 @@
   text-align: center;
 }
 
+#wrapper .appPrinttext {
+  background-color: ghostwhite;
+  border-radius: 10px;
+  max-width: 800pt;
+}
+
+  #wrapper .appPrinttext .labels {
+    font-size: .9em;
+    padding: 5px;
+  }
+
+  #wrapper .appPrinttext .labelText {
+    width: 100px;
+    text-align: right;
+    vertical-align: top;
+  }
+
+  #wrapper .appPrinttext p {
+    padding-left: 80px;
+    padding-right: 80px;
+    text-align: justify;
+  }
+
+
 #wrapper .apptext {
   background-color: bisque;
   border-radius: 10px;

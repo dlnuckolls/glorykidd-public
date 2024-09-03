@@ -1,3 +1,11 @@
+Telerik.Web.UI.RadTabStrip, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadMultiPage, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadPdfViewer, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadClientExportManager, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadButton, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadLabel, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadAvatar, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
+Telerik.Web.UI.RadPageLayout, Telerik.Web.UI, Version=2023.3.1010.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
 Telerik.Web.UI.GridDropDownListColumnEditor, Telerik.Web.UI, Version=2023.2.714.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
 Telerik.Web.UI.RadComboBox, Telerik.Web.UI, Version=2023.2.714.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
 Telerik.Web.UI.RadDatePicker, Telerik.Web.UI, Version=2023.2.714.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4
