@@ -2,8 +2,11 @@ using BlazorAppWeb.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using BlazorAppWebMovies.Data;
+using BlazorAppWeb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContextFactory<BlazorAppWebQuotesContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("BlazorAppWebQuotesContext") ?? throw new InvalidOperationException("Connection string 'BlazorAppWebQuotesContext' not found.")));
 builder.Services.AddDbContextFactory<BlazorAppWebMoviesContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("BlazorAppWebMoviesContext") ?? throw new InvalidOperationException("Connection string 'BlazorAppWebMoviesContext' not found.")));
 

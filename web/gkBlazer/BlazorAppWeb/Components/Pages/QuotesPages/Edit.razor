@@ -1,0 +1,104 @@
+@page "/quotes/edit"
+@using Microsoft.EntityFrameworkCore
+@using BlazorAppWeb.Models
+@inject IDbContextFactory<BlazorAppWeb.Data.BlazorAppWebQuotesContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>Quotes</h2>
+<hr />
+@if (Quotes is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Quotes" OnValidSubmit="UpdateQuotes" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="Quotes.Id" value="@Quotes.Id" />
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author:</label>
+                    <InputText id="author" @bind-Value="Quotes.Author" class="form-control" aria-required="true"/>
+                    <ValidationMessage For="() => Quotes.Author" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="quote" class="form-label">Quote:</label>
+                    <InputText id="quote" @bind-Value="Quotes.Quote" class="form-control" aria-required="true"/>
+                    <ValidationMessage For="() => Quotes.Quote" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="lastuseddate" class="form-label">LastUsedDate:</label>
+                    <InputDate id="lastuseddate" @bind-Value="Quotes.LastUsedDate" class="form-control" aria-required="true"/>
+                    <ValidationMessage For="() => Quotes.LastUsedDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="count" class="form-label">Count:</label>
+                    <InputNumber id="count" @bind-Value="Quotes.Count" class="form-control" aria-required="true"/>
+                    <ValidationMessage For="() => Quotes.Count" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/quotes">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    [SupplyParameterFromForm]
+    private Quotes? Quotes { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Quotes ??= await context.Quotes.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (Quotes is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateQuotes()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(Quotes!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!QuotesExists(Quotes!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/quotes");
+    }
+
+    private bool QuotesExists(int id)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.Quotes.Any(e => e.Id == id);
+    }
+}

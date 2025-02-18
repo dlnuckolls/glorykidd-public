@@ -1,0 +1,59 @@
+@page "/quotes/create"
+@using Microsoft.EntityFrameworkCore
+@using BlazorAppWeb.Models
+@inject IDbContextFactory<BlazorAppWeb.Data.BlazorAppWebQuotesContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Quotes</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Quotes" OnValidSubmit="AddQuotes" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author:</label> 
+                <InputText id="author" @bind-Value="Quotes.Author" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Quotes.Author" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="quote" class="form-label">Quote:</label> 
+                <InputText id="quote" @bind-Value="Quotes.Quote" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Quotes.Quote" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="lastuseddate" class="form-label">LastUsedDate:</label> 
+                <InputDate id="lastuseddate" @bind-Value="Quotes.LastUsedDate" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Quotes.LastUsedDate" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="count" class="form-label">Count:</label> 
+                <InputNumber id="count" @bind-Value="Quotes.Count" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Quotes.Count" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/quotes">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Quotes Quotes { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddQuotes()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Quotes.Add(Quotes);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/quotes");
+    }
+}
