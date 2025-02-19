@@ -1,0 +1,14 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+  <!-- <include file="Schemas/Schemas.xml" relativeToChangelogFile="true" /> -->
+  <include file="Tables/change_sets.xml" relativeToChangelogFile="true"/>
+  <include file="StoredProcedures/change_sets.xml" relativeToChangelogFile="true"/>
+  <!-- <include file="Functions/Functions.xml" relativeToChangelogFile="true"/>
+  <include file="Sequences/Sequences.xml" relativeToChangelogFile="true"/>
+  <include file="Views/Views.xml" relativeToChangelogFile="true"/>
+  <include file="Types/Types.xml" relativeToChangelogFile="true"/>
+  <include file="Triggers/Triggers.xml" relativeToChangelogFile="true"/>
+  <include file="SystemConfig/SystemConfig.xml" relativeToChangelogFile="true"/>
+  <include file="Data/Data.xml" relativeToChangelogFile="true"/>
+  <include file="Datafix/Datafix.xml" relativeToChangelogFile="true"/> -->
+</databaseChangeLog>
