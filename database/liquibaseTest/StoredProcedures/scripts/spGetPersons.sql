@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE [dbo].[usp_GetAllPersons]
+AS
+BEGIN
+  SELECT * FROM Person;
+END

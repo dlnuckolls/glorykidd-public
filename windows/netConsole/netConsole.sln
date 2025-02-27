@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netConsole", "netConsole.csproj", "{1C2F0249-5E33-FB19-B8E0-CB0C94F9863E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C2F0249-5E33-FB19-B8E0-CB0C94F9863E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C2F0249-5E33-FB19-B8E0-CB0C94F9863E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C2F0249-5E33-FB19-B8E0-CB0C94F9863E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C2F0249-5E33-FB19-B8E0-CB0C94F9863E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9B76478-B4F6-42BD-AAEC-57C43045CB27}
+	EndGlobalSection
+EndGlobal
