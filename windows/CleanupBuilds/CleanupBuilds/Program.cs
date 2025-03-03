@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Diagnostics;
 using System.Text;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CleanupBuilds {
   class Program {

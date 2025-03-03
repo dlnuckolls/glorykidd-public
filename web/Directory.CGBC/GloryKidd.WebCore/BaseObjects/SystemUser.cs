@@ -100,6 +100,7 @@ namespace GloryKidd.WebCore.BaseObjects {
     }
 
     public string ResetUserPassword(int id) {
+      // TODO ASP.NET membership should be replaced with ASP.NET Core identity. For more details see https://docs.microsoft.com/aspnet/core/migration/proper-to-2x/membership-to-core-identity.
       var tempPassword = Membership.GeneratePassword(10, 2);
       SqlHelpers.Update(SqlStatements.SQL_RESET_USER_PASSWORD.FormatWith(tempPassword.EncryptString(), id));
       return tempPassword;
