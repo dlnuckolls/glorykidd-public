@@ -9,20 +9,20 @@
 <link rel="stylesheet" href="WomensMinistry.css" media="screen">
     <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 6.17.0, nicepage.com">
+    <meta name="generator" content="Nicepage 7.7.3, nicepage.com">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <link id="u-theme-google-font" rel="stylesheet" href="../fonts.css">
     <link id="u-page-google-font" rel="stylesheet" href="../WomensMinistry-fonts.css">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -69,15 +69,26 @@
     function gdprConfirmed() {
         return true;
     }
-    function dynamicLoadScript(src) {
+    function dynamicLoadScript() {
         var script = document.createElement('script');
-        script.src = src && typeof src === 'string' ? src : 'https://www.google.com/recaptcha/api.js?render=6LeKIYwnAAAAAHz8zhDE5jdTr7DzosFHUuakino8';
+        script.src = 'https://www.google.com/recaptcha/api.js?render=6LeKIYwnAAAAAHz8zhDE5jdTr7DzosFHUuakino8';
         script.async = true;
         document.body.appendChild(script);
         script.onload = function() {
             let event = new CustomEvent("recaptchaLoaded");
             document.dispatchEvent(event);
         };
+    }
+    function showRecaptchaError(error) {
+        error = error || '';
+        var formError = document.querySelector('.u-form-send-error');
+
+        if (formError) {
+            formError.innerText = 'Site Owner Error: ' + error.replace(/:[\s\S]*/, '');
+            formError.style.display = 'block';
+        }
+
+        console.error('Error in grecaptcha: ', error);
     }
     document.addEventListener('DOMContentLoaded', function () {
         var confirmButton = document.querySelector('.u-cookies-consent .u-button-confirm');
@@ -99,38 +110,39 @@
             if (!gdprConfirmed()) {
                 return;
             }
+
             (function (grecaptcha, sitekey, actions) {
                 var recaptcha = {
                     execute: function (action, submitFormCb) {
-                        try {
-                            grecaptcha.execute(
-                                sitekey,
-                                {action: action}
-                            ).then(function (token) {
-                                var forms = document.getElementsByTagName('form');
-
-                                for (var i = 0; i < forms.length; i++) {
-                                    var fields = forms[i].getElementsByTagName('input');
-
-                                    for (var j = 0; j < fields.length; j++) {
-                                        var field = fields[j];
-
-                                        if ('recaptchaResponse' === field.getAttribute('name')) {
-                                            field.setAttribute('value', token);
-                                            break;
-                                        }
-                                    }
-                                }
-                                submitFormCb();
-                            });
-                        } catch (e) {
-                            var formError = document.querySelector('.u-form-send-error');
-
-                            if (formError) {
-                                formError.innerText = 'Site Owner Error: ' + e.message.replace(/:[\s\S]*/, '');
-                                formError.style.display = 'block';
-                            }
+                        if (typeof grecaptcha === 'undefined' || typeof grecaptcha.execute !== 'function') {
+                            showRecaptchaError('reCAPTCHA script failed to load.');
+                            return;
                         }
+
+                        grecaptcha.execute(sitekey, {action: action}).then((token) => {
+                            if (!token) {
+                                throw new Error('Empty token received from reCAPTCHA');
+                            }
+
+                            var forms = document.getElementsByTagName('form');
+
+                            for (var i = 0; i < forms.length; i++) {
+                                var response = forms[i].querySelector('[name="recaptchaResponse"]');
+
+                                if (!response) {
+                                    response = document.createElement('input');
+                                    response.setAttribute('type', 'hidden');
+                                    response.setAttribute('name', 'recaptchaResponse');
+                                    forms[i].appendChild(response);
+                                }
+
+                                response.value = token;
+                            }
+
+                            submitFormCb();
+                        }).catch((e) => {
+                            showRecaptchaError(e.message);
+                        });
                     },
 
                     executeContact: function (submitFormCb) {
@@ -148,11 +160,11 @@
         });
     </script>
 <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-path-to-root="../" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-28e1"><a href="../" class="u-image u-logo u-image-1" data-image-width="1050" data-image-height="599" title="Home">
+  <body data-path-to-root="../" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-28e1"><a href="../" data-page-id="990100126" class="u-image u-logo u-image-1" data-image-width="1050" data-image-height="599" title="Home">
         <img src="../images/CG2-1.png" class="u-logo-image u-logo-image-1">
       </a><p class="u-custom-font u-font-lobster u-text u-text-1">Cedar Grove Baptist Church</p><nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="MD">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700;">
-          <a class="u-button-style u-custom-border u-custom-border-color u-custom-borders u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+          <a class="u-button-style u-custom-border u-custom-border-color u-custom-borders u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
             <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
             <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
 </g></svg>
@@ -197,7 +209,7 @@
           <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
         </div>
       </nav></header>
-    <section class="u-clearfix u-image u-shading lazyload u-section-1" id="sec-4bdd" data-image-width="1920" data-image-height="2560" data-bg="url(&quot;../images/IMG_4435-scaled.jpeg&quot;)">
+    <section class="u-clearfix u-image u-shading lazyload u-section-1" id="sec-4bdd" data-image-width="1920" data-image-height="2560" data-bg="linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url(&quot;../images/IMG_4435-scaled.jpeg&quot;)">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-align-center u-container-style u-expanded-width u-group u-shape-rectangle u-group-1" data-animation-name="customAnimationIn" data-animation-duration="2000">
           <div class="u-container-layout u-valign-middle-xs u-container-layout-1">
@@ -212,15 +224,11 @@
         <h5 class="u-custom-font u-font-playfair-display u-text u-text-default u-text-1">Women's Ministry @ CGBC</h5>
         <p class="u-large-text u-text u-text-variant u-text-2"> The vision of Cedar Grove’s Women’s Ministry is to encourage women to love the Lord our God with all their heart, soul, mind and strength; and to love our neighbors as ourselves. We endeavor to do so by encouraging women to worship God through a lifestyle of fellowship, prayer, Bible study, and service. We believe that as women grow and mature in godliness, they are better equipped to nurture and serve in their families, to enrich the church, and to evangelize our local communities and the world.&nbsp;&nbsp;</p>
         <div class="fr-view u-clearfix u-rich-text u-text u-text-3">
-          <p>
-            <span style="font-style: italic;">Charm is deceitful, and beauty is vain, but a woman who fears the Lord is to be praised.</span>
-            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" id="isPasted">
-            <span style="font-weight: 700;">Proverbs 31:30</span>
+          <p><span style="font-style: italic;">Charm is deceitful, and beauty is vain, but a woman who fears the Lord is to be praised.</span>
+            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" id="isPasted"><span style="font-weight: 700;">Proverbs 31:30</span>
             <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
-            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
-            <span style="font-style: italic;">Older women likewise are to be reverent in behavior, not slanderers or slaves to much wine. They are to teach what is good, and so train the young women to love their husbands and children, to be self-controlled, pure, working at home, kind, and submissive to their own husbands, that the word of God may not be reviled.</span>
-            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
-            <span style="font-weight: 700;">Titus 2:3 – 5</span>
+            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><span style="font-style: italic;">Older women likewise are to be reverent in behavior, not slanderers or slaves to much wine. They are to teach what is good, and so train the young women to love their husbands and children, to be self-controlled, pure, working at home, kind, and submissive to their own husbands, that the word of God may not be reviled.</span>
+            <br style="box-sizing: border-box; color: rgb(17, 17, 17); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><span style="font-weight: 700;">Titus 2:3 – 5</span>
           </p>
         </div>
         <div class="u-expanded-width u-list u-list-1">
@@ -266,7 +274,7 @@
             <div class="u-layout-row">
               <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
                 <div class="u-container-layout u-valign-middle u-container-layout-1">
-                  <img class="u-image u-image-round u-radius-50 lazyload u-image-1" alt="" data-image-width="900" data-image-height="600" data-src="../images/900x600-embrace.jpg">
+                  <img class="u-image u-image-round u-radius-50 lazyload u-image-1" alt="" data-image-width="900" data-image-height="600" data-src="../images/900x600-embrace.jpg" loading="lazy">
                 </div>
               </div>
               <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
@@ -275,7 +283,7 @@
                   <p class="u-text u-text-default u-text-grey-40 u-text-2"> Having an unplanned pregnancy or being a young, single mom can be a time of mixed and bittersweet emotions but know you’re not alone. Embrace Grace is a support group designed to help and encourage young, single women that are experiencing an unplanned pregnancy. This support group provides spiritual and emotional support through the local church.<br>
                     <br>By joining an Embrace Grace group, you will have the opportunity to meet other moms who are in a similar life season, and mentors that have walked through similar situations to what you are now going through. Embrace Grace was created to help encourage, educate and empower young, single moms just like you, and to make sure that you know that you are loved and valued by God and the leaders at Embrace Grace.
                   </p>
-                  <img class="u-image u-image-default u-preserve-proportions lazyload u-image-2" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png">
+                  <img class="u-image u-image-default u-preserve-proportions lazyload u-image-2" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png" loading="lazy">
                   <a href="#sec-7f04" class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-dialog-link u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-1">Watch Video</a>
                 </div>
               </div>
@@ -301,14 +309,14 @@
                   <p class="u-text u-text-default u-text-2">Weekly bible studies on a variety of topics with rich discussions to foster growth and learning opportunities for women of all ages.&nbsp;<br>
                     <br>Check the calendar to connect with us for our next session!
                   </p>
-                  <a href="../Calendar.html" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Calendar<span style="font-size: 1.5rem;"></span>
+                  <a href="../Calendar.html" data-page-id="1600326598" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Calendar<span style="font-size: 1.5rem;"></span>
                   </a>
                 </div>
               </div>
               <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
                 <div class="u-container-layout u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
-                  <img class="u-image u-image-round u-radius-30 lazyload u-image-1" alt="" data-image-width="1380" data-image-height="918" data-src="../images/7568.jpg">
-                  <img class="u-image u-image-default u-preserve-proportions lazyload u-image-2" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png">
+                  <img class="u-image u-image-round u-radius-30 lazyload u-image-1" alt="" data-image-width="1380" data-image-height="918" data-src="../images/7568.jpg" loading="lazy">
+                  <img class="u-image u-image-default u-preserve-proportions lazyload u-image-2" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png" loading="lazy">
                 </div>
               </div>
             </div>
@@ -318,7 +326,7 @@
     </section>
     <section class="u-align-center u-clearfix u-palette-1-light-3 u-section-5" id="sec-5506">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <img class="u-image u-image-default lazyload u-image-1" alt="" data-image-width="960" data-image-height="720" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/371063124_10231165152848648_7437667015290433518_n.jpg">
+        <img class="u-image u-image-default lazyload u-image-1" alt="" data-image-width="960" data-image-height="720" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/371063124_10231165152848648_7437667015290433518_n.jpg" loading="lazy">
         <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
           <h2>friends Out to Lunch or Dinner (FOLD)</h2>
           <p>We love to celebrate together! We get together monthly (sometimes more) to just socialize and build better relationships. If you would like to join us, check out the calendar to see when our next gathering is happening!</p>
@@ -330,25 +338,25 @@
         <div class="u-gallery-inner u-gallery-inner-1">
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide" data-image-width="1920" data-image-height="2560">
-              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_4493-scaled.jpeg">
+              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_4493-scaled.jpeg" loading="lazy">
             </div>
             <div class="u-over-slide u-shading u-over-slide-1"></div>
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide" data-image-width="1920" data-image-height="2560">
-              <img class="u-back-image u-expanded lazyload u-back-image-2" data-src="../images/IMG_4435-scaled.jpeg">
+              <img class="u-back-image u-expanded lazyload u-back-image-2" data-src="../images/IMG_4435-scaled.jpeg" loading="lazy">
             </div>
             <div class="u-over-slide u-shading u-over-slide-2"></div>
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide" data-image-width="1152" data-image-height="1284">
-              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_3145-2-e1691513940497.jpg">
+              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_3145-2-e1691513940497.jpg" loading="lazy">
             </div>
             <div class="u-over-slide u-shading u-over-slide-3"></div>
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide" data-image-width="1893" data-image-height="2041">
-              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_3150-e1691513880632.jpg">
+              <img class="u-back-image u-expanded lazyload" data-src="../images/IMG_3150-e1691513880632.jpg" loading="lazy">
             </div>
             <div class="u-over-slide u-shading u-over-slide-4"></div>
           </div>
@@ -405,10 +413,10 @@
             </ul><span class="u-icon u-icon-circle u-text-palette-2-base u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 409.294 409.294" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-daee"></use></svg><svg class="u-svg-content" viewBox="0 0 409.294 409.294" id="svg-daee"><path d="m0 204.647v175.412h175.412v-175.412h-116.941c0-64.48 52.461-116.941 116.941-116.941v-58.471c-96.728 0-175.412 78.684-175.412 175.412z"></path><path d="m409.294 87.706v-58.471c-96.728 0-175.412 78.684-175.412 175.412v175.412h175.412v-175.412h-116.941c0-64.48 52.461-116.941 116.941-116.941z"></path></svg></span>
           </div>
         </div>
-        <img class="u-image u-image-default u-preserve-proportions lazyload u-image-1" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png">
+        <img class="u-image u-image-default u-preserve-proportions lazyload u-image-1" alt="" data-image-width="216" data-image-height="233" data-animation-name="customAnimationIn" data-animation-duration="2000" data-src="../images/Untitled-1.png" loading="lazy">
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-image u-shading lazyload u-section-8" id="carousel_3ba9" data-image-width="1980" data-image-height="1130" data-bg="url(&quot;../images/spiritual-prayer-hands-holding-bible3.jpg&quot;)">
+    <section class="u-align-center u-clearfix u-image u-shading lazyload u-section-8" id="carousel_3ba9" data-image-width="1980" data-image-height="1130" data-bg="linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url(&quot;../images/spiritual-prayer-hands-holding-bible3.jpg&quot;)">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h4 class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1"> QUESTION?</h4>
         <div class="u-container-style u-group u-radius-20 u-shape-round u-white u-group-1" data-animation-name="customAnimationIn" data-animation-duration="2000">
@@ -451,13 +459,13 @@
     
     
     <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-5064"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1" data-lang-en="Пример текста. Кликните, чтобы выбрать элемент &quot;Текст&quot;.">Cedar Grove Baptist Church<br>4900 Cedar Grove Rd<br>Shepherdsville, KY 40165
+        <p class="u-small-text u-text u-text-variant u-text-1">Cedar Grove Baptist Church<br>4900 Cedar Grove Rd<br>Shepherdsville, KY 40165
         </p>
         <p class="u-text u-text-2">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" data-href="https://docs.google.com/forms/d/e/1FAIpQLSexQO912wehO-vtkVf9ND4SyddZwknKGmtp0NuiENDOz2UD_Q/viewform" data-target="_blank"><span class="u-file-icon u-icon u-icon-1"><img src="../images/7471556.png" alt=""></span>Feedback
           </a>
         </p>
-        <div class="u-social-icons u-spacing-76 u-social-icons-1">
+        <div class="u-social-icons u-social-icons-1">
           <a class="u-social-url" title="facebook" target="_blank" href="https://www.facebook.com/cedargrove4900"><span class="u-icon u-social-facebook u-social-icon u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-48e0"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-48e0"><path fill="currentColor" d="M75.5,28.8H65.4c-1.5,0-4,0.9-4,4.3v9.4h13.9l-1.5,15.8H61.4v45.1H42.8V58.3h-8.8V42.4h8.8V32.2
 c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
           </a>
@@ -470,10 +478,11 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
         <div class="u-container-layout u-container-layout-1">
           <div class="u-video u-video-contain u-video-1">
             <div class="embed-responsive embed-responsive-1">
-              <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item lazyload" frameborder="0" allowfullscreen="" data-src="https://www.youtube.com/embed/KKw6HyUt92k?playlist=KKw6HyUt92k&amp;loop=1&amp;mute=0&amp;showinfo=0&amp;controls=0&amp;start=0"></iframe>
+              <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item lazyload" frameborder="0" allowfullscreen="" data-src="https://www.youtube.com/embed/KKw6HyUt92k?playlist=KKw6HyUt92k&amp;loop=1&amp;mute=0&amp;showinfo=0&amp;controls=0&amp;start=0" loading="lazy"></iframe>
             </div>
           </div>
-        </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efe9"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-efe9"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
+        </div>
+        <button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-efe9"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 16 16" x="0px" y="0px" id="svg-efe9"><rect x="7" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="2" height="16"></rect><rect x="0" y="7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -3.3138 8.0002)" width="16" height="2"></rect></svg></button>
       </div>
     </section><style>.u-dialog-section-12 .u-dialog-1 {
   width: 688px;

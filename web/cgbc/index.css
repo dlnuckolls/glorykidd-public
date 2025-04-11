@@ -308,6 +308,10 @@
     margin-right: 109px;
     width: 165px;
   }
+
+  .u-section-2 .u-carousel-control-2 {
+    right: 0;
+  }
 }
 
 @media (max-width: 991px) {
