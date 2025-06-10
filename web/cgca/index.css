@@ -1,5 +1,5 @@
  .u-section-1 {
-  min-height: 898px;
+  min-height: 803px;
 }
 
 .u-section-1 .u-shape-1 {
@@ -78,7 +78,7 @@
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 1px;
-  margin: 154px calc(((100% - 1140px) / 2)  + 194px) 60px auto;
+  margin: 154px calc(((100% - 1140px) / 2)  + 194px) 55px auto;
 }
 
 @media (max-width: 1199px) {
@@ -246,7 +246,7 @@
   .u-section-1 .u-btn-3 {
     margin-top: -211px;
     margin-right: calc(((100% - 340px) / 2));
-    margin-bottom: 60px;
+    margin-bottom: 55px;
   }
 }
 
