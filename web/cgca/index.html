@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="index.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 7.9.4, nicepage.com">
+    <meta name="generator" content="Nicepage 7.10.10, nicepage.com">
     
     
     
@@ -39,18 +39,8 @@
         return true;
     }
     if (gdprConfirmed()) {
-    document.write("\
-    \
-    <!-- Google Analytics -->\
-    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\
-    <gascript>\
-        window.dataLayer = window.dataLayer || [];\
-        function gtag(){dataLayer.push(arguments);}\
-        gtag('js', new Date());\
-        gtag('config', 'G-0ZQ2NMY9F1');\
-    </gascript>\
-    <!-- End Google Analytics -->\
-    ".replace(/gascript/g, 'script'));
+        var gaBody = "<!-- Google Analytics -->\n    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\n    <gascript>\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-0ZQ2NMY9F1');\n    </gascript>\n    <!-- End Google Analytics -->";
+        document.write(gaBody.replace(/gascript/g, 'script'));
     }
     </script><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
@@ -80,28 +70,28 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-spacing-11 u-unstyled" role="menubar"><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="./" style="--radius: 20px;" role="menuitem">Home</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="About.html" style="--radius: 20px;" role="menuitem">About</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Parents.html" style="--radius: 20px;" role="menuitem">Parents</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Calendar.html" style="--radius: 20px;" role="menuitem">Calendar</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank" style="--radius: 20px;" tabindex="-1" role="menuitem">Register Now</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank" style="--radius: 20px;" tabindex="-1" role="menuitem">Support CGCA</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Careers.html" style="--radius: 20px;" role="menuitem">Careers</a>
-</li><li class="u-nav-item" role="none"><a class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Contact.html" style="--radius: 20px;" role="menuitem">Contact</a>
+            <ul class="u-nav u-spacing-11 u-unstyled" role="menubar"><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="./" style="--radius: 20px;">Home</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="About.html" style="--radius: 20px;">About</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Parents.html" style="--radius: 20px;">Parents</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Calendar.html" style="--radius: 20px;">Calendar</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank" style="--radius: 20px;">Register Now</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank" style="--radius: 20px;">Support CGCA</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Careers.html" style="--radius: 20px;">Careers</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Contact.html" style="--radius: 20px;">Contact</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse" id="3332" role="region" aria-label="Menu panel">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Parents.html">Parents</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Calendar.html">Calendar</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank">Register Now</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">Support CGCA</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Careers.html">Careers</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2" role="menubar"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="./">Home</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="About.html">About</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Parents.html">Parents</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Calendar.html">Calendar</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank">Register Now</a>
+</li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">Support CGCA</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Careers.html">Careers</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Contact.html">Contact</a>
 </li></ul>
               </div>
             </div>
@@ -110,6 +100,7 @@
         </nav>
       </div></header>
     <section class="u-clearfix u-section-1" id="carousel_9e99">
+      
       <div class="u-palette-3-base u-shape u-shape-rectangle u-shape-1"></div>
       <div class="u-palette-1-base u-shape u-shape-rectangle u-shape-2"></div>
       <img class="u-align-left u-image lazyload u-image-1" data-animation-name="customAnimationIn" data-animation-duration="1000" data-animation-direction="" data-src="images/eeee.jpg" loading="lazy">
@@ -127,10 +118,11 @@
           </a>
         </div>
       </div>
-      
       <a href="https://app.praxischool.com/site_login.php?s=4101" class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-3-light-2 u-radius-50 u-btn-2" target="_blank"><span class="u-file-icon u-icon u-icon-2"><img src="images/11421926.png" alt=""></span>&nbsp;Register Now!
       </a>
-      <a href="https://sermons.cedargrovebaptist.church/sermons/1127232142497395/" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius u-btn-3" target="_blank">Welcome Video&nbsp;<br>Cedar Grove Christian Academy
+      <a href="SummerCamp.html" data-page-id="3054610258" class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-2-light-2 u-palette-3-base u-radius-50 u-btn-3" title="SummerCamp"><span class="u-file-icon u-icon u-icon-3"><img src="images/503357.png" alt=""></span>&nbsp;Summer Camp
+      </a>
+      <a href="https://sermons.cedargrovebaptist.church/sermons/1127232142497395/" class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius u-btn-4" target="_blank">Welcome Video&nbsp;<br>Cedar Grove Christian Academy
       </a>
     </section>
     <section class="skrollable skrollable-between u-align-center u-clearfix u-container-align-center u-image lazyload u-section-2" id="sec-c9f7" data-image-width="2500" data-image-height="1278" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="" data-bg="url(&quot;images/new.png&quot;)">
@@ -166,7 +158,7 @@
       </div>
     </section>
     <section class="u-align-left u-clearfix u-container-align-left u-section-4" id="sec-f38a">
-      <div class="u-clearfix u-sheet u-sheet-1"><span class="u-align-center u-icon u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 58 58" style=""><use xlink:href="#svg-4cd4"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 58 58" x="0px" y="0px" id="svg-4cd4" style="enable-background:new 0 0 58 58;"><path style="fill:#7383BF;" d="M53.566,45.283l-9.552-4.776C42.78,39.89,42,38.628,42,37.248V33.5
+      <div class="u-clearfix u-sheet u-sheet-1"><span class="u-align-center u-icon u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 58 58" style=""><use xlink:href="#svg-3c23"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 58 58" x="0px" y="0px" id="svg-3c23" style="enable-background:new 0 0 58 58;"><path style="fill:#7383BF;" d="M53.566,45.283l-9.552-4.776C42.78,39.89,42,38.628,42,37.248V33.5
 	c0.268-0.305,0.576-0.698,0.904-1.162c1.302-1.838,2.286-3.861,2.969-5.984C47.098,25.977,48,24.845,48,23.5v-4
 	c0-0.88-0.391-1.667-1-2.217V11.5c0,0,1.187-9-11-9c-12.188,0-11,9-11,9v5.783c-0.609,0.55-1,1.337-1,2.217v4
 	c0,1.054,0.554,1.981,1.383,2.517C26.382,30.369,29,33.5,29,33.5v3.655c0,1.333-0.728,2.56-1.899,3.198L18.18,45.22

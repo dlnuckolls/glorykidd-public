@@ -72,13 +72,25 @@
 }
 
 .u-section-1 .u-btn-3 {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  background-image: none;
+  margin: 39px auto 0 calc(((100% - 1140px) / 2)  + 76px);
+  padding: 9px 74px 9px 73px;
+}
+
+.u-section-1 .u-icon-3 {
+  font-size: 2.8572em;
+}
+
+.u-section-1 .u-btn-4 {
   --radius: 50px;
   border-style: solid;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 1px;
-  margin: 154px calc(((100% - 1140px) / 2)  + 194px) 55px auto;
+  margin: 17px calc(((100% - 1140px) / 2)  + 194px) 55px auto;
 }
 
 @media (max-width: 1199px) {
@@ -111,18 +123,20 @@
   }
 
   .u-section-1 .u-btn-3 {
+    margin-top: 137px;
+    margin-left: calc(((100% - 940px) / 2)  + 58px);
+  }
+
+  .u-section-1 .u-btn-4 {
     font-size: 0.875rem;
+    margin-top: -81px;
     margin-right: calc(((100% - 940px) / 2));
-    margin-bottom: 44px;
+    margin-bottom: 51px;
     padding: 23px 30px 24px;
   }
 }
 
 @media (max-width: 991px) {
-   .u-section-1 {
-    min-height: 956px;
-  }
-
   .u-section-1 .u-shape-1 {
     width: calc(((100% - 720px) / 2) + 490px);
   }
@@ -151,9 +165,14 @@
   }
 
   .u-section-1 .u-btn-3 {
-    margin-top: 273px;
+    margin-top: 234px;
+    margin-left: calc(((100% - 720px) / 2));
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-top: -59px;
     margin-right: calc(((100% - 720px) / 2)  + 88px);
-    margin-bottom: 22px;
+    margin-bottom: 29px;
   }
 }
 
@@ -189,14 +208,18 @@
   }
 
   .u-section-1 .u-btn-3 {
-    margin-top: 175px;
+    margin-top: 136px;
+    margin-left: calc(((100% - 540px) / 2));
+  }
+
+  .u-section-1 .u-btn-4 {
     margin-right: calc(((100% - 540px) / 2));
   }
 }
 
 @media (max-width: 575px) {
    .u-section-1 {
-    min-height: 889px;
+    min-height: 640px;
   }
 
   .u-section-1 .u-shape-1 {
@@ -244,9 +267,14 @@
   }
 
   .u-section-1 .u-btn-3 {
-    margin-top: -211px;
+    margin-top: -305px;
+    margin-left: calc(((100% - 340px) / 2));
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-top: -4px;
     margin-right: calc(((100% - 340px) / 2));
-    margin-bottom: 55px;
+    margin-bottom: -26px;
   }
 }
 
