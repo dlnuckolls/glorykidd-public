@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using GloryKidd_Web_Auth.Components;
 using GloryKidd_Web_Auth.Components.Account;
 using GloryKidd_Web_Auth.Data;
+using BlazorDynamicForm;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
+builder.Services.AddBlazorDynamicForm();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
