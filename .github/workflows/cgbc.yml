@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
-    paths: [ web/cgbc/** ]
+    paths: [ web/cgbc.new/** ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -53,7 +53,9 @@ jobs:
           Remove-Item -Path C:/deployment-stage/cgbc/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/cgbc/* -Destination C:/www-root/cedargrovebaptist.church/ -Recurse -Force          
+          cd web/cgbc.new/cgbcWeb
+          dotnet build
+          dotnet publish -c Release -o C:/www-root/cedargrovebaptist.church      
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0
         with:
