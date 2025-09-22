@@ -15,4 +15,8 @@
     <Folder Include="Helpers/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../apiObjects/gkweb.api.types.csproj" />
+  </ItemGroup>
+
 </Project>

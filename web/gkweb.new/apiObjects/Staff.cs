@@ -1,6 +1,4 @@
-using System;
-
-namespace gkweb.api.Types;
+﻿namespace gkweb.api.types;
 
 public class Staff
 {

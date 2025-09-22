@@ -1,5 +1,4 @@
-
-using gkweb.api.Types;
+using gkweb.api.types;
 using Microsoft.Data.SqlClient;
 
 internal static class DataManager
