@@ -7,8 +7,8 @@ public class Staff
 
   public Staff() { }
 
-  public string? Group { get; set; }
+  public int Id { get; set; }
   public string? Title { get; set; }
   public string? Summary { get; set; }
-  public string? imageUrl { get; set; }
+  public string? ImageUrl { get; set; }
 }
