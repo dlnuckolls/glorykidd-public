@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgca", "cgca.new\cgca.csproj", "{81BB5EBB-D2A4-45CB-AEB3-1EFDCAEE8568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgca.api", "cgca.api\cgca.api.csproj", "{A4548969-AD81-4395-92F6-B6258E089C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgca.core", "cgca.core\cgca.core.csproj", "{1784C64A-842C-4A2A-A4DD-60DFFF6D710A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81BB5EBB-D2A4-45CB-AEB3-1EFDCAEE8568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81BB5EBB-D2A4-45CB-AEB3-1EFDCAEE8568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81BB5EBB-D2A4-45CB-AEB3-1EFDCAEE8568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81BB5EBB-D2A4-45CB-AEB3-1EFDCAEE8568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4548969-AD81-4395-92F6-B6258E089C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4548969-AD81-4395-92F6-B6258E089C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4548969-AD81-4395-92F6-B6258E089C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4548969-AD81-4395-92F6-B6258E089C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1784C64A-842C-4A2A-A4DD-60DFFF6D710A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1784C64A-842C-4A2A-A4DD-60DFFF6D710A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1784C64A-842C-4A2A-A4DD-60DFFF6D710A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1784C64A-842C-4A2A-A4DD-60DFFF6D710A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABEFA775-69A4-4C94-B46F-404CA7422208}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@cgca.api_HostAddress = http://localhost:5057
+
+GET {{cgca.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
