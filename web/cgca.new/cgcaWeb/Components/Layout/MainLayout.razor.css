@@ -13,7 +13,7 @@ main {
 }
 
 .top-row {
-    background-color: #f7f7f7;
+    background-color: white;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-start;
     height: 3.5rem;
@@ -38,31 +38,7 @@ main {
     text-overflow: ellipsis;
 }
 
-.menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #3a0647;
-}
 
-.menu li {
-    margin: 0 15px;
-}
-
-.menu a {
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-    color: white;
-}
-
-.menu a:hover {
-    background-color: #fff;
-    color: #3a0647;
-    border-radius: 5px;
-}
 
 @media (max-width: 640.98px) {
     .top-row {
