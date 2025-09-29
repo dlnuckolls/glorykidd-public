@@ -9,13 +9,11 @@
 <link rel="stylesheet" href="../Post-Template.css" media="screen">
     <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 7.10.10, nicepage.com">
+    <meta name="generator" content="Nicepage 7.13.0, nicepage.com">
     
     
     
-    <link id="u-theme-google-font" rel="stylesheet" href="../fonts.css">
     <link id="u-page-google-font" rel="stylesheet" href="../Post-Template-fonts.css">
-    <link id="u-header-footer-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:400">
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -29,13 +27,44 @@
 }</script>
     <meta name="theme-color" content="#478ac9">
   <script>
+    (function() {
     function gdprConfirmed() {
         return true;
     }
-    if (gdprConfirmed()) {
-        var gaBody = "<!-- Google Analytics -->\n    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\n    <gascript>\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-0ZQ2NMY9F1');\n    </gascript>\n    <!-- End Google Analytics -->";
-        document.write(gaBody.replace(/gascript/g, 'script'));
+
+    var added = false;
+    var currentScript = document.currentScript;
+
+    function insertHTML(html) {
+        const container = document.createElement('div');
+        container.innerHTML = html;
+        container.querySelectorAll('script').forEach(s => {
+            const ns = document.createElement('script');
+            ns.async = s.async;
+            if (s.src) {
+                ns.src = s.src;
+            } else {
+                ns.textContent = s.textContent;
+            }
+            s.replaceWith(ns);
+        });
+
+        if (currentScript && currentScript.parentNode) {
+            currentScript.insertAdjacentElement('afterend', container);
+        }
     }
+
+    window._npAddGAnalytics = function () {
+        if (gdprConfirmed() && !added) {
+            var gaBody = "<!-- Google Analytics -->\n    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\n    <gascript>\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-0ZQ2NMY9F1');\n    </gascript>\n    <!-- End Google Analytics -->";
+            var replacedBody = gaBody.replace(/gascript/g, 'script');
+            insertHTML(replacedBody);
+            added = true;
+        }
+    }
+
+    window._npAddGAnalytics();
+    })();
     </script><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-915e"><div class="u-clearfix u-sheet u-sheet-1">
@@ -70,7 +99,6 @@
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="../Calendar.html" style="--radius: 20px;">Calendar</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank" style="--radius: 20px;">Register Now</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank" style="--radius: 20px;">Support CGCA</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="../Careers.html" style="--radius: 20px;">Careers</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="../Contact.html" style="--radius: 20px;">Contact</a>
 </li></ul>
           </div>
@@ -84,7 +112,6 @@
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="../Calendar.html">Calendar</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank">Register Now</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">Support CGCA</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="../Careers.html">Careers</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="../Contact.html">Contact</a>
 </li></ul>
               </div>
@@ -99,7 +126,7 @@
           <div class="u-container-layout u-valign-middle u-container-layout-1"><!--blog_post_image-->
             <img alt="" class="u-blog-control u-expanded-width u-image u-image-default lazyload u-image-1" data-src="../images/3c07a6abe7c3e32fa92e77748aa4f8dd147fc3fef24b8093c58a8e099b79f23cd154f6088106fb7c8304510a79e2bab1ab0da3788e4ab274180c6c_1280.jpg" loading="lazy" src="../images/3c07a6abe7c3e32fa92e77748aa4f8dd147fc3fef24b8093c58a8e099b79f23cd154f6088106fb7c8304510a79e2bab1ab0da3788e4ab274180c6c_1280.jpg"><!--/blog_post_image--><!--blog_post_header-->
             <h2 class="u-blog-control u-text u-text-1">Classroom Teacher</h2><!--/blog_post_header--><!--blog_post_metadata-->
-            <div class="u-blog-control u-metadata u-metadata-1"><!--blog_post_metadata_date--><span class="u-meta-date u-meta-icon">Aug 09, 2023</span><!--/blog_post_metadata_date--><!--blog_post_metadata_category--><span class="u-meta-category u-meta-icon"><a href="../blog/blog.html#/blog-1///">Uncategorized</a></span><!--/blog_post_metadata_category--><!--blog_post_metadata_comments--><span class="u-meta-comments u-meta-icon"><!--blog_post_metadata_comments_content-->Comments (0)<!--/blog_post_metadata_comments_content--></span><!--/blog_post_metadata_comments-->
+            <div class="u-blog-control u-metadata u-metadata-1"><!--blog_post_metadata_date--><span class="u-meta-date u-meta-icon">Aug 09, 2023</span><!--/blog_post_metadata_date--><!--blog_post_metadata_category--><span class="u-meta-category u-meta-icon"><a href="/blog/blog.html#/blog-1///">Uncategorized</a></span><!--/blog_post_metadata_category--><!--blog_post_metadata_comments--><span class="u-meta-comments u-meta-icon"><!--blog_post_metadata_comments_content-->Comments (0)<!--/blog_post_metadata_comments_content--></span><!--/blog_post_metadata_comments-->
             </div><!--/blog_post_metadata--><!--blog_post_content-->
             <div class="u-align-justify u-blog-control u-post-content u-text u-text-2 fr-view"><p id="isPasted" style="line-height: 1.1;">CGCA teachers are responsible for planning, organizing, and implementing a Christ centered educational program for pre-K3 and pre-K4/5 for classes. Teachers help create and support a learning environment that guides and encourages students to reach their full spiritual and academic potential. Teachers are responsible for preparing lesson plans and educating students at their appropriate grade levels. Their duties include, but are not limited to, classroom teaching, providing assessments, and documenting the progress for students. Teachers will be responsible for classroom management by setting clear expectations of behavior and promoting self discipline. Teachers would be expected to communicate clearly with both administration and parents regarding the progress or deficiencies of their students. Teachers report to and are supervised by the school administrator and/or a supervisor designated by the administrator. Teachers have the responsibility to supervise the students assigned to them as well as students of the school. Teachers will also supervise their Teacher Aides while in their classroom</p><p id="isPasted"><span style="font-weight: 700;">Employment</span></p><ul><li style="line-height: 1.1;">10 Month Term</li><li style="line-height: 1.1;">3 Days Per Week</li><li style="line-height: 1.1;">8am - 12:30pm</li><li style="line-height: 1.1;">School Holidays and Breaks Off</li><li style="line-height: 1.1;">Salary $330/week</li></ul><p style="line-height: 1.1;"><span style="font-weight: 700;">Requirements</span></p><ul><li id="isPasted" style="line-height: 1.1;">Mature Christian with a sense of calling to Christian education</li><li style="line-height: 1.1;">Member of a local church with like-minded beliefs, regular attendance required</li><li style="line-height: 1.1;">Agreement with the Statement of Faith and Mission Statement of CGCA</li><li id="isPasted" style="line-height: 1.1;">Able to model a consistent Christian life both in their classroom and in their personal life</li><li id="isPasted" style="line-height: 1.1;">The gift of teaching</li><li id="isPasted" style="line-height: 1.1;">Lifelong learner and willing to continue to develop professionally</li><li id="isPasted" style="line-height: 1.1;">Team player and flexible</li><li id="isPasted" style="line-height: 1.1;">Good communication skills</li><li id="isPasted" style="line-height: 1.1;">Self starter or self motivated</li><li id="isPasted" style="line-height: 1.1;">Willing to take a Matthew 18 approach to resolving conflicts</li><li id="isPasted" style="line-height: 1.1;">Able to pass a background check</li></ul><p><br></p></div><!--/blog_post_content-->
           </div>

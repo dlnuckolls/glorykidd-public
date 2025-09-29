@@ -9,12 +9,11 @@
 <link rel="stylesheet" href="Calendar.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 7.10.10, nicepage.com">
+    <meta name="generator" content="Nicepage 7.13.0, nicepage.com">
     
     
     
-    <link id="u-theme-google-font" rel="stylesheet" href="fonts.css">
-    <link id="u-header-footer-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:400">
+    <link id="u-page-google-font" rel="stylesheet" href="Calendar-fonts.css">
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -31,16 +30,47 @@
     <meta property="og:description" content="Cedar Grove Christian Academy seeks to educate students using all the academic disciplines, and to engage students in the pursuit of God’s truth in all spheres of life.">
     <meta property="og:type" content="website">
   <script>
+    (function() {
     function gdprConfirmed() {
         return true;
     }
-    if (gdprConfirmed()) {
-        var gaBody = "<!-- Google Analytics -->\n    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\n    <gascript>\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-0ZQ2NMY9F1');\n    </gascript>\n    <!-- End Google Analytics -->";
-        document.write(gaBody.replace(/gascript/g, 'script'));
+
+    var added = false;
+    var currentScript = document.currentScript;
+
+    function insertHTML(html) {
+        const container = document.createElement('div');
+        container.innerHTML = html;
+        container.querySelectorAll('script').forEach(s => {
+            const ns = document.createElement('script');
+            ns.async = s.async;
+            if (s.src) {
+                ns.src = s.src;
+            } else {
+                ns.textContent = s.textContent;
+            }
+            s.replaceWith(ns);
+        });
+
+        if (currentScript && currentScript.parentNode) {
+            currentScript.insertAdjacentElement('afterend', container);
+        }
     }
+
+    window._npAddGAnalytics = function () {
+        if (gdprConfirmed() && !added) {
+            var gaBody = "<!-- Google Analytics -->\n    <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-0ZQ2NMY9F1\"></gascript>\n    <gascript>\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-0ZQ2NMY9F1');\n    </gascript>\n    <!-- End Google Analytics -->";
+            var replacedBody = gaBody.replace(/gascript/g, 'script');
+            insertHTML(replacedBody);
+            added = true;
+        }
+    }
+
+    window._npAddGAnalytics();
+    })();
     </script><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-915e"><div class="u-clearfix u-sheet u-sheet-1">
+  <body data-path-to-root="./" data-include-products="false" class="u-body u-clearfix u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-915e"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="#" class="u-hidden-lg u-hidden-md u-hidden-sm u-hidden-xl u-image u-logo u-image-1" data-image-width="3719" data-image-height="3718">
           <img src="images/CedarGroveCACOLORLogo.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -72,7 +102,6 @@
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Calendar.html" style="--radius: 20px;">Calendar</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank" style="--radius: 20px;">Register Now</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank" style="--radius: 20px;">Support CGCA</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Careers.html" style="--radius: 20px;">Careers</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-active-palette-3-base u-button-style u-hover-palette-4-base u-nav-link u-palette-1-base u-radius" href="Contact.html" style="--radius: 20px;">Contact</a>
 </li></ul>
           </div>
@@ -86,7 +115,6 @@
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Calendar.html">Calendar</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank">Register Now</a>
 </li><li role="none" class="u-nav-item"><a tabindex="-1" role="menuitem" class="u-button-style u-nav-link" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">Support CGCA</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Careers.html">Careers</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="Contact.html">Contact</a>
 </li></ul>
               </div>
@@ -96,7 +124,8 @@
         </nav>
       </div></header>
     <section class="u-clearfix u-section-1" id="block-1">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <h5 class="u-text u-text-default u-text-1">Cedar Grove Christian Academy will follow the same basic schedule as BCPS for breaks, holidays, and school closures.</h5>
         <div class="custom-expanded u-align-center u-clearfix u-custom-html u-custom-html-1">
           <iframe src="https://calendar.google.com/calendar/embed?height=800&amp;wkst=1&amp;ctz=America%2FNew_York&amp;showPrint=0&amp;title=Cedar%20Grove%20Christian%20Academy%20&amp;src=Y184YjQzYzQ1YmVjZDc5NjRjNGRhYmVmMGEzOWRhZWVkMzI1ZThjOTQ3NTQwZTFlOTk0MDYwNjU4NTk0ZjUwMjNlQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23616161&amp;color=%230B8043" style="border:solid 1px #777" width="1024" height="800" frameborder="0" scrolling="no"></iframe>
         </div>
