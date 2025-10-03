@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgcaWeb", "cgcaWeb\cgcaWeb.csproj", "{D661841D-61D9-4705-B74F-5B666B864CB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgca.web", "cgca.web\cgca.web.csproj", "{103D623A-9FAF-460B-AEB5-116F79C78DDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{D661841D-61D9-4705-B74F-5B666B864CB3}.Release|x64.Build.0 = Release|Any CPU
 		{D661841D-61D9-4705-B74F-5B666B864CB3}.Release|x86.ActiveCfg = Release|Any CPU
 		{D661841D-61D9-4705-B74F-5B666B864CB3}.Release|x86.Build.0 = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|x64.Build.0 = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Debug|x86.Build.0 = Debug|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|x64.ActiveCfg = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|x64.Build.0 = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|x86.ActiveCfg = Release|Any CPU
+		{103D623A-9FAF-460B-AEB5-116F79C78DDB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
