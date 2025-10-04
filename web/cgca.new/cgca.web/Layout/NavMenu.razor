@@ -1,8 +1,11 @@
 ﻿<nav class="navbar navbar-expand-md mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href=""><image src="images/cgca-logo.png" class="image-logo"/></a>
-        <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+        <a class="navbar-brand" href="">
+            <image src="images/cgca-logo.png" class="image-logo" />
+        </a>
+        <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation"
+            @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
@@ -28,19 +31,37 @@
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link link-secondary" href="https://app.praxischool.com/site_login.php?s=4101" target="_blank">
+                    <NavLink class="nav-link link-secondary" href="https://app.praxischool.com/site_login.php?s=4101"
+                        target="_blank">
                         Register Now
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link link-secondary" href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">
+                    <NavLink class="nav-link link-secondary" href="https://forms.gle/sEakenNv3o7Jckaa8"
+                        target="_blank">
+                        Contact Us
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-secondary"
+                        href="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx" target="_blank">
                         Support CGCA
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link link-secondary" href="/contact">
-                        Contact
-                    </NavLink>
+                    <a href="https://www.facebook.com/cedargrovechristianacademy" class="text-decoration-none">
+                        <Icon Name="IconName.Facebook" Size="IconSize.x3"/>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.linkedin.com/company/cg-christian-academy" class="text-decoration-none">
+                        <Icon Name="IconName.Linkedin" Size="IconSize.x3" />
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/cedargrove.christianacademy/" class="text-decoration-none">
+                        <Icon Name="IconName.Instagram" Size="IconSize.x3" />
+                    </a>
                 </li>
             </ul>
         </div>

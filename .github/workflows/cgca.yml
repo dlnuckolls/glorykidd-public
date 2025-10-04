@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
-    paths: [ web/cgca/** ]
+    paths: [ web/cgca.new/** ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -53,7 +53,9 @@ jobs:
           Remove-Item -Path C:/deployment-stage/cgca/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/cgca/* -Destination C:/www-root/cedargrovechristianacademy.org/ -Recurse -Force
+          cd web/cgca.new/cgca.web
+          dotnet build
+          dotnet publish -c Release -o C:/www-root/cedargrovechristianacademy.org/     
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0
         with:
