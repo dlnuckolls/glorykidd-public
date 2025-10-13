@@ -1,0 +1,4 @@
+{
+  "blazorFormatter.attributeBreakThreshold": 10,
+  "blazorFormatter.indentSize": 2
+}

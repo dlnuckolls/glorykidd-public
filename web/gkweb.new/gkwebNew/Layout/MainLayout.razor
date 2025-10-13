@@ -1,13 +1,21 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">
-                About
-            </a>
-        </div>
-        <article class="content px-4">
-        @Body
-        </article>
-    </main>
+
+<NavMenu />
+
+<main style="height: 100%;">
+  <div class="container">
+
+    @Body
+
+    <div class="row">
+      <div class="col-12">&nbsp;</div>
+    </div>
+  </div>
+</main>
+<div style="width: 100%; text-align: center; background-color: #333333; color: whitesmoke; text-size: .7em">
+  <br />
+  <i style="color: rgb(111, 255, 0);">Do you see a man who excels in his work? He will stand before kings; He will not
+    stand before unknown men. <b>Proverbs 22:29</b></i>
+  <br />
+  <p style="color: rgb(203, 203, 203);">GloryKidd Technologies LLC, Copyright &copy; 2025, All rights reserved.<br /><br />&nbsp;</p>
 </div>
