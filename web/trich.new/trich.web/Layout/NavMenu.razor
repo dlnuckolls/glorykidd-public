@@ -1,36 +1,56 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<nav class="navbar navbar-expand-md mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">trich.web</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <a class="navbar-brand" href="">
+            <image src="images/turleysplace.png" class="image-logo" />
+        </a>
+        <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation"
+            @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-item link-secondary" href="" Match="NavLinkMatch.All">
+                        Home
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-secondary" href="/calendar">
+                        Calendar
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-secondary"
+                        href="https://forms.gle/VrTYwLTa7G6k8M9v9" target="_blank">
+                        News
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-secondary" href="https://forms.gle/sEakenNv3o7Jckaa8"
+                        target="_blank">
+                        Bio
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <a href="http://www.facebook.com/turleyrichards" class="text-decoration-none">
+                        <Icon Name="IconName.Facebook" Size="IconSize.x3" Color="IconColor.Primary" />
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.youtube.com/channel/UCnzb-1a_VIH0a-kkyvGHAQw" class="text-decoration-none">
+                        <Icon Name="IconName.Youtube" Size="IconSize.x3" Color="IconColor.Danger" />
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
+</nav>
 
 @code {
     private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
 
     private void ToggleNavMenu()
     {

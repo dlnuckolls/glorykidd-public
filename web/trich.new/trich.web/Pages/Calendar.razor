@@ -1,0 +1,20 @@
+﻿@page "/calendar"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Performance Calendar</PageTitle>
+
+<div class="row">
+  <div class="col-12">
+    <Alert Color="AlertColor.Info" style="text-align: left; border-radius: 25px;">
+      <Icon Name="IconName.Calendar2" class="me-2"></Icon> Come on out and see me, you won't be sorry!
+    </Alert>
+    <iframe
+      src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;showTitle=1&amp;showPrint=0&amp;showTabs=0&amp;title=Live%20Performances&amp;src=dHVybGV5cmljaGFyZHNAZ21haWwuY29t&amp;color=%237986CB"
+      style="border:solid 1px #777; border-radius: 25px;" width="100%" height="800" frameborder="0"
+      scrolling="no"></iframe>
+  </div>
+</div>
+
+@code {
+
+}
