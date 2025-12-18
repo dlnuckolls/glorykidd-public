@@ -19,8 +19,8 @@ try
   appSettings["CleanupApps"].Split('|').ToList().ForEach(item =>
   {
     itemElements = [item.Split(':')[0], item.Split(':')[1]];
-    Helpers.LogMessages("|- Removing files for {0}}".FormatWith(itemElements[0]));
-    Helpers.CheckBuildFiles(new DirectoryInfo(baseFolder), "{0}}*".FormatWith(itemElements[1]));
+    Helpers.LogMessages("|- Removing files for {0}".FormatWith(itemElements[0]));
+    Helpers.CheckBuildFiles(new DirectoryInfo(baseFolder), "{0}*".FormatWith(itemElements[1]));
   });
 
   //Cleanup logs
