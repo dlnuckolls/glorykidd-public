@@ -4,6 +4,33 @@
 <PageTitle>CGCA About</PageTitle>
 
 <div class="row">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div style="width: 100%; text-align: center;">
+        <Button Type="ButtonType.Link" Color="ButtonColor.Success" Target="Target.Blank" Size="ButtonSize.ExtraLarge"
+          style="border-radius: 25px;" To="https://app.praxischool.com/_remoteDonationPage.php?s=NDEwMV8xMDAx">
+          <Icon Name="IconName.CashStack" />
+          &nbsp;&nbsp;Support CGCA&nbsp;&nbsp;
+          <Icon Name="IconName.CashStack" />
+        </Button>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div style="width: 100%; text-align: center;">
+        <Button Type="ButtonType.Link" Color="ButtonColor.Success" Target="Target.Blank" Size="ButtonSize.ExtraLarge"
+          style="border-radius: 25px;" To="https://forms.gle/VrTYwLTa7G6k8M9v9">
+          <Icon Name="IconName.Handbag" />
+          &nbsp;&nbsp;CGCA Swag&nbsp;&nbsp;
+          <Icon Name="IconName.Handbag" />
+        </Button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>&nbsp;</p>
+    </div>
+  </div>
   <div class="col-sm-12 col-md-5">
     <Image Src="images/higherlearning.jpg"></Image>
   </div>
@@ -23,7 +50,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-12"><p>&nbsp;</p></div>
+  <div class="col-12">
+    <p>&nbsp;</p>
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-12 col-md-6">
@@ -35,7 +64,8 @@
           <p style="text-align: justify;">Our goal is the development of students prepared academically and spiritually
             to serve Jesus Christ and to impact the world through their character and leadership.</p>
         </CardText>
-        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalVisionClick" style="border-radius: 20px;">Read Our Vision</Button>
+        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalVisionClick" style="border-radius: 20px;">Read Our
+          Vision</Button>
         <Modal @ref="vision" Title="VISION STATEMENT" Size="ModalSize.Large" IsVerticallyCentered="true">
           <BodyTemplate>
             <div
@@ -73,7 +103,8 @@
           <p style="text-align: justify;">Since man was created in the image of God (Genesis 1:26-27), we are divine
             image bearers. As divine image bearers, we were created to glorify God, and to know Him.</p>
         </CardText>
-        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalPhilosophyClick" style="border-radius: 20px;">Read Our Philosophy of
+        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalPhilosophyClick" style="border-radius: 20px;">Read
+          Our Philosophy of
           Education</Button>
         <Modal @ref="philosophy" Title="SCHOOL PHILOSOPHY" Size="ModalSize.Large" IsVerticallyCentered="true">
           <BodyTemplate>
@@ -141,7 +172,8 @@
           <p style="text-align: justify;"><b><i>We believe</i></b> in the one true God (Deuteronomy 6:4), manifest in
             three distinct persons: Father, Son, and Holy Spirit (Matthew 28:19). </p>
         </CardText>
-        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalStatementClick" style="border-radius: 20px;">Read Our Statement of Faith</Button>
+        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalStatementClick" style="border-radius: 20px;">Read Our
+          Statement of Faith</Button>
         <Modal @ref="faith" Title="STATEMENT of FAITH" Size="ModalSize.Large" IsVerticallyCentered="true">
           <BodyTemplate>
             <div
@@ -245,7 +277,8 @@
           <p style="text-align: justify;">All constituents of the CGCA community are expected to manifest the highest
             Christian virtues in judgment, dignity, respect, and living as long as they are associated with CGCA.</p>
         </CardText>
-        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalConductClick" style="border-radius: 20px;">Read Our Code of Conduct</Button>
+        <Button Color="ButtonColor.Secondary" @onclick="OnShowModalConductClick" style="border-radius: 20px;">Read Our
+          Code of Conduct</Button>
         <Modal @ref="conduct" Title="CODE of CONDUCT" Size="ModalSize.Large" IsVerticallyCentered="true">
           <BodyTemplate>
             <div
