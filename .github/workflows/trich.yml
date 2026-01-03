@@ -51,7 +51,9 @@ jobs:
           Remove-Item -Path C:/deployment-stage/trich/${{ steps.buildid.outputs.formattedTime }} -Recurse
       - name: Deploy New Code
         run: |
-          Copy-Item web/trich/* -Destination C:/www-root/turleyrichards.com/ -Recurse -Force          
+          cd web/trich.new/trich.web
+          dotnet build
+          dotnet publish -c Release -o C:/www-root/turleyrichards.com
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0
         with:

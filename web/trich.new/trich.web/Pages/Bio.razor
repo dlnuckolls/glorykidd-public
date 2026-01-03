@@ -1,4 +1,207 @@
-﻿<h3>Bio</h3>
+﻿@page "/bio"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Biography</PageTitle>
+
+<div class="row">
+  <div class="col-md-3 col-sm-12">
+    <Card TextAlignment="Alignment.Start" Style="border: 0px; padding-top: 50px;">
+      <CardBody>
+        <CardTitle><i>The Man</i></CardTitle>
+        <CardText>
+          <p style="text-align: justify;">“Turley is the best performer with a guitar in his hand that I have ever seen,
+            hands down. What he can do with his voice, guitar, his rhythm, and pounding that big right leg on the stage
+            blows my mind. Best I have ever seen.”<br /><br /><b>~ Joe Boyland ~</b></p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <Image Src="images/turleyblackwhite.jpeg" style="border-radius: 50px; margin-top: 100px;"></Image>
+  </div>
+  <div class="col-md-5 col-sm-12" style="border-radius: 50px; padding: 25px; background: rgb(149, 0, 255);">
+    <Card TextAlignment="Alignment.Start" Style="border: 0px;">
+      <CardBody>
+        <CardText>
+          <p style="text-align: justify;">The youngest of five, Turley was born in Charleston, West Virginia. His Dad
+            was a pipe fitter and his Mother a seamstress and housewife.<br>
+            <br>Although Richard’s life has been filled with what others perceive as tragedy, he exudes a positive
+            spirit contagious to all whom cross his path. Woven throughout his life story, he demonstrates the ability
+            to direct energy from life challenges into an optimistic attitude that continues to drive him forward.<br>
+            <br>At the age of four, Turley was playing a silly game bent over holding a pillow to his bottom while an
+            older neighbor took aim with a bow and arrow. Curious, Turley looked around to see what was taking so long
+            when the arrow pierced his left eye resulting in total loss of vision in that eye. With improper medical
+            treatment, sympathetic reaction set in and slowly but surely infected the right eye. Years later he lost
+            sight in that eye as well.<br>
+          </p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">&nbsp;</div>
+</div>
+<div class="row" style="text-align: center;">
+  <div class="col-12">
+    <Alert Color="AlertColor.Info" style="border-radius: 75px;">
+      <Image Src="images/turleybillygraham.jpg" style="border-radius: 50px; margin-top: 20px;"></Image>
+    </Alert>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <Card TextAlignment="Alignment.Start" Style="border: 0px;">
+      <CardBody>
+        <CardText>
+          <p style="text-align: justify;">Richards endured eight operations from ages 6-16 and every time they pulled
+            the bandages off, he just knew he was going to see better. He never did. He did, however, have an
+            excellent voice even at a young age. The workers at his Dad’s plant pooled their money and bought him a
+            Victrola record player and some records. His Mom bought him a kazoo, shaped liked a sax at a five and dime
+            and he was on his way. At fifteen, he started a group called The Five Pearls. The inception of his music
+            was in the R&B field, leaning towards The Drifters, The Clovers, and The Count Basie Band. He then got a
+            spot on The Dick Reid Record Hop, a clone of American Bandstand, and he traveled the state of West
+            Virginia, becoming known as The West Virginia Superstar.
+          </p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <Card TextAlignment="Alignment.Start" Style="border: 0px;">
+      <CardBody>
+        <CardText>
+          <p style="text-align: justify;">In the early 60′s Turley tried his luck with a trip to Los Angeles with two
+            other musicians. A train back to West Virginia soon took him home as the musicians threw in the towel. Not
+            accepting defeat, he headed to New York with his guitar, suitcase, and 87 dollars, which did not last
+            long. After running out of money, Turley was forced to sleep in Central Park and sing at pubs for meals
+            and handouts. Finally, Turley got a break. A woman he had met worked for Norman Schwartz, who managed Stan
+            Getz, Gary McFarland, and others. Turley was introduced and he was on his way to a record deal with MGM.
+            Through the years, Turley was signed by seven major record labels, including Warner Brothers, Columbia,
+            Atlantic, Epic, MGM and 20th Century Fox. Every single that was ever released was a “pick hit” in
+            Billboard, and while Turley sold 1.4 million records, he always has felt that poor management decisions
+            prevented him from attaining multi-platinum sales.
+          </p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">&nbsp;</div>
+</div>
+<div class="row"
+  style="border-radius: 50px; align-items: end; text-align: center; background-image: url('images/turleyonstage.jpg'); height: 800px; background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="col-md-6 col-sm-12">&nbsp;
+  </div>
+  <div class="col-md-6 col-sm-12" style="border-radius: 50px; align-items: end;">
+    <Card TextAlignment="Alignment.Start" Style="border-radius: 50px; border: 0px; margin-bottom: 30px;">
+      <CardBody>
+        <CardText>
+          <p style="text-align: justify;">For the past fifteen years, Turley has been working as a performer, producer,
+            vocal coach and music consultant. He has jump-started a comeback with a new album and plans for a DVD about
+            his life. “I have been asked what keeps me going and how I overcome so many obstacles. My inner strength is
+            from my Mother’s words of wisdom. She used to say, “It’s a tough world out there, honey, and you just got to
+            be tougher than the toughest”.
+          </p>
+          <p style="text-align: justify;">See Turley in person for yourself. You will be glad that you did!
+          </p>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">&nbsp;</div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <Alert Color="AlertColor.Info" Style="text-align: center; border-radius: 75px; font-size: 2em !important;">
+      Some of the names Turley has been on stage with:
+    </Alert>
+  </div>
+</div>
+<div class="row"
+  style="border-radius: 50px; align-items: end; text-align: center; background-image: url('images/turleydailycup.jpeg'); height: 800px; background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="col-md-3 col-sm-12">
+    <Card TextAlignment="Alignment.Start"
+      Style="border-radius: 50px; border: 0px; background: rgba(255,255,255,0.6); color: rgb(0, 13, 53);">
+      <CardBody>
+        <CardText Style="font-size: 1em !important;">
+          <p style="text-align: justify;">Turley has been seen on national TV shows like:</p>
+          <ul>
+            <li>Dick Clark’s American Bandstand</li>
+            <li>David Frost</li>
+            <li>Merv Griffin</li>
+            <li>Johnny Carson’s Tonight Show</li>
+            <li>Turley also hosted his own variety show</li>
+          </ul>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <Card TextAlignment="Alignment.Start"
+      Style="border-radius: 50px; border: 0px; background: rgba(255,255,255,0.6); color: rgb(0, 13, 53);">
+      <CardBody>
+        <CardText Style="font-size: 1em !important;">
+          <ul>
+            <li>Bobby Rydell</li>
+            <li>Chubby Checker</li>
+            <li>Frankie Avalon</li>
+            <li>Jimmy Clanton</li>
+            <li>Paul Anka</li>
+            <li>Jackie Wilson</li>
+            <li>Bobby Darin</li>
+            <li>Bobby Bare</li>
+            <li>Boots Randolph</li>
+            <li>The Crickets</li>
+            <li>The Dick Clark Caravan (TV)</li>
+          </ul>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <Card TextAlignment="Alignment.Start"
+      Style="border-radius: 50px; border: 0px; background: rgba(255,255,255,0.6); color: rgb(0, 13, 53);">
+      <CardBody>
+        <CardText Style="font-size: 1em !important;">
+          <ul>
+            <li>Richard Pryor (comedian)</li>
+            <li>Richie Havens</li>
+            <li>David Frye</li>
+            <li>Gene Pitney</li>
+            <li>B.J.Thomas</li>
+            <li>Bobby Goldsboro</li>
+            <li>The Real McCoy’s</li>
+            <li>Chad and Jeremy</li>
+            <li>The Outsiders</li>
+            <li>Len Barry</li>
+          </ul>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <Card TextAlignment="Alignment.Start"
+      Style="border-radius: 50px; border: 0px; background: rgba(255,255,255,0.6); color: rgb(0, 13, 53);">
+      <CardBody>
+        <CardText Style="font-size: 1em !important;">
+          <ul>
+            <li>The 5th Dimension</li>
+            <li>Miles Davis</li>
+            <li>Jerry Lewis (telethon)</li>
+            <li>Tony Bennett</li>
+            <li>Aretha Franklin</li>
+            <li>George Carlin (comedian)</li>
+            <li>Sarah Vaughan</li>
+            <li>Joni Mitchell</li>
+            <li>Jerry Stiller and Ann Meara (comedians)</li>
+          </ul>
+        </CardText>
+      </CardBody>
+    </Card>
+  </div>
+</div>
 
 @code {
 
